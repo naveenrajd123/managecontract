@@ -452,7 +452,20 @@ class ContractRAGSystem:
             
         except Exception as e:
             print(f"[ERROR] Error extracting metadata: {e}")
-            print(f"[ERROR] AI Response was: {response.text if 'response' in locals() else 'No response'}")
+            print(f"[ERROR] Full AI Response:")
+            print("="*80)
+            if 'response' in locals():
+                print(response.text)
+            else:
+                print("No response received")
+            print("="*80)
+            print(f"[ERROR] Text we tried to parse:")
+            print("="*80)
+            if 'result_text' in locals():
+                print(result_text)
+            else:
+                print("No result_text")
+            print("="*80)
             
             # Return defaults
             return {
