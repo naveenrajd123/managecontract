@@ -75,6 +75,20 @@ Thumbs.db
 
 # Project specific
 ask/
-data/contracts/
-data/contracts_advanced/
-data/contracts_diverse/
+data/
+demo_contracts2/
+scripts/
+tools/
+upload_log.txt
+*_SUMMARY.md
+*_GUIDE.md
+*_ANALYSIS.md
+*_CONTEXT.md
+COMMIT_READY.md
+bulk_upload_*.py
+clear_*.py
+generate_demo_*.py
+upload_demo_*.py
+backfill_*.py
+migrate_*.py
+test_system.py

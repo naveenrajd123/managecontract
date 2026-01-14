@@ -1,3 +1,0 @@
-# Contract Upload Log
-# This file tracks all upload attempts
-# Format: TIMESTAMP | FILENAME | STATUS | MESSAGE
