@@ -519,39 +519,64 @@ class ContractRAGSystem:
         - Termination Fee: Over 30%
         - Liability Cap: Over 5x contract value
         
-        STEP 2 - CHECK FOR RISK ESCALATORS (Each adds +1 risk level):
+        STEP 2 - CHECK FOR RISK ESCALATORS (Be conservative - only escalate for SIGNIFICANT risks):
         
-        Regulatory & Compliance:
-        - GDPR, CCPA, or personal data handling
-        - HIPAA or protected health information
-        - PCI-DSS or payment card data
-        - SOX, GLBA, or financial regulations
-        - FDA, medical device regulations
-        - Export controls, ITAR
+        MAJOR ESCALATORS (+1 level each, MAX 2 escalations total):
         
-        Data & Security:
-        - Handles sensitive personal data (SSN, financial, medical)
-        - Critical infrastructure or national security
-        - Significant data breach liability
-        - Intellectual property disputes with major consequences
+        1. High-Stakes Regulatory Compliance:
+           - HIPAA + handles actual protected health records (PHI)
+           - PCI-DSS + processes payment card data at scale
+           - ITAR + export-controlled defense technology
+           - SOX + financial reporting obligations
+           
+        2. Severe Data Breach Risk:
+           - Large-scale sensitive personal data (SSN, financial records, medical records)
+           - Data breach penalties over $100K mentioned
+           - Stores data for 10,000+ individuals
+           
+        3. Critical Operational Impact:
+           - Life safety or public health implications (hospitals, utilities)
+           - Mission-critical infrastructure with downtime costs over $50K/day
+           - National security or critical infrastructure
         
-        Operational:
-        - Mission-critical systems with high downtime costs
-        - Life safety or public health implications
-        - Environmental compliance with severe penalties
-        - Reputation risks with existential business impact
+        MINOR FACTORS (Do NOT escalate unless combined with high financial risk):
+        - Generic GDPR/CCPA compliance language (most modern contracts have this)
+        - Standard personal data handling (names, emails, addresses)
+        - Routine confidentiality clauses
+        - Standard IP protection clauses
+        - Normal business liability
         
-        STEP 3 - CALCULATE FINAL RISK:
-        1. Determine base risk from financial factors
-        2. Count number of risk escalators present (0-3+)
-        3. Add +1 risk level for each significant escalator
-        4. Cap at CRITICAL
+        STEP 3 - CALCULATE FINAL RISK (Use RESTRAINT):
+        1. Start with base financial risk
+        2. Count MAJOR escalators only (ignore minor factors)
+        3. Add +1 level per MAJOR escalator (MAX +2 levels total)
+        4. If base is LOW and only 1 minor compliance mention → Stay LOW
+        5. If base is MEDIUM and only generic GDPR → Stay MEDIUM
+        6. CRITICAL should be rare (high value + multiple major escalators)
         
-        Example:
-        - Base: $20K contract = LOW
-        - Escalator: +GDPR compliance = +1 level
-        - Escalator: +Handles medical data = +1 level
-        - Final: HIGH risk
+        Example 1 (Should stay LOW):
+        - Base: $15K contract = LOW
+        - Has: Generic GDPR clause, standard confidentiality
+        - Major escalators: 0
+        - Final: LOW ✓
+        
+        Example 2 (Should be MEDIUM):
+        - Base: $40K contract = MEDIUM
+        - Has: GDPR, personal data (names/emails), standard terms
+        - Major escalators: 0
+        - Final: MEDIUM ✓
+        
+        Example 3 (Should be HIGH):
+        - Base: $80K contract = MEDIUM
+        - Has: HIPAA compliance + actual PHI handling
+        - Major escalators: 1
+        - Final: HIGH ✓
+        
+        Example 4 (Should be CRITICAL):
+        - Base: $600K contract = CRITICAL
+        - OR: $200K + HIPAA + large-scale sensitive data
+        - Major escalators: 2+
+        - Final: CRITICAL ✓
         
         Provide your response in this EXACT format:
         
