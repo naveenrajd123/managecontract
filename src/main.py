@@ -17,6 +17,7 @@ from typing import List, Optional
 from datetime import datetime, timedelta
 import os
 import json
+import traceback
 
 # Import our custom modules
 from src.database import init_db, get_db, Contract
@@ -395,6 +396,16 @@ async def reanalyze_all_contracts(db: AsyncSession = Depends(get_db)):
 # FILE UPLOAD ENDPOINT
 # ============================================================================
 
+def log_upload_attempt(filename: str, status: str, message: str):
+    """Log upload attempts to file for debugging"""
+    try:
+        with open("upload_log.txt", "a", encoding="utf-8") as f:
+            timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            f.write(f"{timestamp} | {filename} | {status} | {message}\n")
+    except:
+        pass  # Don't let logging errors break uploads
+
+
 @app.post("/api/contracts/upload")
 async def upload_contract(
     file: UploadFile = File(...),
@@ -410,57 +421,100 @@ async def upload_contract(
     4. Generates summary and assesses risk
     5. Stores everything in database
     """
-    # Validate file type
-    file_extension = os.path.splitext(file.filename)[1].lower()
-    if file_extension not in settings.ALLOWED_EXTENSIONS:
-        raise HTTPException(
-            status_code=400,
-            detail=f"File type {file_extension} not allowed. Use PDF or TXT files."
-        )
+    try:
+        print(f"\n[UPLOAD] Starting upload for file: {file.filename}")
+        log_upload_attempt(file.filename, "STARTED", "Upload initiated")
+        
+        # Validate file type
+        file_extension = os.path.splitext(file.filename)[1].lower()
+        if file_extension not in settings.ALLOWED_EXTENSIONS:
+            print(f"[UPLOAD ERROR] Invalid file type: {file_extension}")
+            log_upload_attempt(file.filename, "REJECTED", f"Invalid file type: {file_extension}")
+            raise HTTPException(
+                status_code=400,
+                detail=f"File type {file_extension} not allowed. Use PDF or TXT files."
+            )
     
     # Generate temporary filename
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
     temp_filename = f"temp_{timestamp}_{file.filename}"
     file_path = os.path.join(settings.UPLOAD_DIRECTORY, temp_filename)
     
+    print(f"[UPLOAD] Saving file to: {file_path}")
+    
     # Save file
-    with open(file_path, "wb") as f:
-        content = await file.read()
-        f.write(content)
+    try:
+        with open(file_path, "wb") as f:
+            content = await file.read()
+            f.write(content)
+        print(f"[UPLOAD] File saved successfully, size: {len(content)} bytes")
+    except Exception as e:
+        print(f"[UPLOAD ERROR] Failed to save file: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to save file: {str(e)}")
     
     # Extract text from file
+    print(f"[UPLOAD] Extracting text from {file_extension} file...")
     contract_text = ""
     if file_extension == ".txt":
         contract_text = content.decode("utf-8", errors="ignore")
+        print(f"[UPLOAD] Extracted {len(contract_text)} characters from TXT")
     elif file_extension == ".pdf":
         try:
             from PyPDF2 import PdfReader
             reader = PdfReader(file_path)
+            print(f"[UPLOAD] PDF has {len(reader.pages)} pages")
             for page in reader.pages:
                 contract_text += page.extract_text()
+            print(f"[UPLOAD] Extracted {len(contract_text)} characters from PDF")
         except Exception as e:
+            print(f"[UPLOAD ERROR] Failed to read PDF: {str(e)}")
             raise HTTPException(
                 status_code=400,
                 detail=f"Failed to read PDF: {str(e)}"
             )
     
     if not contract_text or len(contract_text) < 100:
+        print(f"[UPLOAD ERROR] Contract text too short: {len(contract_text)} characters")
         raise HTTPException(
             status_code=400,
             detail="Contract file appears empty or could not be read"
         )
     
     # Step 1: Extract metadata using AI
-    metadata = await rag_system.extract_contract_metadata(contract_text)
+    print(f"[UPLOAD] Step 1/4: Extracting metadata with AI...")
+    try:
+        metadata = await rag_system.extract_contract_metadata(contract_text)
+        print(f"[UPLOAD] Metadata extracted: {metadata.get('contract_number', 'N/A')}")
+    except Exception as e:
+        print(f"[UPLOAD ERROR] Failed to extract metadata: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"AI metadata extraction failed: {str(e)}")
     
     # Step 2: Generate summary
-    summary = await rag_system.generate_contract_summary(contract_text)
+    print(f"[UPLOAD] Step 2/4: Generating summary with AI...")
+    try:
+        summary = await rag_system.generate_contract_summary(contract_text)
+        print(f"[UPLOAD] Summary generated ({len(summary)} chars)")
+    except Exception as e:
+        print(f"[UPLOAD ERROR] Failed to generate summary: {str(e)}")
+        summary = "Summary generation failed"
     
     # Step 3: Extract key clauses
-    key_clauses = await rag_system.extract_key_clauses(contract_text)
+    print(f"[UPLOAD] Step 3/4: Extracting key clauses with AI...")
+    try:
+        key_clauses = await rag_system.extract_key_clauses(contract_text)
+        print(f"[UPLOAD] Key clauses extracted")
+    except Exception as e:
+        print(f"[UPLOAD ERROR] Failed to extract key clauses: {str(e)}")
+        key_clauses = {}
     
     # Step 4: Assess risk
-    risk_assessment = await rag_system.assess_risk_level(contract_text)
+    print(f"[UPLOAD] Step 4/4: Assessing risk level with AI...")
+    try:
+        risk_assessment = await rag_system.assess_risk_level(contract_text)
+        print(f"[UPLOAD] Risk assessment: {risk_assessment.get('risk_level', 'unknown')}")
+    except Exception as e:
+        print(f"[UPLOAD ERROR] Failed to assess risk: {str(e)}")
+        risk_assessment = {"risk_level": "medium", "risk_reason": "Risk assessment failed"}
     
     # Parse dates
     from dateutil import parser as date_parser
@@ -512,45 +566,75 @@ async def upload_contract(
         status=status
     )
     
+    print(f"[UPLOAD] Saving contract to database...")
     db.add(db_contract)
     try:
         await db.commit()
         await db.refresh(db_contract)
+        print(f"[UPLOAD SUCCESS] Contract saved with ID: {db_contract.id}")
     except Exception as e:
         await db.rollback()
+        print(f"[UPLOAD ERROR] Database error: {str(e)}")
         if "UNIQUE constraint failed" in str(e) or "unique" in str(e).lower():
+            log_upload_attempt(file.filename, "DUPLICATE", f"Contract {contract_number} already exists")
             raise HTTPException(
                 status_code=400,
                 detail=f"Contract number {contract_number} already exists in database. Please upload a different contract."
             )
         else:
+            log_upload_attempt(file.filename, "DB_ERROR", f"Database error: {str(e)}")
             raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
     
     # Add to vector database for RAG
-    await rag_system.add_contract_to_vectordb(
-        contract_id=db_contract.id,
-        contract_text=contract_text,
-        contract_metadata={
-            "name": metadata.get('contract_name'),
-            "number": contract_number,
-            "party_a": metadata.get('party_a'),
-            "party_b": metadata.get('party_b')
-        }
-    )
+    print(f"[UPLOAD] Adding contract to RAG vector database...")
+    try:
+        await rag_system.add_contract_to_vectordb(
+            contract_id=db_contract.id,
+            contract_text=contract_text,
+            contract_metadata={
+                "name": metadata.get('contract_name'),
+                "number": contract_number,
+                "party_a": metadata.get('party_a'),
+                "party_b": metadata.get('party_b')
+            }
+        )
+        print(f"[UPLOAD] Successfully added to RAG system")
+    except Exception as e:
+        print(f"[UPLOAD WARNING] Failed to add to RAG system: {str(e)}")
+        # Don't fail the upload if RAG indexing fails
     
-    return {
-        "message": "Contract uploaded and processed successfully",
-        "contract_id": db_contract.id,
-        "contract_number": contract_number,
-        "contract_name": metadata.get('contract_name'),
-        "party_a": metadata.get('party_a'),
-        "party_b": metadata.get('party_b'),
-        "start_date": start_date.isoformat(),
-        "end_date": end_date.isoformat(),
-        "status": status,
-        "risk_level": risk_assessment["risk_level"],
-        "summary": summary
-    }
+        print(f"[UPLOAD COMPLETE] Contract {contract_number} uploaded successfully!\n")
+        log_upload_attempt(file.filename, "SUCCESS", f"Contract {contract_number} uploaded with ID {db_contract.id}")
+        
+        return {
+            "message": "Contract uploaded and processed successfully",
+            "id": db_contract.id,
+            "contract_id": db_contract.id,
+            "contract_number": contract_number,
+            "contract_name": metadata.get('contract_name'),
+            "party_a": metadata.get('party_a'),
+            "party_b": metadata.get('party_b'),
+            "start_date": start_date.isoformat(),
+            "end_date": end_date.isoformat(),
+            "status": status,
+            "risk_level": risk_assessment["risk_level"],
+            "risk_reason": risk_assessment.get("risk_reason", ""),
+            "summary": summary
+        }
+    
+    except HTTPException:
+        # Re-raise HTTP exceptions (already logged and handled)
+        raise
+    except Exception as e:
+        # Catch any unexpected errors
+        error_msg = f"Unexpected error during upload: {str(e)}"
+        print(f"[UPLOAD CRITICAL ERROR] {error_msg}")
+        print(f"[UPLOAD TRACEBACK] {traceback.format_exc()}")
+        log_upload_attempt(file.filename, "FAILED", error_msg)
+        raise HTTPException(
+            status_code=500,
+            detail=f"Upload failed: {str(e)}. Check server logs for details."
+        )
 
 
 # ============================================================================

@@ -43,16 +43,26 @@ let currentFilter = null;
 // LOAD DASHBOARD STATS
 // ============================================================================
 async function loadDashboardStats() {
+    console.log('[DASHBOARD] Loading dashboard stats...');
+    
     try {
         const response = await fetch(`${API_BASE}/api/dashboard/stats`);
-        const data = await response.json();
         
-        // Update status counts
-        document.getElementById('total-count').textContent = data.total_contracts || 0;
-        document.getElementById('active-count').textContent = data.active_contracts || 0;
-        document.getElementById('expired-count').textContent = data.expired_contracts || 0;
-        document.getElementById('renewed-count').textContent = data.renewed_contracts || 0;
-        document.getElementById('pending-count').textContent = data.pending_contracts || 0;
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        console.log('[DASHBOARD] Stats received:', data);
+        
+        // Update status counts with fallback to 0
+        document.getElementById('total-count').textContent = data.total_contracts ?? 0;
+        document.getElementById('active-count').textContent = data.active_contracts ?? 0;
+        document.getElementById('expired-count').textContent = data.expired_contracts ?? 0;
+        document.getElementById('renewed-count').textContent = data.renewed_contracts ?? 0;
+        document.getElementById('pending-count').textContent = data.pending_contracts ?? 0;
+        
+        console.log(`[DASHBOARD] Updated stats - Total: ${data.total_contracts}, Active: ${data.active_contracts}`);
         
         // Load warning count
         await loadWarningCount();
@@ -61,7 +71,17 @@ async function loadDashboardStats() {
         await loadRiskStats();
         
     } catch (error) {
-        console.error('Error loading dashboard stats:', error);
+        console.error('[DASHBOARD ERROR] Failed to load dashboard stats:', error);
+        
+        // Set all to 0 on error so user knows there's an issue
+        document.getElementById('total-count').textContent = '?';
+        document.getElementById('active-count').textContent = '?';
+        document.getElementById('expired-count').textContent = '?';
+        document.getElementById('renewed-count').textContent = '?';
+        document.getElementById('pending-count').textContent = '?';
+        
+        // Show error message to user
+        console.error('[DASHBOARD ERROR] The server might not be running. Please check if the backend is started.');
     }
 }
 
@@ -231,8 +251,19 @@ async function loadContracts(filterType = null) {
         
         console.log(`[INFO] Fetching contracts from: ${url}`);
         const response = await fetch(url);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
         let contracts = await response.json();
         console.log(`[INFO] Received ${contracts.length} contracts from API`);
+        
+        // Validate that we got an array
+        if (!Array.isArray(contracts)) {
+            console.error('[ERROR] API returned invalid data (not an array):', contracts);
+            throw new Error('Invalid data format from server');
+        }
         
         // Apply additional filtering for critical/warnings
         if (filterType === 'critical' || filterType === 'warnings') {
@@ -1755,42 +1786,10 @@ function usePrompt(promptText) {
 }
 
 // ============================================================================
-// TECHNICAL DOCUMENTATION MODAL
+// TECHNICAL DOCUMENTATION - Moved to About Tab
 // ============================================================================
-function openTechnicalDocsModal() {
-    const modal = document.getElementById('tech-docs-modal');
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
-}
-
-function closeTechnicalDocsModal() {
-    const modal = document.getElementById('tech-docs-modal');
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto'; // Restore scrolling
-}
-
-// Setup modal event listeners
-document.getElementById('tech-docs-link')?.addEventListener('click', (e) => {
-    e.preventDefault();
-    openTechnicalDocsModal();
-});
-
-document.getElementById('close-tech-modal')?.addEventListener('click', closeTechnicalDocsModal);
-document.getElementById('close-tech-modal-btn')?.addEventListener('click', closeTechnicalDocsModal);
-
-// Close modal when clicking outside
-document.getElementById('tech-docs-modal')?.addEventListener('click', (e) => {
-    if (e.target.id === 'tech-docs-modal') {
-        closeTechnicalDocsModal();
-    }
-});
-
-// Close modal on Escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        closeTechnicalDocsModal();
-    }
-});
+// Technical documentation is now part of the About tab accordion system
+// No modal functions needed
 
 // ============================================================================
 // DELETE CONTRACTS MODAL
