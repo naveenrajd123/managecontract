@@ -232,25 +232,59 @@ async function loadWarnings() {
 // LOAD CONTRACTS
 // ============================================================================
 async function loadContracts(filterType = null) {
-    const statusFilter = filterType || document.getElementById('status-filter').value;
     const contractsContainer = document.getElementById('contracts-container');
     
+    // Get the filter value - prioritize passed parameter, then dropdown value
+    let statusFilter = filterType !== null ? filterType : document.getElementById('status-filter').value;
+    
+    // Normalize empty string to null for "All Contracts"
+    if (statusFilter === '' || statusFilter === 'all') {
+        statusFilter = null;
+    }
+    
     // Store the current filter
-    currentFilter = filterType;
+    currentFilter = statusFilter;
+    
+    console.log('[LOAD CONTRACTS] Starting with filter:', statusFilter);
     
     contractsContainer.innerHTML = '<p class="loading">Loading contracts...</p>';
     
     try {
         let url = `${API_BASE}/api/contracts`;
+        const params = new URLSearchParams();
         
-        // Only add status filter for actual status values, not for warning/risk filters
+        // Handle status filters
         const validStatuses = ['active', 'expired', 'renewed', 'pending'];
         if (statusFilter && statusFilter !== 'all' && validStatuses.includes(statusFilter)) {
-            url += `?status=${statusFilter}`;
+            params.append('status', statusFilter);
+            console.log('[LOAD CONTRACTS] Adding status filter:', statusFilter);
         }
         
-        console.log(`[INFO] Fetching contracts from: ${url}`);
-        const response = await fetch(url);
+        // Handle risk level filters (send to backend)
+        if (statusFilter && typeof statusFilter === 'string' && statusFilter.startsWith('risk-')) {
+            const riskLevel = statusFilter.replace('risk-', '');
+            params.append('risk_level', riskLevel);
+            console.log('[LOAD CONTRACTS] Adding risk_level filter:', riskLevel);
+        }
+        
+        // Add params to URL if any exist
+        if (params.toString()) {
+            url += `?${params.toString()}`;
+            console.log('[LOAD CONTRACTS] Query params:', params.toString());
+        }
+        
+        // Add cache-busting parameter to ensure fresh data
+        const cacheBuster = `_t=${Date.now()}`;
+        url += (url.includes('?') ? '&' : '?') + cacheBuster;
+        
+        console.log('[LOAD CONTRACTS] Final URL:', url);
+        const response = await fetch(url, {
+            cache: 'no-cache',  // Disable browser caching
+            headers: {
+                'Cache-Control': 'no-cache',
+                'Pragma': 'no-cache'
+            }
+        });
         
         if (!response.ok) {
             throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -258,6 +292,14 @@ async function loadContracts(filterType = null) {
         
         let contracts = await response.json();
         console.log(`[INFO] Received ${contracts.length} contracts from API`);
+        
+        // Debug: Log risk levels when filtering by risk
+        if (statusFilter && statusFilter.startsWith('risk-')) {
+            console.log('[DEBUG] Risk level filter active:', statusFilter);
+            contracts.forEach((c, idx) => {
+                console.log(`[DEBUG] Contract ${idx + 1}: ${c.contract_number} - ${c.contract_name} - Risk: ${c.risk_level}`);
+            });
+        }
         
         // Validate that we got an array
         if (!Array.isArray(contracts)) {
@@ -300,23 +342,37 @@ async function loadContracts(filterType = null) {
             console.log(`[INFO] Warning filter: ${beforeCount} total contracts → ${contracts.length} with warnings`);
         }
         
-        // Apply risk level filtering
-        if (filterType === 'risk-low') {
-            contracts = contracts.filter(contract => 
-                contract.risk_level && contract.risk_level.toLowerCase() === 'low'
-            );
-        } else if (filterType === 'risk-medium') {
-            contracts = contracts.filter(contract => 
-                contract.risk_level && contract.risk_level.toLowerCase() === 'medium'
-            );
-        } else if (filterType === 'risk-high') {
-            contracts = contracts.filter(contract => 
-                contract.risk_level && contract.risk_level.toLowerCase() === 'high'
-            );
-        } else if (filterType === 'risk-critical') {
-            contracts = contracts.filter(contract => 
-                contract.risk_level && contract.risk_level.toLowerCase() === 'critical'
-            );
+        // Risk level filtering is now handled by backend API
+        // (no frontend filtering needed)
+        
+        // Create filter header with count
+        let filterHeaderHTML = '';
+        if (statusFilter && statusFilter !== '' && statusFilter !== 'all') {
+            const filterLabels = {
+                'active': '✅ Active Contracts',
+                'expired': '🔴 Expired Contracts',
+                'renewed': '🔄 Renewed Contracts',
+                'pending': '⏳ Pending Contracts',
+                'risk-low': '🟢 Low Risk Contracts',
+                'risk-medium': '🟡 Medium Risk Contracts',
+                'risk-high': '🟠 High Risk Contracts',
+                'risk-critical': '🔴 Critical Risk Contracts',
+                'warnings': '⚠️ Warning Contracts'
+            };
+            
+            const filterLabel = filterLabels[statusFilter] || 'Filtered Contracts';
+            
+            filterHeaderHTML = `
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 10px; margin-bottom: 20px; color: white;">
+                    <h3 style="margin: 0; display: flex; align-items: center; gap: 10px; font-size: 1.5rem;">
+                        <span>${filterLabel}</span>
+                        <span style="margin-left: auto; background: rgba(255,255,255,0.3); padding: 8px 16px; border-radius: 8px; font-weight: bold; font-size: 1.2rem;">${contracts.length}</span>
+                    </h3>
+                    <p style="margin: 10px 0 0 0; opacity: 0.9; font-size: 0.95rem;">
+                        Showing ${contracts.length} contract${contracts.length === 1 ? '' : 's'} matching your filter
+                    </p>
+                </div>
+            `;
         }
         
         if (contracts.length === 0) {
@@ -331,12 +387,12 @@ async function loadContracts(filterType = null) {
                         <h3 style="color: #27ae60; margin-bottom: 15px;">No Warning Contracts Found!</h3>
                         <p style="color: #666; margin-bottom: 20px;">All active contracts are in good standing.</p>
                         <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid #3498db; text-align: left; max-width: 600px; margin: 0 auto;">
-                            <strong style="color: #1e3a5f;">Warning Criteria:</strong>
+                            <strong style="color: #1e3a5f;">Warning Categories:</strong>
                             <ul style="margin-top: 10px; line-height: 1.8; color: #555;">
-                                <li>🔴 <strong>Critical:</strong> Expiring within 30 days</li>
-                                <li>🟡 <strong>Warning:</strong> Expiring within 90 days</li>
-                                <li>🔵 <strong>Info:</strong> Expiring within 180 days</li>
-                                <li>⚠️ <strong>Risk:</strong> High or Critical risk level</li>
+                                <li>🔴 <strong>Urgent:</strong> Expiring within 30 days or already expired</li>
+                                <li>🟡 <strong>Upcoming:</strong> Expiring within 31-90 days</li>
+                                <li>🔵 <strong>Future:</strong> Expiring within 91-180 days</li>
+                                <li>⚠️ <strong>High Risk:</strong> High or Critical risk level (regardless of expiration)</li>
                             </ul>
                             <p style="margin-top: 15px; font-style: italic; color: #666; font-size: 0.9em;">
                                 Note: Warnings are only calculated for <strong>active</strong> contracts.
@@ -344,6 +400,14 @@ async function loadContracts(filterType = null) {
                         </div>
                     </div>
                 `;
+            } else if (filterType === 'active') {
+                filterMessage = 'No active contracts found!';
+            } else if (filterType === 'expired') {
+                filterMessage = 'No expired contracts found!';
+            } else if (filterType === 'renewed') {
+                filterMessage = 'No renewed contracts found!';
+            } else if (filterType === 'pending') {
+                filterMessage = 'No pending contracts found!';
             } else if (filterType === 'risk-low') {
                 filterMessage = 'No LOW risk contracts found!';
             } else if (filterType === 'risk-medium') {
@@ -354,7 +418,7 @@ async function loadContracts(filterType = null) {
                 filterMessage = 'No CRITICAL risk contracts found!';
             }
             
-            contractsContainer.innerHTML = `<div class="loading">${filterMessage}</div>`;
+            contractsContainer.innerHTML = filterHeaderHTML + `<div class="loading">${filterMessage}</div>`;
             return;
         }
         
@@ -403,26 +467,26 @@ async function loadContracts(filterType = null) {
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 15px;">
                         <div onclick="filterWarningsByCategory('critical')" style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 8px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.35)'; this.style.transform='scale(1.05)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='scale(1)'">
                             <div style="font-size: 1.8rem; font-weight: bold;">${warningCounts.critical}</div>
-                            <div style="font-size: 1.2rem; margin-bottom: 5px;">🔴 Critical</div>
+                            <div style="font-size: 1.2rem; margin-bottom: 5px;">🔴 Urgent</div>
                             <div style="font-size: 0.85rem; opacity: 0.9;">Expiring ≤ 30 days or Expired</div>
                             <div style="font-size: 0.75rem; margin-top: 8px; opacity: 0.8; font-style: italic;">Click to filter</div>
                         </div>
                         <div onclick="filterWarningsByCategory('warning')" style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 8px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.35)'; this.style.transform='scale(1.05)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='scale(1)'">
                             <div style="font-size: 1.8rem; font-weight: bold;">${warningCounts.warning}</div>
-                            <div style="font-size: 1.2rem; margin-bottom: 5px;">🟡 Warning</div>
+                            <div style="font-size: 1.2rem; margin-bottom: 5px;">🟡 Upcoming</div>
                             <div style="font-size: 0.85rem; opacity: 0.9;">Expiring 31-90 days</div>
                             <div style="font-size: 0.75rem; margin-top: 8px; opacity: 0.8; font-style: italic;">Click to filter</div>
                         </div>
                         <div onclick="filterWarningsByCategory('info')" style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 8px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.35)'; this.style.transform='scale(1.05)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='scale(1)'">
                             <div style="font-size: 1.8rem; font-weight: bold;">${warningCounts.info}</div>
-                            <div style="font-size: 1.2rem; margin-bottom: 5px;">🔵 Info</div>
+                            <div style="font-size: 1.2rem; margin-bottom: 5px;">🔵 Future</div>
                             <div style="font-size: 0.85rem; opacity: 0.9;">Expiring 91-180 days</div>
                             <div style="font-size: 0.75rem; margin-top: 8px; opacity: 0.8; font-style: italic;">Click to filter</div>
                         </div>
                         <div onclick="filterWarningsByCategory('risk')" style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 8px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.35)'; this.style.transform='scale(1.05)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='scale(1)'">
                             <div style="font-size: 1.8rem; font-weight: bold;">${warningCounts.risk}</div>
-                            <div style="font-size: 1.2rem; margin-bottom: 5px;">⚠️ Risk</div>
-                            <div style="font-size: 0.85rem; opacity: 0.9;">High/Critical Risk</div>
+                            <div style="font-size: 1.2rem; margin-bottom: 5px;">⚠️ High Risk</div>
+                            <div style="font-size: 0.85rem; opacity: 0.9;">High/Critical Risk Level</div>
                             <div style="font-size: 0.75rem; margin-top: 8px; opacity: 0.8; font-style: italic;">Click to filter</div>
                         </div>
                     </div>
@@ -430,7 +494,7 @@ async function loadContracts(filterType = null) {
             `;
         }
         
-        contractsContainer.innerHTML = headerHTML + contracts.map(contract => {
+        contractsContainer.innerHTML = filterHeaderHTML + headerHTML + contracts.map(contract => {
             const startDate = new Date(contract.start_date).toLocaleDateString();
             const endDate = new Date(contract.end_date).toLocaleDateString();
             const value = contract.contract_value 
@@ -551,8 +615,16 @@ async function loadContracts(filterType = null) {
         }).join('');
         
     } catch (error) {
-        console.error('Error loading contracts:', error);
-        contractsContainer.innerHTML = '<p class="loading">Error loading contracts</p>';
+        console.error('[ERROR] Error loading contracts:', error);
+        console.error('[ERROR] Error stack:', error.stack);
+        console.error('[ERROR] Failed URL:', url || 'URL not defined');
+        contractsContainer.innerHTML = `
+            <div class="loading" style="color: #e74c3c;">
+                <p style="font-size: 1.2rem; margin-bottom: 10px;">❌ Error loading contracts</p>
+                <p style="font-size: 0.9rem; color: #666;">${error.message}</p>
+                <button onclick="loadContracts()" class="btn-secondary" style="margin-top: 15px;">🔄 Try Again</button>
+            </div>
+        `;
     }
 }
 
@@ -1094,7 +1166,12 @@ document.getElementById('ask-form').addEventListener('submit', async (e) => {
 // ============================================================================
 // STATUS FILTER
 // ============================================================================
-document.getElementById('status-filter').addEventListener('change', loadContracts);
+document.getElementById('status-filter').addEventListener('change', function(event) {
+    // Pass the selected value directly to avoid timing issues
+    const selectedValue = event.target.value;
+    console.log('[FILTER CHANGE] Dropdown changed to:', selectedValue);
+    loadContracts(selectedValue);
+});
 
 // ============================================================================
 // BULK UPLOAD HANDLER
@@ -1350,10 +1427,10 @@ function displayFilteredWarnings(contracts, category) {
     
     // Get category details
     const categoryInfo = {
-        critical: { icon: '🔴', name: 'Critical', description: 'Expiring ≤ 30 days or Expired', color: '#e74c3c' },
-        warning: { icon: '🟡', name: 'Warning', description: 'Expiring 31-90 days', color: '#f39c12' },
-        info: { icon: '🔵', name: 'Info', description: 'Expiring 91-180 days', color: '#3498db' },
-        risk: { icon: '⚠️', name: 'High/Critical Risk', description: 'Contracts with elevated risk', color: '#e67e22' }
+        critical: { icon: '🔴', name: 'Urgent Expiration', description: 'Expiring ≤ 30 days or Expired', color: '#e74c3c' },
+        warning: { icon: '🟡', name: 'Upcoming Expiration', description: 'Expiring 31-90 days', color: '#f39c12' },
+        info: { icon: '🔵', name: 'Future Expiration', description: 'Expiring 91-180 days', color: '#3498db' },
+        risk: { icon: '⚠️', name: 'High Risk Contracts', description: 'High or Critical risk level', color: '#e67e22' }
     };
     
     const cat = categoryInfo[category];

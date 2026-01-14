@@ -107,11 +107,22 @@
                     <h2>Contract List</h2>
                     <div class="filters">
                         <select id="status-filter" class="filter-select">
-                            <option value="">All Status</option>
-                            <option value="active">Active</option>
-                            <option value="expired">Expired</option>
-                            <option value="renewed">Renewed</option>
-                            <option value="pending">Pending</option>
+                            <option value="">All Contracts</option>
+                            <optgroup label="📊 By Status">
+                                <option value="active">Active</option>
+                                <option value="expired">Expired</option>
+                                <option value="renewed">Renewed</option>
+                                <option value="pending">Pending</option>
+                            </optgroup>
+                            <optgroup label="⚠️ By Risk Level">
+                                <option value="risk-low">Low Risk</option>
+                                <option value="risk-medium">Medium Risk</option>
+                                <option value="risk-high">High Risk</option>
+                                <option value="risk-critical">Critical Risk</option>
+                            </optgroup>
+                            <optgroup label="🔔 Special">
+                                <option value="warnings">⚠️ Warning Contracts</option>
+                            </optgroup>
                         </select>
                         <button onclick="loadContracts()" class="btn-secondary">🔄 Refresh</button>
                         <button onclick="bulkReanalyzeContracts()" class="btn-primary" style="background: linear-gradient(135deg, #818cf8 0%, #a5b4fc 100%); margin-left: 10px;">
