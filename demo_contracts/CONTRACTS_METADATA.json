@@ -1,19 +1,19 @@
 {
-  "generated": "2026-01-14T01:59:11.516712",
-  "total_contracts": 116,
+  "generated": "2026-01-14T03:24:20.859662",
+  "total_contracts": 232,
   "summary": {
     "risk_levels": {
-      "LOW": 31,
-      "MEDIUM": 36,
-      "HIGH": 27,
-      "CRITICAL": 22
+      "LOW": 54,
+      "MEDIUM": 70,
+      "HIGH": 74,
+      "CRITICAL": 34
     },
     "statuses": {
-      "ACTIVE": 38,
-      "EXPIRED": 20,
-      "RENEWED": 18,
-      "PENDING": 20,
-      "WARNING": 20
+      "ACTIVE": 68,
+      "PENDING": 37,
+      "WARNING": 51,
+      "EXPIRED": 37,
+      "RENEWED": 39
     }
   },
   "contracts": [
@@ -56,6 +56,44 @@
       "compliance": []
     },
     {
+      "contract_number": "CNT-2024-0001",
+      "filename": "CNT-2024-0001_PENDING_LOW_Software_Licensing_Agreement.txt",
+      "status": "PENDING",
+      "risk_level": "LOW",
+      "contract_type": "Software Licensing Agreement",
+      "financial": {
+        "contract_value": "24,064"
+      },
+      "parties": {
+        "party_a": "Enterprise Systems LLC",
+        "party_b": "CloudScale Networks"
+      },
+      "dates": {
+        "start": "August 29, 2025",
+        "end": "July 26, 2026"
+      },
+      "compliance": []
+    },
+    {
+      "contract_number": "CNT-2024-0002",
+      "filename": "CNT-2024-0002_ACTIVE_LOW_Construction_Contract.txt",
+      "status": "ACTIVE",
+      "risk_level": "LOW",
+      "contract_type": "Construction Contract",
+      "financial": {
+        "contract_value": "7,392"
+      },
+      "parties": {
+        "party_a": "InnovateTech Inc",
+        "party_b": "CloudScale Networks"
+      },
+      "dates": {
+        "start": "July 19, 2025",
+        "end": "December 27, 2026"
+      },
+      "compliance": []
+    },
+    {
       "contract_number": "CNT-2024-0002",
       "filename": "CNT-2024-0002_ACTIVE_LOW_Distribution_Agreement.txt",
       "status": "ACTIVE",
@@ -94,6 +132,25 @@
       "compliance": []
     },
     {
+      "contract_number": "CNT-2024-0003",
+      "filename": "CNT-2024-0003_WARNING_LOW_Cloud_Services_Agreement.txt",
+      "status": "WARNING",
+      "risk_level": "LOW",
+      "contract_type": "Cloud Services Agreement",
+      "financial": {
+        "contract_value": "20,412"
+      },
+      "parties": {
+        "party_a": "Enterprise Systems LLC",
+        "party_b": "VendorMax Solutions"
+      },
+      "dates": {
+        "start": "May 26, 2025",
+        "end": "December 17, 2026"
+      },
+      "compliance": []
+    },
+    {
       "contract_number": "CNT-2024-0004",
       "filename": "CNT-2024-0004_ACTIVE_LOW_Software_Licensing_Agreement.txt",
       "status": "ACTIVE",
@@ -109,6 +166,25 @@
       "dates": {
         "start": "February 09, 2025",
         "end": "September 12, 2027"
+      },
+      "compliance": []
+    },
+    {
+      "contract_number": "CNT-2024-0004",
+      "filename": "CNT-2024-0004_WARNING_LOW_Development_Agreement.txt",
+      "status": "WARNING",
+      "risk_level": "LOW",
+      "contract_type": "Development Agreement",
+      "financial": {
+        "contract_value": "19,240"
+      },
+      "parties": {
+        "party_a": "Enterprise Systems LLC",
+        "party_b": "VendorMax Solutions"
+      },
+      "dates": {
+        "start": "August 01, 2025",
+        "end": "August 31, 2028"
       },
       "compliance": []
     },
@@ -132,6 +208,25 @@
       "compliance": []
     },
     {
+      "contract_number": "CNT-2024-0005",
+      "filename": "CNT-2024-0005_WARNING_LOW_Subscription_Agreement.txt",
+      "status": "WARNING",
+      "risk_level": "LOW",
+      "contract_type": "Subscription Agreement",
+      "financial": {
+        "contract_value": "18,913"
+      },
+      "parties": {
+        "party_a": "InnovateTech Inc",
+        "party_b": "BuildPro Construction"
+      },
+      "dates": {
+        "start": "July 14, 2025",
+        "end": "March 25, 2028"
+      },
+      "compliance": []
+    },
+    {
       "contract_number": "CNT-2024-0006",
       "filename": "CNT-2024-0006_ACTIVE_LOW_Data_Processing_Agreement.txt",
       "status": "ACTIVE",
@@ -151,6 +246,44 @@
       "compliance": []
     },
     {
+      "contract_number": "CNT-2024-0006",
+      "filename": "CNT-2024-0006_EXPIRED_LOW_Consulting_Services_Agreement.txt",
+      "status": "EXPIRED",
+      "risk_level": "LOW",
+      "contract_type": "Consulting Services Agreement",
+      "financial": {
+        "contract_value": "10,353"
+      },
+      "parties": {
+        "party_a": "TechCorp Solutions",
+        "party_b": "CloudScale Networks"
+      },
+      "dates": {
+        "start": "February 28, 2025",
+        "end": "August 29, 2026"
+      },
+      "compliance": []
+    },
+    {
+      "contract_number": "CNT-2024-0007",
+      "filename": "CNT-2024-0007_ACTIVE_LOW_Office_Lease_Agreement.txt",
+      "status": "ACTIVE",
+      "risk_level": "LOW",
+      "contract_type": "Office Lease Agreement",
+      "financial": {
+        "contract_value": "12,040"
+      },
+      "parties": {
+        "party_a": "GlobalCorp Industries",
+        "party_b": "BuildPro Construction"
+      },
+      "dates": {
+        "start": "September 07, 2025",
+        "end": "August 13, 2026"
+      },
+      "compliance": []
+    },
+    {
       "contract_number": "CNT-2024-0007",
       "filename": "CNT-2024-0007_ACTIVE_LOW_Partnership_Agreement.txt",
       "status": "ACTIVE",
@@ -166,6 +299,25 @@
       "dates": {
         "start": "January 19, 2025",
         "end": "June 24, 2027"
+      },
+      "compliance": []
+    },
+    {
+      "contract_number": "CNT-2024-0008",
+      "filename": "CNT-2024-0008_ACTIVE_LOW_Consulting_Services_Agreement.txt",
+      "status": "ACTIVE",
+      "risk_level": "LOW",
+      "contract_type": "Consulting Services Agreement",
+      "financial": {
+        "contract_value": "8,286"
+      },
+      "parties": {
+        "party_a": "InnovateTech Inc",
+        "party_b": "BuildPro Construction"
+      },
+      "dates": {
+        "start": "December 30, 2025",
+        "end": "September 27, 2028"
       },
       "compliance": []
     },
@@ -208,6 +360,25 @@
       "compliance": []
     },
     {
+      "contract_number": "CNT-2024-0009",
+      "filename": "CNT-2024-0009_EXPIRED_LOW_Subscription_Agreement.txt",
+      "status": "EXPIRED",
+      "risk_level": "LOW",
+      "contract_type": "Subscription Agreement",
+      "financial": {
+        "contract_value": "14,005"
+      },
+      "parties": {
+        "party_a": "TechCorp Solutions",
+        "party_b": "CloudScale Networks"
+      },
+      "dates": {
+        "start": "June 11, 2025",
+        "end": "March 31, 2028"
+      },
+      "compliance": []
+    },
+    {
       "contract_number": "CNT-2024-0010",
       "filename": "CNT-2024-0010_ACTIVE_MEDIUM_Consulting_Services_Agreement.txt",
       "status": "ACTIVE",
@@ -223,6 +394,25 @@
       "dates": {
         "start": "September 24, 2025",
         "end": "February 20, 2028"
+      },
+      "compliance": []
+    },
+    {
+      "contract_number": "CNT-2024-0010",
+      "filename": "CNT-2024-0010_RENEWED_LOW_Manufacturing_Agreement.txt",
+      "status": "RENEWED",
+      "risk_level": "LOW",
+      "contract_type": "Manufacturing Agreement",
+      "financial": {
+        "contract_value": "16,485"
+      },
+      "parties": {
+        "party_a": "TechCorp Solutions",
+        "party_b": "BuildPro Construction"
+      },
+      "dates": {
+        "start": "January 30, 2025",
+        "end": "March 03, 2026"
       },
       "compliance": []
     },
@@ -246,6 +436,44 @@
       "compliance": []
     },
     {
+      "contract_number": "CNT-2024-0011",
+      "filename": "CNT-2024-0011_WARNING_LOW_Supply_Agreement.txt",
+      "status": "WARNING",
+      "risk_level": "LOW",
+      "contract_type": "Supply Agreement",
+      "financial": {
+        "contract_value": "19,236"
+      },
+      "parties": {
+        "party_a": "InnovateTech Inc",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "July 27, 2025",
+        "end": "August 18, 2027"
+      },
+      "compliance": []
+    },
+    {
+      "contract_number": "CNT-2024-0012",
+      "filename": "CNT-2024-0012_ACTIVE_LOW_Healthcare_Services_Agreement.txt",
+      "status": "ACTIVE",
+      "risk_level": "LOW",
+      "contract_type": "Healthcare Services Agreement",
+      "financial": {
+        "contract_value": "17,768"
+      },
+      "parties": {
+        "party_a": "InnovateTech Inc",
+        "party_b": "CloudScale Networks"
+      },
+      "dates": {
+        "start": "February 10, 2025",
+        "end": "September 28, 2027"
+      },
+      "compliance": []
+    },
+    {
       "contract_number": "CNT-2024-0012",
       "filename": "CNT-2024-0012_ACTIVE_MEDIUM_Equipment_Rental_Agreement.txt",
       "status": "ACTIVE",
@@ -261,6 +489,25 @@
       "dates": {
         "start": "July 26, 2025",
         "end": "March 25, 2029"
+      },
+      "compliance": []
+    },
+    {
+      "contract_number": "CNT-2024-0013",
+      "filename": "CNT-2024-0013_ACTIVE_LOW_Distribution_Agreement.txt",
+      "status": "ACTIVE",
+      "risk_level": "LOW",
+      "contract_type": "Distribution Agreement",
+      "financial": {
+        "contract_value": "21,892"
+      },
+      "parties": {
+        "party_a": "Digital Dynamics Corp",
+        "party_b": "VendorMax Solutions"
+      },
+      "dates": {
+        "start": "May 22, 2025",
+        "end": "June 24, 2027"
       },
       "compliance": []
     },
@@ -303,6 +550,44 @@
       "compliance": []
     },
     {
+      "contract_number": "CNT-2024-0014",
+      "filename": "CNT-2024-0014_RENEWED_LOW_Vendor_Agreement.txt",
+      "status": "RENEWED",
+      "risk_level": "LOW",
+      "contract_type": "Vendor Agreement",
+      "financial": {
+        "contract_value": "9,888"
+      },
+      "parties": {
+        "party_a": "Enterprise Systems LLC",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "September 14, 2025",
+        "end": "January 22, 2027"
+      },
+      "compliance": []
+    },
+    {
+      "contract_number": "CNT-2024-0015",
+      "filename": "CNT-2024-0015_ACTIVE_LOW_IT_Support_Contract.txt",
+      "status": "ACTIVE",
+      "risk_level": "LOW",
+      "contract_type": "IT Support Contract",
+      "financial": {
+        "contract_value": "11,499"
+      },
+      "parties": {
+        "party_a": "Enterprise Systems LLC",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "March 21, 2025",
+        "end": "August 29, 2027"
+      },
+      "compliance": []
+    },
+    {
       "contract_number": "CNT-2024-0015",
       "filename": "CNT-2024-0015_ACTIVE_MEDIUM_Development_Agreement.txt",
       "status": "ACTIVE",
@@ -337,6 +622,44 @@
       "dates": {
         "start": "March 06, 2025",
         "end": "August 21, 2027"
+      },
+      "compliance": []
+    },
+    {
+      "contract_number": "CNT-2024-0016",
+      "filename": "CNT-2024-0016_RENEWED_LOW_Office_Lease_Agreement.txt",
+      "status": "RENEWED",
+      "risk_level": "LOW",
+      "contract_type": "Office Lease Agreement",
+      "financial": {
+        "contract_value": "23,694"
+      },
+      "parties": {
+        "party_a": "TechCorp Solutions",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "January 02, 2025",
+        "end": "August 16, 2026"
+      },
+      "compliance": []
+    },
+    {
+      "contract_number": "CNT-2024-0017",
+      "filename": "CNT-2024-0017_ACTIVE_LOW_Cloud_Services_Agreement.txt",
+      "status": "ACTIVE",
+      "risk_level": "LOW",
+      "contract_type": "Cloud Services Agreement",
+      "financial": {
+        "contract_value": "12,064"
+      },
+      "parties": {
+        "party_a": "GlobalCorp Industries",
+        "party_b": "VendorMax Solutions"
+      },
+      "dates": {
+        "start": "July 04, 2025",
+        "end": "September 29, 2027"
       },
       "compliance": []
     },
@@ -379,6 +702,25 @@
       "compliance": []
     },
     {
+      "contract_number": "CNT-2024-0018",
+      "filename": "CNT-2024-0018_WARNING_LOW_Supply_Agreement.txt",
+      "status": "WARNING",
+      "risk_level": "LOW",
+      "contract_type": "Supply Agreement",
+      "financial": {
+        "contract_value": "21,581"
+      },
+      "parties": {
+        "party_a": "InnovateTech Inc",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "September 12, 2025",
+        "end": "May 27, 2028"
+      },
+      "compliance": []
+    },
+    {
       "contract_number": "CNT-2024-0019",
       "filename": "CNT-2024-0019_ACTIVE_HIGH_Subscription_Agreement.txt",
       "status": "ACTIVE",
@@ -400,6 +742,25 @@
         "PCI-DSS",
         "SOC 2"
       ]
+    },
+    {
+      "contract_number": "CNT-2024-0019",
+      "filename": "CNT-2024-0019_ACTIVE_LOW_Software_Licensing_Agreement.txt",
+      "status": "ACTIVE",
+      "risk_level": "LOW",
+      "contract_type": "Software Licensing Agreement",
+      "financial": {
+        "contract_value": "14,722"
+      },
+      "parties": {
+        "party_a": "Enterprise Systems LLC",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "February 07, 2025",
+        "end": "September 20, 2027"
+      },
+      "compliance": []
     },
     {
       "contract_number": "CNT-2024-0020",
@@ -425,6 +786,25 @@
       ]
     },
     {
+      "contract_number": "CNT-2024-0020",
+      "filename": "CNT-2024-0020_PENDING_LOW_Vendor_Agreement.txt",
+      "status": "PENDING",
+      "risk_level": "LOW",
+      "contract_type": "Vendor Agreement",
+      "financial": {
+        "contract_value": "6,401"
+      },
+      "parties": {
+        "party_a": "InnovateTech Inc",
+        "party_b": "SecureData Inc"
+      },
+      "dates": {
+        "start": "March 17, 2025",
+        "end": "June 12, 2026"
+      },
+      "compliance": []
+    },
+    {
       "contract_number": "CNT-2024-0021",
       "filename": "CNT-2024-0021_ACTIVE_HIGH_Marketing_Services_Agreement.txt",
       "status": "ACTIVE",
@@ -446,6 +826,25 @@
         "PCI-DSS",
         "SOC 2"
       ]
+    },
+    {
+      "contract_number": "CNT-2024-0021",
+      "filename": "CNT-2024-0021_WARNING_LOW_Professional_Services_Contract.txt",
+      "status": "WARNING",
+      "risk_level": "LOW",
+      "contract_type": "Professional Services Contract",
+      "financial": {
+        "contract_value": "13,353"
+      },
+      "parties": {
+        "party_a": "Enterprise Systems LLC",
+        "party_b": "BuildPro Construction"
+      },
+      "dates": {
+        "start": "December 10, 2025",
+        "end": "May 04, 2028"
+      },
+      "compliance": []
     },
     {
       "contract_number": "CNT-2024-0022",
@@ -471,6 +870,25 @@
       ]
     },
     {
+      "contract_number": "CNT-2024-0022",
+      "filename": "CNT-2024-0022_ACTIVE_LOW_Manufacturing_Agreement.txt",
+      "status": "ACTIVE",
+      "risk_level": "LOW",
+      "contract_type": "Manufacturing Agreement",
+      "financial": {
+        "contract_value": "5,590"
+      },
+      "parties": {
+        "party_a": "Enterprise Systems LLC",
+        "party_b": "CloudScale Networks"
+      },
+      "dates": {
+        "start": "June 03, 2025",
+        "end": "March 29, 2028"
+      },
+      "compliance": []
+    },
+    {
       "contract_number": "CNT-2024-0023",
       "filename": "CNT-2024-0023_ACTIVE_HIGH_Partnership_Agreement.txt",
       "status": "ACTIVE",
@@ -494,6 +912,25 @@
       ]
     },
     {
+      "contract_number": "CNT-2024-0023",
+      "filename": "CNT-2024-0023_PENDING_LOW_Manufacturing_Agreement.txt",
+      "status": "PENDING",
+      "risk_level": "LOW",
+      "contract_type": "Manufacturing Agreement",
+      "financial": {
+        "contract_value": "16,241"
+      },
+      "parties": {
+        "party_a": "Digital Dynamics Corp",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "May 24, 2025",
+        "end": "March 31, 2027"
+      },
+      "compliance": []
+    },
+    {
       "contract_number": "CNT-2024-0024",
       "filename": "CNT-2024-0024_ACTIVE_HIGH_Data_Processing_Agreement.txt",
       "status": "ACTIVE",
@@ -513,6 +950,28 @@
       "compliance": [
         "GDPR",
         "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0024",
+      "filename": "CNT-2024-0024_ACTIVE_MEDIUM_Manufacturing_Agreement.txt",
+      "status": "ACTIVE",
+      "risk_level": "MEDIUM",
+      "contract_type": "Manufacturing Agreement",
+      "financial": {
+        "contract_value": "40,173"
+      },
+      "parties": {
+        "party_a": "TechCorp Solutions",
+        "party_b": "VendorMax Solutions"
+      },
+      "dates": {
+        "start": "January 22, 2025",
+        "end": "January 04, 2028"
+      },
+      "compliance": [
+        "GDPR",
         "SOC 2"
       ]
     },
@@ -542,6 +1001,28 @@
       ]
     },
     {
+      "contract_number": "CNT-2024-0025",
+      "filename": "CNT-2024-0025_ACTIVE_MEDIUM_Vendor_Agreement.txt",
+      "status": "ACTIVE",
+      "risk_level": "MEDIUM",
+      "contract_type": "Vendor Agreement",
+      "financial": {
+        "contract_value": "78,688"
+      },
+      "parties": {
+        "party_a": "Digital Dynamics Corp",
+        "party_b": "CloudScale Networks"
+      },
+      "dates": {
+        "start": "April 23, 2025",
+        "end": "April 09, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0026",
       "filename": "CNT-2024-0026_ACTIVE_CRITICAL_Subscription_Agreement.txt",
       "status": "ACTIVE",
@@ -564,6 +1045,28 @@
         "PCI-DSS",
         "FDA",
         "SOX"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0026",
+      "filename": "CNT-2024-0026_RENEWED_MEDIUM_Financial_Services_Agreement.txt",
+      "status": "RENEWED",
+      "risk_level": "MEDIUM",
+      "contract_type": "Financial Services Agreement",
+      "financial": {
+        "contract_value": "55,581"
+      },
+      "parties": {
+        "party_a": "Enterprise Systems LLC",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "June 17, 2025",
+        "end": "August 03, 2026"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
       ]
     },
     {
@@ -592,6 +1095,28 @@
       ]
     },
     {
+      "contract_number": "CNT-2024-0027",
+      "filename": "CNT-2024-0027_WARNING_MEDIUM_Service_Level_Agreement.txt",
+      "status": "WARNING",
+      "risk_level": "MEDIUM",
+      "contract_type": "Service Level Agreement",
+      "financial": {
+        "contract_value": "54,631"
+      },
+      "parties": {
+        "party_a": "InnovateTech Inc",
+        "party_b": "VendorMax Solutions"
+      },
+      "dates": {
+        "start": "August 19, 2025",
+        "end": "July 27, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0028",
       "filename": "CNT-2024-0028_EXPIRED_LOW_Software_Licensing_Agreement.txt",
       "status": "EXPIRED",
@@ -609,6 +1134,50 @@
         "end": "September 16, 2025"
       },
       "compliance": []
+    },
+    {
+      "contract_number": "CNT-2024-0028",
+      "filename": "CNT-2024-0028_RENEWED_MEDIUM_Subscription_Agreement.txt",
+      "status": "RENEWED",
+      "risk_level": "MEDIUM",
+      "contract_type": "Subscription Agreement",
+      "financial": {
+        "contract_value": "55,903"
+      },
+      "parties": {
+        "party_a": "Digital Dynamics Corp",
+        "party_b": "BuildPro Construction"
+      },
+      "dates": {
+        "start": "July 07, 2025",
+        "end": "December 22, 2026"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0029",
+      "filename": "CNT-2024-0029_ACTIVE_MEDIUM_Equipment_Rental_Agreement.txt",
+      "status": "ACTIVE",
+      "risk_level": "MEDIUM",
+      "contract_type": "Equipment Rental Agreement",
+      "financial": {
+        "contract_value": "93,218"
+      },
+      "parties": {
+        "party_a": "TechCorp Solutions",
+        "party_b": "CloudScale Networks"
+      },
+      "dates": {
+        "start": "December 27, 2025",
+        "end": "March 10, 2029"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
     },
     {
       "contract_number": "CNT-2024-0029",
@@ -649,6 +1218,50 @@
       "compliance": []
     },
     {
+      "contract_number": "CNT-2024-0030",
+      "filename": "CNT-2024-0030_WARNING_MEDIUM_Equipment_Rental_Agreement.txt",
+      "status": "WARNING",
+      "risk_level": "MEDIUM",
+      "contract_type": "Equipment Rental Agreement",
+      "financial": {
+        "contract_value": "40,385"
+      },
+      "parties": {
+        "party_a": "GlobalCorp Industries",
+        "party_b": "CloudScale Networks"
+      },
+      "dates": {
+        "start": "January 12, 2025",
+        "end": "September 15, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0031",
+      "filename": "CNT-2024-0031_ACTIVE_MEDIUM_IT_Support_Contract.txt",
+      "status": "ACTIVE",
+      "risk_level": "MEDIUM",
+      "contract_type": "IT Support Contract",
+      "financial": {
+        "contract_value": "70,320"
+      },
+      "parties": {
+        "party_a": "InnovateTech Inc",
+        "party_b": "BuildPro Construction"
+      },
+      "dates": {
+        "start": "November 24, 2025",
+        "end": "October 27, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0031",
       "filename": "CNT-2024-0031_EXPIRED_MEDIUM_Supply_Agreement.txt",
       "status": "EXPIRED",
@@ -687,6 +1300,28 @@
       "compliance": []
     },
     {
+      "contract_number": "CNT-2024-0032",
+      "filename": "CNT-2024-0032_WARNING_MEDIUM_Subscription_Agreement.txt",
+      "status": "WARNING",
+      "risk_level": "MEDIUM",
+      "contract_type": "Subscription Agreement",
+      "financial": {
+        "contract_value": "61,543"
+      },
+      "parties": {
+        "party_a": "TechCorp Solutions",
+        "party_b": "CloudScale Networks"
+      },
+      "dates": {
+        "start": "July 13, 2025",
+        "end": "September 16, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0033",
       "filename": "CNT-2024-0033_EXPIRED_MEDIUM_IT_Support_Contract.txt",
       "status": "EXPIRED",
@@ -706,23 +1341,48 @@
       "compliance": []
     },
     {
+      "contract_number": "CNT-2024-0033",
+      "filename": "CNT-2024-0033_WARNING_MEDIUM_Manufacturing_Agreement.txt",
+      "status": "WARNING",
+      "risk_level": "MEDIUM",
+      "contract_type": "Manufacturing Agreement",
+      "financial": {
+        "contract_value": "38,648"
+      },
+      "parties": {
+        "party_a": "InnovateTech Inc",
+        "party_b": "CloudScale Networks"
+      },
+      "dates": {
+        "start": "October 09, 2025",
+        "end": "November 02, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0034",
       "filename": "CNT-2024-0034_EXPIRED_MEDIUM_IT_Support_Contract.txt",
       "status": "EXPIRED",
       "risk_level": "MEDIUM",
       "contract_type": "IT Support Contract",
       "financial": {
-        "contract_value": "85,981"
+        "contract_value": "91,012"
       },
       "parties": {
-        "party_a": "DataStream Systems",
-        "party_b": "BuildPro Construction"
+        "party_a": "GlobalCorp Industries",
+        "party_b": "CloudScale Networks"
       },
       "dates": {
-        "start": "September 06, 2025",
-        "end": "November 04, 2025"
+        "start": "February 03, 2025",
+        "end": "May 23, 2027"
       },
-      "compliance": []
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
     },
     {
       "contract_number": "CNT-2024-0035",
@@ -744,6 +1404,50 @@
       "compliance": [
         "GDPR",
         "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0035",
+      "filename": "CNT-2024-0035_PENDING_MEDIUM_Professional_Services_Contract.txt",
+      "status": "PENDING",
+      "risk_level": "MEDIUM",
+      "contract_type": "Professional Services Contract",
+      "financial": {
+        "contract_value": "55,769"
+      },
+      "parties": {
+        "party_a": "Digital Dynamics Corp",
+        "party_b": "BuildPro Construction"
+      },
+      "dates": {
+        "start": "June 01, 2025",
+        "end": "July 26, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0036",
+      "filename": "CNT-2024-0036_ACTIVE_MEDIUM_Development_Agreement.txt",
+      "status": "ACTIVE",
+      "risk_level": "MEDIUM",
+      "contract_type": "Development Agreement",
+      "financial": {
+        "contract_value": "56,700"
+      },
+      "parties": {
+        "party_a": "Enterprise Systems LLC",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "November 24, 2025",
+        "end": "June 06, 2027"
+      },
+      "compliance": [
+        "GDPR",
         "SOC 2"
       ]
     },
@@ -796,6 +1500,50 @@
       ]
     },
     {
+      "contract_number": "CNT-2024-0037",
+      "filename": "CNT-2024-0037_RENEWED_MEDIUM_API_Integration_License.txt",
+      "status": "RENEWED",
+      "risk_level": "MEDIUM",
+      "contract_type": "API Integration License",
+      "financial": {
+        "contract_value": "61,536"
+      },
+      "parties": {
+        "party_a": "TechCorp Solutions",
+        "party_b": "BuildPro Construction"
+      },
+      "dates": {
+        "start": "July 05, 2025",
+        "end": "November 16, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0038",
+      "filename": "CNT-2024-0038_EXPIRED_MEDIUM_IT_Support_Contract.txt",
+      "status": "EXPIRED",
+      "risk_level": "MEDIUM",
+      "contract_type": "IT Support Contract",
+      "financial": {
+        "contract_value": "36,803"
+      },
+      "parties": {
+        "party_a": "TechCorp Solutions",
+        "party_b": "VendorMax Solutions"
+      },
+      "dates": {
+        "start": "November 26, 2025",
+        "end": "June 18, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0038",
       "filename": "CNT-2024-0038_RENEWED_LOW_Distribution_Agreement.txt",
       "status": "RENEWED",
@@ -813,6 +1561,28 @@
         "end": "December 09, 2026"
       },
       "compliance": []
+    },
+    {
+      "contract_number": "CNT-2024-0039",
+      "filename": "CNT-2024-0039_EXPIRED_MEDIUM_Manufacturing_Agreement.txt",
+      "status": "EXPIRED",
+      "risk_level": "MEDIUM",
+      "contract_type": "Manufacturing Agreement",
+      "financial": {
+        "contract_value": "63,159"
+      },
+      "parties": {
+        "party_a": "Enterprise Systems LLC",
+        "party_b": "CloudScale Networks"
+      },
+      "dates": {
+        "start": "February 16, 2025",
+        "end": "August 13, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
     },
     {
       "contract_number": "CNT-2024-0039",
@@ -835,6 +1605,28 @@
     },
     {
       "contract_number": "CNT-2024-0040",
+      "filename": "CNT-2024-0040_EXPIRED_MEDIUM_Construction_Contract.txt",
+      "status": "EXPIRED",
+      "risk_level": "MEDIUM",
+      "contract_type": "Construction Contract",
+      "financial": {
+        "contract_value": "47,171"
+      },
+      "parties": {
+        "party_a": "GlobalCorp Industries",
+        "party_b": "VendorMax Solutions"
+      },
+      "dates": {
+        "start": "September 01, 2025",
+        "end": "August 18, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0040",
       "filename": "CNT-2024-0040_RENEWED_MEDIUM_Construction_Contract.txt",
       "status": "RENEWED",
       "risk_level": "MEDIUM",
@@ -851,6 +1643,28 @@
         "end": "July 02, 2026"
       },
       "compliance": []
+    },
+    {
+      "contract_number": "CNT-2024-0041",
+      "filename": "CNT-2024-0041_ACTIVE_MEDIUM_Financial_Services_Agreement.txt",
+      "status": "ACTIVE",
+      "risk_level": "MEDIUM",
+      "contract_type": "Financial Services Agreement",
+      "financial": {
+        "contract_value": "61,490"
+      },
+      "parties": {
+        "party_a": "TechCorp Solutions",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "February 16, 2025",
+        "end": "July 24, 2026"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
     },
     {
       "contract_number": "CNT-2024-0041",
@@ -873,6 +1687,28 @@
     },
     {
       "contract_number": "CNT-2024-0042",
+      "filename": "CNT-2024-0042_EXPIRED_MEDIUM_Financial_Services_Agreement.txt",
+      "status": "EXPIRED",
+      "risk_level": "MEDIUM",
+      "contract_type": "Financial Services Agreement",
+      "financial": {
+        "contract_value": "61,677"
+      },
+      "parties": {
+        "party_a": "Digital Dynamics Corp",
+        "party_b": "CloudScale Networks"
+      },
+      "dates": {
+        "start": "November 10, 2025",
+        "end": "April 13, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0042",
       "filename": "CNT-2024-0042_RENEWED_MEDIUM_Development_Agreement.txt",
       "status": "RENEWED",
       "risk_level": "MEDIUM",
@@ -889,6 +1725,28 @@
         "end": "December 07, 2026"
       },
       "compliance": []
+    },
+    {
+      "contract_number": "CNT-2024-0043",
+      "filename": "CNT-2024-0043_ACTIVE_MEDIUM_Equipment_Lease.txt",
+      "status": "ACTIVE",
+      "risk_level": "MEDIUM",
+      "contract_type": "Equipment Lease",
+      "financial": {
+        "contract_value": "84,264"
+      },
+      "parties": {
+        "party_a": "Enterprise Systems LLC",
+        "party_b": "BuildPro Construction"
+      },
+      "dates": {
+        "start": "March 12, 2025",
+        "end": "December 01, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
     },
     {
       "contract_number": "CNT-2024-0043",
@@ -915,6 +1773,28 @@
     },
     {
       "contract_number": "CNT-2024-0044",
+      "filename": "CNT-2024-0044_PENDING_MEDIUM_Financial_Services_Agreement.txt",
+      "status": "PENDING",
+      "risk_level": "MEDIUM",
+      "contract_type": "Financial Services Agreement",
+      "financial": {
+        "contract_value": "66,985"
+      },
+      "parties": {
+        "party_a": "Enterprise Systems LLC",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "August 06, 2025",
+        "end": "January 13, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0044",
       "filename": "CNT-2024-0044_RENEWED_HIGH_Marketing_Services_Agreement.txt",
       "status": "RENEWED",
       "risk_level": "HIGH",
@@ -933,6 +1813,28 @@
       "compliance": [
         "GDPR",
         "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0045",
+      "filename": "CNT-2024-0045_ACTIVE_MEDIUM_Construction_Contract.txt",
+      "status": "ACTIVE",
+      "risk_level": "MEDIUM",
+      "contract_type": "Construction Contract",
+      "financial": {
+        "contract_value": "36,790"
+      },
+      "parties": {
+        "party_a": "Digital Dynamics Corp",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "January 17, 2025",
+        "end": "February 08, 2028"
+      },
+      "compliance": [
+        "GDPR",
         "SOC 2"
       ]
     },
@@ -981,6 +1883,50 @@
       "compliance": []
     },
     {
+      "contract_number": "CNT-2024-0046",
+      "filename": "CNT-2024-0046_PENDING_MEDIUM_Healthcare_Services_Agreement.txt",
+      "status": "PENDING",
+      "risk_level": "MEDIUM",
+      "contract_type": "Healthcare Services Agreement",
+      "financial": {
+        "contract_value": "61,649"
+      },
+      "parties": {
+        "party_a": "GlobalCorp Industries",
+        "party_b": "VendorMax Solutions"
+      },
+      "dates": {
+        "start": "September 27, 2025",
+        "end": "September 23, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0047",
+      "filename": "CNT-2024-0047_ACTIVE_MEDIUM_Service_Level_Agreement.txt",
+      "status": "ACTIVE",
+      "risk_level": "MEDIUM",
+      "contract_type": "Service Level Agreement",
+      "financial": {
+        "contract_value": "49,587"
+      },
+      "parties": {
+        "party_a": "GlobalCorp Industries",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "September 27, 2025",
+        "end": "July 06, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0047",
       "filename": "CNT-2024-0047_PENDING_LOW_Logistics_Contract.txt",
       "status": "PENDING",
@@ -1019,6 +1965,50 @@
       "compliance": []
     },
     {
+      "contract_number": "CNT-2024-0048",
+      "filename": "CNT-2024-0048_RENEWED_MEDIUM_Equipment_Rental_Agreement.txt",
+      "status": "RENEWED",
+      "risk_level": "MEDIUM",
+      "contract_type": "Equipment Rental Agreement",
+      "financial": {
+        "contract_value": "50,009"
+      },
+      "parties": {
+        "party_a": "InnovateTech Inc",
+        "party_b": "VendorMax Solutions"
+      },
+      "dates": {
+        "start": "November 11, 2025",
+        "end": "March 04, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0049",
+      "filename": "CNT-2024-0049_EXPIRED_MEDIUM_Vendor_Agreement.txt",
+      "status": "EXPIRED",
+      "risk_level": "MEDIUM",
+      "contract_type": "Vendor Agreement",
+      "financial": {
+        "contract_value": "31,378"
+      },
+      "parties": {
+        "party_a": "Enterprise Systems LLC",
+        "party_b": "CloudScale Networks"
+      },
+      "dates": {
+        "start": "February 20, 2025",
+        "end": "June 21, 2026"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0049",
       "filename": "CNT-2024-0049_PENDING_MEDIUM_Software_Licensing_Agreement.txt",
       "status": "PENDING",
@@ -1036,6 +2026,28 @@
         "end": "April 12, 2027"
       },
       "compliance": []
+    },
+    {
+      "contract_number": "CNT-2024-0050",
+      "filename": "CNT-2024-0050_ACTIVE_MEDIUM_Manufacturing_Agreement.txt",
+      "status": "ACTIVE",
+      "risk_level": "MEDIUM",
+      "contract_type": "Manufacturing Agreement",
+      "financial": {
+        "contract_value": "80,612"
+      },
+      "parties": {
+        "party_a": "Enterprise Systems LLC",
+        "party_b": "BuildPro Construction"
+      },
+      "dates": {
+        "start": "November 14, 2025",
+        "end": "August 29, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
     },
     {
       "contract_number": "CNT-2024-0050",
@@ -1074,6 +2086,50 @@
         "end": "January 23, 2027"
       },
       "compliance": []
+    },
+    {
+      "contract_number": "CNT-2024-0051",
+      "filename": "CNT-2024-0051_PENDING_MEDIUM_Consulting_Services_Agreement.txt",
+      "status": "PENDING",
+      "risk_level": "MEDIUM",
+      "contract_type": "Consulting Services Agreement",
+      "financial": {
+        "contract_value": "92,373"
+      },
+      "parties": {
+        "party_a": "Digital Dynamics Corp",
+        "party_b": "VendorMax Solutions"
+      },
+      "dates": {
+        "start": "June 19, 2025",
+        "end": "July 10, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0052",
+      "filename": "CNT-2024-0052_EXPIRED_MEDIUM_Cloud_Services_Agreement.txt",
+      "status": "EXPIRED",
+      "risk_level": "MEDIUM",
+      "contract_type": "Cloud Services Agreement",
+      "financial": {
+        "contract_value": "46,413"
+      },
+      "parties": {
+        "party_a": "Digital Dynamics Corp",
+        "party_b": "VendorMax Solutions"
+      },
+      "dates": {
+        "start": "December 04, 2025",
+        "end": "February 03, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
     },
     {
       "contract_number": "CNT-2024-0052",
@@ -1118,6 +2174,28 @@
       ]
     },
     {
+      "contract_number": "CNT-2024-0053",
+      "filename": "CNT-2024-0053_PENDING_MEDIUM_Logistics_Contract.txt",
+      "status": "PENDING",
+      "risk_level": "MEDIUM",
+      "contract_type": "Logistics Contract",
+      "financial": {
+        "contract_value": "47,406"
+      },
+      "parties": {
+        "party_a": "TechCorp Solutions",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "February 12, 2025",
+        "end": "May 07, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0054",
       "filename": "CNT-2024-0054_PENDING_HIGH_Software_Licensing_Agreement.txt",
       "status": "PENDING",
@@ -1137,6 +2215,28 @@
       "compliance": [
         "GDPR",
         "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0054",
+      "filename": "CNT-2024-0054_WARNING_MEDIUM_Logistics_Contract.txt",
+      "status": "WARNING",
+      "risk_level": "MEDIUM",
+      "contract_type": "Logistics Contract",
+      "financial": {
+        "contract_value": "32,233"
+      },
+      "parties": {
+        "party_a": "InnovateTech Inc",
+        "party_b": "CloudScale Networks"
+      },
+      "dates": {
+        "start": "December 26, 2025",
+        "end": "January 11, 2027"
+      },
+      "compliance": [
+        "GDPR",
         "SOC 2"
       ]
     },
@@ -1166,6 +2266,50 @@
       ]
     },
     {
+      "contract_number": "CNT-2024-0055",
+      "filename": "CNT-2024-0055_RENEWED_MEDIUM_Equipment_Lease.txt",
+      "status": "RENEWED",
+      "risk_level": "MEDIUM",
+      "contract_type": "Equipment Lease",
+      "financial": {
+        "contract_value": "50,945"
+      },
+      "parties": {
+        "party_a": "TechCorp Solutions",
+        "party_b": "BuildPro Construction"
+      },
+      "dates": {
+        "start": "January 05, 2025",
+        "end": "March 05, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0056",
+      "filename": "CNT-2024-0056_PENDING_MEDIUM_Data_Processing_Agreement.txt",
+      "status": "PENDING",
+      "risk_level": "MEDIUM",
+      "contract_type": "Data Processing Agreement",
+      "financial": {
+        "contract_value": "66,900"
+      },
+      "parties": {
+        "party_a": "InnovateTech Inc",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "October 19, 2025",
+        "end": "July 19, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0056",
       "filename": "CNT-2024-0056_WARNING_LOW_Service_Level_Agreement.txt",
       "status": "WARNING",
@@ -1183,6 +2327,28 @@
         "end": "February 13, 2026"
       },
       "compliance": []
+    },
+    {
+      "contract_number": "CNT-2024-0057",
+      "filename": "CNT-2024-0057_EXPIRED_MEDIUM_Software_Licensing_Agreement.txt",
+      "status": "EXPIRED",
+      "risk_level": "MEDIUM",
+      "contract_type": "Software Licensing Agreement",
+      "financial": {
+        "contract_value": "95,896"
+      },
+      "parties": {
+        "party_a": "GlobalCorp Industries",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "October 06, 2025",
+        "end": "August 09, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
     },
     {
       "contract_number": "CNT-2024-0057",
@@ -1205,6 +2371,28 @@
     },
     {
       "contract_number": "CNT-2024-0058",
+      "filename": "CNT-2024-0058_RENEWED_MEDIUM_Equipment_Rental_Agreement.txt",
+      "status": "RENEWED",
+      "risk_level": "MEDIUM",
+      "contract_type": "Equipment Rental Agreement",
+      "financial": {
+        "contract_value": "67,158"
+      },
+      "parties": {
+        "party_a": "TechCorp Solutions",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "May 07, 2025",
+        "end": "October 08, 2026"
+      },
+      "compliance": [
+        "GDPR",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0058",
       "filename": "CNT-2024-0058_WARNING_MEDIUM_Vendor_Agreement.txt",
       "status": "WARNING",
       "risk_level": "MEDIUM",
@@ -1221,6 +2409,29 @@
         "end": "January 28, 2026"
       },
       "compliance": []
+    },
+    {
+      "contract_number": "CNT-2024-0059",
+      "filename": "CNT-2024-0059_RENEWED_HIGH_Logistics_Contract.txt",
+      "status": "RENEWED",
+      "risk_level": "HIGH",
+      "contract_type": "Logistics Contract",
+      "financial": {
+        "contract_value": "219,322"
+      },
+      "parties": {
+        "party_a": "GlobalCorp Industries",
+        "party_b": "SecureData Inc"
+      },
+      "dates": {
+        "start": "June 23, 2025",
+        "end": "March 19, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
     },
     {
       "contract_number": "CNT-2024-0059",
@@ -1243,6 +2454,29 @@
     },
     {
       "contract_number": "CNT-2024-0060",
+      "filename": "CNT-2024-0060_ACTIVE_HIGH_Consulting_Services_Agreement.txt",
+      "status": "ACTIVE",
+      "risk_level": "HIGH",
+      "contract_type": "Consulting Services Agreement",
+      "financial": {
+        "contract_value": "399,470"
+      },
+      "parties": {
+        "party_a": "Enterprise Systems LLC",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "May 17, 2025",
+        "end": "May 30, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0060",
       "filename": "CNT-2024-0060_WARNING_MEDIUM_Supply_Agreement.txt",
       "status": "WARNING",
       "risk_level": "MEDIUM",
@@ -1262,6 +2496,29 @@
     },
     {
       "contract_number": "CNT-2024-0061",
+      "filename": "CNT-2024-0061_WARNING_HIGH_Manufacturing_Agreement.txt",
+      "status": "WARNING",
+      "risk_level": "HIGH",
+      "contract_type": "Manufacturing Agreement",
+      "financial": {
+        "contract_value": "232,475"
+      },
+      "parties": {
+        "party_a": "TechCorp Solutions",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "August 17, 2025",
+        "end": "June 24, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0061",
       "filename": "CNT-2024-0061_WARNING_HIGH_Partnership_Agreement.txt",
       "status": "WARNING",
       "risk_level": "HIGH",
@@ -1276,6 +2533,29 @@
       "dates": {
         "start": "November 18, 2025",
         "end": "January 15, 2026"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0062",
+      "filename": "CNT-2024-0062_RENEWED_HIGH_Data_Processing_Agreement.txt",
+      "status": "RENEWED",
+      "risk_level": "HIGH",
+      "contract_type": "Data Processing Agreement",
+      "financial": {
+        "contract_value": "489,832"
+      },
+      "parties": {
+        "party_a": "InnovateTech Inc",
+        "party_b": "VendorMax Solutions"
+      },
+      "dates": {
+        "start": "July 31, 2025",
+        "end": "September 17, 2027"
       },
       "compliance": [
         "GDPR",
@@ -1308,6 +2588,29 @@
     },
     {
       "contract_number": "CNT-2024-0063",
+      "filename": "CNT-2024-0063_WARNING_HIGH_Development_Agreement.txt",
+      "status": "WARNING",
+      "risk_level": "HIGH",
+      "contract_type": "Development Agreement",
+      "financial": {
+        "contract_value": "383,429"
+      },
+      "parties": {
+        "party_a": "InnovateTech Inc",
+        "party_b": "SecureData Inc"
+      },
+      "dates": {
+        "start": "February 22, 2025",
+        "end": "June 09, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0063",
       "filename": "CNT-2024-0063_WARNING_HIGH_Professional_Services_Contract.txt",
       "status": "WARNING",
       "risk_level": "HIGH",
@@ -1322,6 +2625,29 @@
       "dates": {
         "start": "April 05, 2025",
         "end": "January 18, 2026"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0064",
+      "filename": "CNT-2024-0064_ACTIVE_HIGH_Equipment_Rental_Agreement.txt",
+      "status": "ACTIVE",
+      "risk_level": "HIGH",
+      "contract_type": "Equipment Rental Agreement",
+      "financial": {
+        "contract_value": "421,056"
+      },
+      "parties": {
+        "party_a": "InnovateTech Inc",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "April 11, 2025",
+        "end": "September 09, 2027"
       },
       "compliance": [
         "GDPR",
@@ -1356,6 +2682,29 @@
     },
     {
       "contract_number": "CNT-2024-0065",
+      "filename": "CNT-2024-0065_ACTIVE_HIGH_Office_Lease_Agreement.txt",
+      "status": "ACTIVE",
+      "risk_level": "HIGH",
+      "contract_type": "Office Lease Agreement",
+      "financial": {
+        "contract_value": "191,899"
+      },
+      "parties": {
+        "party_a": "Digital Dynamics Corp",
+        "party_b": "CloudScale Networks"
+      },
+      "dates": {
+        "start": "October 18, 2025",
+        "end": "August 11, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0065",
       "filename": "CNT-2024-0065_WARNING_CRITICAL_Service_Level_Agreement.txt",
       "status": "WARNING",
       "risk_level": "CRITICAL",
@@ -1381,6 +2730,29 @@
     },
     {
       "contract_number": "CNT-2024-0066",
+      "filename": "CNT-2024-0066_PENDING_HIGH_Supply_Agreement.txt",
+      "status": "PENDING",
+      "risk_level": "HIGH",
+      "contract_type": "Supply Agreement",
+      "financial": {
+        "contract_value": "319,896"
+      },
+      "parties": {
+        "party_a": "Digital Dynamics Corp",
+        "party_b": "BuildPro Construction"
+      },
+      "dates": {
+        "start": "February 23, 2025",
+        "end": "October 25, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0066",
       "filename": "CNT-2024-0066_PENDING_LOW_Equipment_Lease.txt",
       "status": "PENDING",
       "risk_level": "LOW",
@@ -1397,6 +2769,29 @@
         "end": "September 02, 2027"
       },
       "compliance": []
+    },
+    {
+      "contract_number": "CNT-2024-0067",
+      "filename": "CNT-2024-0067_WARNING_HIGH_Cloud_Services_Agreement.txt",
+      "status": "WARNING",
+      "risk_level": "HIGH",
+      "contract_type": "Cloud Services Agreement",
+      "financial": {
+        "contract_value": "326,954"
+      },
+      "parties": {
+        "party_a": "TechCorp Solutions",
+        "party_b": "SecureData Inc"
+      },
+      "dates": {
+        "start": "April 13, 2025",
+        "end": "April 12, 2026"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
     },
     {
       "contract_number": "CNT-2024-0067",
@@ -1437,6 +2832,52 @@
       "compliance": []
     },
     {
+      "contract_number": "CNT-2024-0068",
+      "filename": "CNT-2024-0068_RENEWED_HIGH_Supply_Agreement.txt",
+      "status": "RENEWED",
+      "risk_level": "HIGH",
+      "contract_type": "Supply Agreement",
+      "financial": {
+        "contract_value": "370,616"
+      },
+      "parties": {
+        "party_a": "GlobalCorp Industries",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "September 10, 2025",
+        "end": "September 14, 2026"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0069",
+      "filename": "CNT-2024-0069_EXPIRED_HIGH_Partnership_Agreement.txt",
+      "status": "EXPIRED",
+      "risk_level": "HIGH",
+      "contract_type": "Partnership Agreement",
+      "financial": {
+        "contract_value": "362,236"
+      },
+      "parties": {
+        "party_a": "TechCorp Solutions",
+        "party_b": "VendorMax Solutions"
+      },
+      "dates": {
+        "start": "June 16, 2025",
+        "end": "February 12, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0069",
       "filename": "CNT-2024-0069_PENDING_HIGH_Healthcare_Services_Agreement.txt",
       "status": "PENDING",
@@ -1452,6 +2893,29 @@
       "dates": {
         "start": "February 20, 2025",
         "end": "March 02, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0070",
+      "filename": "CNT-2024-0070_ACTIVE_HIGH_Software_Licensing_Agreement.txt",
+      "status": "ACTIVE",
+      "risk_level": "HIGH",
+      "contract_type": "Software Licensing Agreement",
+      "financial": {
+        "contract_value": "209,255"
+      },
+      "parties": {
+        "party_a": "Digital Dynamics Corp",
+        "party_b": "VendorMax Solutions"
+      },
+      "dates": {
+        "start": "July 21, 2025",
+        "end": "April 20, 2028"
       },
       "compliance": [
         "GDPR",
@@ -1506,6 +2970,29 @@
       ]
     },
     {
+      "contract_number": "CNT-2024-0071",
+      "filename": "CNT-2024-0071_EXPIRED_HIGH_Supply_Agreement.txt",
+      "status": "EXPIRED",
+      "risk_level": "HIGH",
+      "contract_type": "Supply Agreement",
+      "financial": {
+        "contract_value": "406,409"
+      },
+      "parties": {
+        "party_a": "GlobalCorp Industries",
+        "party_b": "SecureData Inc"
+      },
+      "dates": {
+        "start": "August 06, 2025",
+        "end": "June 20, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0072",
       "filename": "CNT-2024-0072_WARNING_CRITICAL_Vendor_Agreement.txt",
       "status": "WARNING",
@@ -1528,6 +3015,29 @@
         "PCI-DSS",
         "FDA",
         "SOX"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0072",
+      "filename": "CNT-2024-0072_WARNING_HIGH_Cloud_Services_Agreement.txt",
+      "status": "WARNING",
+      "risk_level": "HIGH",
+      "contract_type": "Cloud Services Agreement",
+      "financial": {
+        "contract_value": "166,977"
+      },
+      "parties": {
+        "party_a": "InnovateTech Inc",
+        "party_b": "VendorMax Solutions"
+      },
+      "dates": {
+        "start": "April 16, 2025",
+        "end": "March 13, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
       ]
     },
     {
@@ -1556,6 +3066,29 @@
       ]
     },
     {
+      "contract_number": "CNT-2024-0073",
+      "filename": "CNT-2024-0073_RENEWED_HIGH_Consulting_Services_Agreement.txt",
+      "status": "RENEWED",
+      "risk_level": "HIGH",
+      "contract_type": "Consulting Services Agreement",
+      "financial": {
+        "contract_value": "423,248"
+      },
+      "parties": {
+        "party_a": "Digital Dynamics Corp",
+        "party_b": "CloudScale Networks"
+      },
+      "dates": {
+        "start": "January 16, 2025",
+        "end": "December 22, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0074",
       "filename": "CNT-2024-0074_EXPIRED_MEDIUM_Software_Licensing_Agreement.txt",
       "status": "EXPIRED",
@@ -1575,6 +3108,52 @@
       "compliance": []
     },
     {
+      "contract_number": "CNT-2024-0074",
+      "filename": "CNT-2024-0074_WARNING_HIGH_Subscription_Agreement.txt",
+      "status": "WARNING",
+      "risk_level": "HIGH",
+      "contract_type": "Subscription Agreement",
+      "financial": {
+        "contract_value": "482,915"
+      },
+      "parties": {
+        "party_a": "InnovateTech Inc",
+        "party_b": "CloudScale Networks"
+      },
+      "dates": {
+        "start": "September 01, 2025",
+        "end": "September 04, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0075",
+      "filename": "CNT-2024-0075_ACTIVE_HIGH_Construction_Contract.txt",
+      "status": "ACTIVE",
+      "risk_level": "HIGH",
+      "contract_type": "Construction Contract",
+      "financial": {
+        "contract_value": "202,256"
+      },
+      "parties": {
+        "party_a": "GlobalCorp Industries",
+        "party_b": "VendorMax Solutions"
+      },
+      "dates": {
+        "start": "November 29, 2025",
+        "end": "December 28, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0075",
       "filename": "CNT-2024-0075_RENEWED_MEDIUM_Data_Processing_Agreement.txt",
       "status": "RENEWED",
@@ -1592,6 +3171,52 @@
         "end": "June 06, 2027"
       },
       "compliance": []
+    },
+    {
+      "contract_number": "CNT-2024-0076",
+      "filename": "CNT-2024-0076_ACTIVE_HIGH_Equipment_Lease.txt",
+      "status": "ACTIVE",
+      "risk_level": "HIGH",
+      "contract_type": "Equipment Lease",
+      "financial": {
+        "contract_value": "294,121"
+      },
+      "parties": {
+        "party_a": "Enterprise Systems LLC",
+        "party_b": "VendorMax Solutions"
+      },
+      "dates": {
+        "start": "May 03, 2025",
+        "end": "June 19, 2026"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0076",
+      "filename": "CNT-2024-0076_ACTIVE_HIGH_Financial_Services_Agreement.txt",
+      "status": "ACTIVE",
+      "risk_level": "HIGH",
+      "contract_type": "Financial Services Agreement",
+      "financial": {
+        "contract_value": "452,752"
+      },
+      "parties": {
+        "party_a": "Enterprise Systems LLC",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "August 15, 2025",
+        "end": "April 22, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
     },
     {
       "contract_number": "CNT-2024-0076",
@@ -1616,6 +3241,29 @@
         "PCI-DSS",
         "FDA",
         "SOX"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0077",
+      "filename": "CNT-2024-0077_WARNING_HIGH_IT_Support_Contract.txt",
+      "status": "WARNING",
+      "risk_level": "HIGH",
+      "contract_type": "IT Support Contract",
+      "financial": {
+        "contract_value": "478,193"
+      },
+      "parties": {
+        "party_a": "InnovateTech Inc",
+        "party_b": "VendorMax Solutions"
+      },
+      "dates": {
+        "start": "August 31, 2025",
+        "end": "January 26, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
       ]
     },
     {
@@ -1663,6 +3311,29 @@
       ]
     },
     {
+      "contract_number": "CNT-2024-0078",
+      "filename": "CNT-2024-0078_PENDING_HIGH_Subscription_Agreement.txt",
+      "status": "PENDING",
+      "risk_level": "HIGH",
+      "contract_type": "Subscription Agreement",
+      "financial": {
+        "contract_value": "139,268"
+      },
+      "parties": {
+        "party_a": "TechCorp Solutions",
+        "party_b": "CloudScale Networks"
+      },
+      "dates": {
+        "start": "December 10, 2025",
+        "end": "October 14, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0079",
       "filename": "CNT-2024-0079_ACTIVE_CRITICAL_Marketing_Services_Agreement.txt",
       "status": "ACTIVE",
@@ -1688,6 +3359,29 @@
       ]
     },
     {
+      "contract_number": "CNT-2024-0079",
+      "filename": "CNT-2024-0079_EXPIRED_HIGH_Healthcare_Services_Agreement.txt",
+      "status": "EXPIRED",
+      "risk_level": "HIGH",
+      "contract_type": "Healthcare Services Agreement",
+      "financial": {
+        "contract_value": "138,704"
+      },
+      "parties": {
+        "party_a": "InnovateTech Inc",
+        "party_b": "SecureData Inc"
+      },
+      "dates": {
+        "start": "May 15, 2025",
+        "end": "August 31, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0080",
       "filename": "CNT-2024-0080_PENDING_MEDIUM_Cloud_Services_Agreement.txt",
       "status": "PENDING",
@@ -1707,6 +3401,52 @@
       "compliance": []
     },
     {
+      "contract_number": "CNT-2024-0080",
+      "filename": "CNT-2024-0080_WARNING_HIGH_Subscription_Agreement.txt",
+      "status": "WARNING",
+      "risk_level": "HIGH",
+      "contract_type": "Subscription Agreement",
+      "financial": {
+        "contract_value": "448,756"
+      },
+      "parties": {
+        "party_a": "Enterprise Systems LLC",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "March 30, 2025",
+        "end": "October 02, 2026"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0081",
+      "filename": "CNT-2024-0081_ACTIVE_HIGH_Healthcare_Services_Agreement.txt",
+      "status": "ACTIVE",
+      "risk_level": "HIGH",
+      "contract_type": "Healthcare Services Agreement",
+      "financial": {
+        "contract_value": "211,057"
+      },
+      "parties": {
+        "party_a": "Enterprise Systems LLC",
+        "party_b": "SecureData Inc"
+      },
+      "dates": {
+        "start": "October 12, 2025",
+        "end": "December 12, 2026"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0081",
       "filename": "CNT-2024-0081_WARNING_HIGH_Distribution_Agreement.txt",
       "status": "WARNING",
@@ -1722,6 +3462,29 @@
       "dates": {
         "start": "March 16, 2025",
         "end": "January 28, 2026"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0082",
+      "filename": "CNT-2024-0082_PENDING_HIGH_Maintenance_Contract.txt",
+      "status": "PENDING",
+      "risk_level": "HIGH",
+      "contract_type": "Maintenance Contract",
+      "financial": {
+        "contract_value": "400,353"
+      },
+      "parties": {
+        "party_a": "InnovateTech Inc",
+        "party_b": "VendorMax Solutions"
+      },
+      "dates": {
+        "start": "October 03, 2025",
+        "end": "September 10, 2028"
       },
       "compliance": [
         "GDPR",
@@ -1774,6 +3537,29 @@
       "compliance": []
     },
     {
+      "contract_number": "CNT-2024-0083",
+      "filename": "CNT-2024-0083_WARNING_HIGH_Data_Processing_Agreement.txt",
+      "status": "WARNING",
+      "risk_level": "HIGH",
+      "contract_type": "Data Processing Agreement",
+      "financial": {
+        "contract_value": "482,963"
+      },
+      "parties": {
+        "party_a": "Enterprise Systems LLC",
+        "party_b": "CloudScale Networks"
+      },
+      "dates": {
+        "start": "July 25, 2025",
+        "end": "July 11, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0084",
       "filename": "CNT-2024-0084_ACTIVE_LOW_Construction_Contract.txt",
       "status": "ACTIVE",
@@ -1791,6 +3577,52 @@
         "end": "June 05, 2029"
       },
       "compliance": []
+    },
+    {
+      "contract_number": "CNT-2024-0084",
+      "filename": "CNT-2024-0084_RENEWED_HIGH_Consulting_Services_Agreement.txt",
+      "status": "RENEWED",
+      "risk_level": "HIGH",
+      "contract_type": "Consulting Services Agreement",
+      "financial": {
+        "contract_value": "411,925"
+      },
+      "parties": {
+        "party_a": "Digital Dynamics Corp",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "September 04, 2025",
+        "end": "December 13, 2026"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0085",
+      "filename": "CNT-2024-0085_EXPIRED_HIGH_Professional_Services_Contract.txt",
+      "status": "EXPIRED",
+      "risk_level": "HIGH",
+      "contract_type": "Professional Services Contract",
+      "financial": {
+        "contract_value": "281,435"
+      },
+      "parties": {
+        "party_a": "InnovateTech Inc",
+        "party_b": "CloudScale Networks"
+      },
+      "dates": {
+        "start": "February 17, 2025",
+        "end": "May 08, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
     },
     {
       "contract_number": "CNT-2024-0085",
@@ -1831,6 +3663,52 @@
       "compliance": []
     },
     {
+      "contract_number": "CNT-2024-0086",
+      "filename": "CNT-2024-0086_WARNING_HIGH_Maintenance_Contract.txt",
+      "status": "WARNING",
+      "risk_level": "HIGH",
+      "contract_type": "Maintenance Contract",
+      "financial": {
+        "contract_value": "176,205"
+      },
+      "parties": {
+        "party_a": "GlobalCorp Industries",
+        "party_b": "CloudScale Networks"
+      },
+      "dates": {
+        "start": "November 25, 2025",
+        "end": "February 07, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0087",
+      "filename": "CNT-2024-0087_EXPIRED_HIGH_Development_Agreement.txt",
+      "status": "EXPIRED",
+      "risk_level": "HIGH",
+      "contract_type": "Development Agreement",
+      "financial": {
+        "contract_value": "456,178"
+      },
+      "parties": {
+        "party_a": "Enterprise Systems LLC",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "August 04, 2025",
+        "end": "May 15, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0087",
       "filename": "CNT-2024-0087_RENEWED_CRITICAL_Distribution_Agreement.txt",
       "status": "RENEWED",
@@ -1853,6 +3731,29 @@
         "PCI-DSS",
         "FDA",
         "SOX"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0088",
+      "filename": "CNT-2024-0088_PENDING_HIGH_Equipment_Lease.txt",
+      "status": "PENDING",
+      "risk_level": "HIGH",
+      "contract_type": "Equipment Lease",
+      "financial": {
+        "contract_value": "138,940"
+      },
+      "parties": {
+        "party_a": "Enterprise Systems LLC",
+        "party_b": "SecureData Inc"
+      },
+      "dates": {
+        "start": "November 19, 2025",
+        "end": "September 02, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
       ]
     },
     {
@@ -1898,6 +3799,52 @@
       "compliance": []
     },
     {
+      "contract_number": "CNT-2024-0089",
+      "filename": "CNT-2024-0089_WARNING_HIGH_Consulting_Services_Agreement.txt",
+      "status": "WARNING",
+      "risk_level": "HIGH",
+      "contract_type": "Consulting Services Agreement",
+      "financial": {
+        "contract_value": "110,604"
+      },
+      "parties": {
+        "party_a": "TechCorp Solutions",
+        "party_b": "BuildPro Construction"
+      },
+      "dates": {
+        "start": "March 30, 2025",
+        "end": "September 10, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0090",
+      "filename": "CNT-2024-0090_EXPIRED_HIGH_Equipment_Lease.txt",
+      "status": "EXPIRED",
+      "risk_level": "HIGH",
+      "contract_type": "Equipment Lease",
+      "financial": {
+        "contract_value": "153,997"
+      },
+      "parties": {
+        "party_a": "TechCorp Solutions",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "May 30, 2025",
+        "end": "November 10, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0090",
       "filename": "CNT-2024-0090_RENEWED_HIGH_Healthcare_Services_Agreement.txt",
       "status": "RENEWED",
@@ -1940,6 +3887,29 @@
       "compliance": []
     },
     {
+      "contract_number": "CNT-2024-0091",
+      "filename": "CNT-2024-0091_PENDING_HIGH_Equipment_Lease.txt",
+      "status": "PENDING",
+      "risk_level": "HIGH",
+      "contract_type": "Equipment Lease",
+      "financial": {
+        "contract_value": "290,622"
+      },
+      "parties": {
+        "party_a": "TechCorp Solutions",
+        "party_b": "SecureData Inc"
+      },
+      "dates": {
+        "start": "December 07, 2025",
+        "end": "November 14, 2026"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0092",
       "filename": "CNT-2024-0092_PENDING_CRITICAL_Healthcare_Services_Agreement.txt",
       "status": "PENDING",
@@ -1965,6 +3935,29 @@
       ]
     },
     {
+      "contract_number": "CNT-2024-0092",
+      "filename": "CNT-2024-0092_WARNING_HIGH_Professional_Services_Contract.txt",
+      "status": "WARNING",
+      "risk_level": "HIGH",
+      "contract_type": "Professional Services Contract",
+      "financial": {
+        "contract_value": "466,592"
+      },
+      "parties": {
+        "party_a": "InnovateTech Inc",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "August 15, 2025",
+        "end": "September 26, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0093",
       "filename": "CNT-2024-0093_RENEWED_MEDIUM_Logistics_Contract.txt",
       "status": "RENEWED",
@@ -1982,6 +3975,29 @@
         "end": "October 30, 2026"
       },
       "compliance": []
+    },
+    {
+      "contract_number": "CNT-2024-0093",
+      "filename": "CNT-2024-0093_WARNING_HIGH_Supply_Agreement.txt",
+      "status": "WARNING",
+      "risk_level": "HIGH",
+      "contract_type": "Supply Agreement",
+      "financial": {
+        "contract_value": "438,976"
+      },
+      "parties": {
+        "party_a": "TechCorp Solutions",
+        "party_b": "BuildPro Construction"
+      },
+      "dates": {
+        "start": "August 06, 2025",
+        "end": "May 19, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
     },
     {
       "contract_number": "CNT-2024-0094",
@@ -2007,6 +4023,29 @@
       ]
     },
     {
+      "contract_number": "CNT-2024-0094",
+      "filename": "CNT-2024-0094_RENEWED_HIGH_Healthcare_Services_Agreement.txt",
+      "status": "RENEWED",
+      "risk_level": "HIGH",
+      "contract_type": "Healthcare Services Agreement",
+      "financial": {
+        "contract_value": "452,898"
+      },
+      "parties": {
+        "party_a": "TechCorp Solutions",
+        "party_b": "BuildPro Construction"
+      },
+      "dates": {
+        "start": "May 02, 2025",
+        "end": "May 27, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0095",
       "filename": "CNT-2024-0095_EXPIRED_LOW_Manufacturing_Agreement.txt",
       "status": "EXPIRED",
@@ -2024,6 +4063,52 @@
         "end": "January 03, 2026"
       },
       "compliance": []
+    },
+    {
+      "contract_number": "CNT-2024-0095",
+      "filename": "CNT-2024-0095_PENDING_HIGH_Construction_Contract.txt",
+      "status": "PENDING",
+      "risk_level": "HIGH",
+      "contract_type": "Construction Contract",
+      "financial": {
+        "contract_value": "278,860"
+      },
+      "parties": {
+        "party_a": "InnovateTech Inc",
+        "party_b": "VendorMax Solutions"
+      },
+      "dates": {
+        "start": "September 29, 2025",
+        "end": "September 03, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0096",
+      "filename": "CNT-2024-0096_PENDING_HIGH_Equipment_Rental_Agreement.txt",
+      "status": "PENDING",
+      "risk_level": "HIGH",
+      "contract_type": "Equipment Rental Agreement",
+      "financial": {
+        "contract_value": "107,481"
+      },
+      "parties": {
+        "party_a": "GlobalCorp Industries",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "November 18, 2025",
+        "end": "November 25, 2026"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
     },
     {
       "contract_number": "CNT-2024-0096",
@@ -2068,6 +4153,29 @@
       ]
     },
     {
+      "contract_number": "CNT-2024-0097",
+      "filename": "CNT-2024-0097_RENEWED_HIGH_Manufacturing_Agreement.txt",
+      "status": "RENEWED",
+      "risk_level": "HIGH",
+      "contract_type": "Manufacturing Agreement",
+      "financial": {
+        "contract_value": "281,649"
+      },
+      "parties": {
+        "party_a": "InnovateTech Inc",
+        "party_b": "CloudScale Networks"
+      },
+      "dates": {
+        "start": "June 20, 2025",
+        "end": "June 08, 2026"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0098",
       "filename": "CNT-2024-0098_PENDING_CRITICAL_Software_Licensing_Agreement.txt",
       "status": "PENDING",
@@ -2093,6 +4201,29 @@
       ]
     },
     {
+      "contract_number": "CNT-2024-0098",
+      "filename": "CNT-2024-0098_WARNING_HIGH_Consulting_Services_Agreement.txt",
+      "status": "WARNING",
+      "risk_level": "HIGH",
+      "contract_type": "Consulting Services Agreement",
+      "financial": {
+        "contract_value": "196,134"
+      },
+      "parties": {
+        "party_a": "Digital Dynamics Corp",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "December 10, 2025",
+        "end": "August 29, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0099",
       "filename": "CNT-2024-0099_EXPIRED_MEDIUM_Marketing_Services_Agreement.txt",
       "status": "EXPIRED",
@@ -2110,6 +4241,29 @@
         "end": "October 17, 2025"
       },
       "compliance": []
+    },
+    {
+      "contract_number": "CNT-2024-0099",
+      "filename": "CNT-2024-0099_WARNING_HIGH_Software_Licensing_Agreement.txt",
+      "status": "WARNING",
+      "risk_level": "HIGH",
+      "contract_type": "Software Licensing Agreement",
+      "financial": {
+        "contract_value": "122,343"
+      },
+      "parties": {
+        "party_a": "GlobalCorp Industries",
+        "party_b": "CloudScale Networks"
+      },
+      "dates": {
+        "start": "August 30, 2025",
+        "end": "August 29, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
     },
     {
       "contract_number": "CNT-2024-0100",
@@ -2134,6 +4288,52 @@
         "PCI-DSS",
         "FDA",
         "SOX"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0100",
+      "filename": "CNT-2024-0100_RENEWED_HIGH_Marketing_Services_Agreement.txt",
+      "status": "RENEWED",
+      "risk_level": "HIGH",
+      "contract_type": "Marketing Services Agreement",
+      "financial": {
+        "contract_value": "148,812"
+      },
+      "parties": {
+        "party_a": "TechCorp Solutions",
+        "party_b": "BuildPro Construction"
+      },
+      "dates": {
+        "start": "June 10, 2025",
+        "end": "July 28, 2026"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0101",
+      "filename": "CNT-2024-0101_ACTIVE_HIGH_Subscription_Agreement.txt",
+      "status": "ACTIVE",
+      "risk_level": "HIGH",
+      "contract_type": "Subscription Agreement",
+      "financial": {
+        "contract_value": "439,235"
+      },
+      "parties": {
+        "party_a": "Digital Dynamics Corp",
+        "party_b": "SecureData Inc"
+      },
+      "dates": {
+        "start": "February 09, 2025",
+        "end": "March 18, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
       ]
     },
     {
@@ -2183,6 +4383,29 @@
       ]
     },
     {
+      "contract_number": "CNT-2024-0102",
+      "filename": "CNT-2024-0102_WARNING_HIGH_IT_Support_Contract.txt",
+      "status": "WARNING",
+      "risk_level": "HIGH",
+      "contract_type": "IT Support Contract",
+      "financial": {
+        "contract_value": "497,996"
+      },
+      "parties": {
+        "party_a": "GlobalCorp Industries",
+        "party_b": "SecureData Inc"
+      },
+      "dates": {
+        "start": "October 04, 2025",
+        "end": "March 27, 2028"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0103",
       "filename": "CNT-2024-0103_ACTIVE_HIGH_Vendor_Agreement.txt",
       "status": "ACTIVE",
@@ -2198,6 +4421,29 @@
       "dates": {
         "start": "June 27, 2025",
         "end": "March 29, 2029"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0103",
+      "filename": "CNT-2024-0103_WARNING_HIGH_Software_Licensing_Agreement.txt",
+      "status": "WARNING",
+      "risk_level": "HIGH",
+      "contract_type": "Software Licensing Agreement",
+      "financial": {
+        "contract_value": "318,037"
+      },
+      "parties": {
+        "party_a": "GlobalCorp Industries",
+        "party_b": "SecureData Inc"
+      },
+      "dates": {
+        "start": "July 07, 2025",
+        "end": "January 07, 2027"
       },
       "compliance": [
         "GDPR",
@@ -2225,6 +4471,54 @@
       "compliance": []
     },
     {
+      "contract_number": "CNT-2024-0104",
+      "filename": "CNT-2024-0104_WARNING_HIGH_Cloud_Services_Agreement.txt",
+      "status": "WARNING",
+      "risk_level": "HIGH",
+      "contract_type": "Cloud Services Agreement",
+      "financial": {
+        "contract_value": "336,460"
+      },
+      "parties": {
+        "party_a": "GlobalCorp Industries",
+        "party_b": "VendorMax Solutions"
+      },
+      "dates": {
+        "start": "May 05, 2025",
+        "end": "June 02, 2027"
+      },
+      "compliance": [
+        "GDPR",
+        "PCI-DSS",
+        "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0105",
+      "filename": "CNT-2024-0105_ACTIVE_CRITICAL_Equipment_Rental_Agreement.txt",
+      "status": "ACTIVE",
+      "risk_level": "CRITICAL",
+      "contract_type": "Equipment Rental Agreement",
+      "financial": {
+        "contract_value": "733,514"
+      },
+      "parties": {
+        "party_a": "GlobalCorp Industries",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "July 20, 2025",
+        "end": "October 16, 2026"
+      },
+      "compliance": [
+        "HIPAA",
+        "GDPR",
+        "PCI-DSS",
+        "FDA",
+        "SOX"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0105",
       "filename": "CNT-2024-0105_ACTIVE_HIGH_Partnership_Agreement.txt",
       "status": "ACTIVE",
@@ -2245,6 +4539,31 @@
         "GDPR",
         "PCI-DSS",
         "SOC 2"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0106",
+      "filename": "CNT-2024-0106_EXPIRED_CRITICAL_Equipment_Lease.txt",
+      "status": "EXPIRED",
+      "risk_level": "CRITICAL",
+      "contract_type": "Equipment Lease",
+      "financial": {
+        "contract_value": "700,563"
+      },
+      "parties": {
+        "party_a": "Enterprise Systems LLC",
+        "party_b": "BuildPro Construction"
+      },
+      "dates": {
+        "start": "March 01, 2025",
+        "end": "April 21, 2027"
+      },
+      "compliance": [
+        "HIPAA",
+        "GDPR",
+        "PCI-DSS",
+        "FDA",
+        "SOX"
       ]
     },
     {
@@ -2284,6 +4603,56 @@
         "end": "September 30, 2026"
       },
       "compliance": []
+    },
+    {
+      "contract_number": "CNT-2024-0107",
+      "filename": "CNT-2024-0107_WARNING_CRITICAL_Subscription_Agreement.txt",
+      "status": "WARNING",
+      "risk_level": "CRITICAL",
+      "contract_type": "Subscription Agreement",
+      "financial": {
+        "contract_value": "568,393"
+      },
+      "parties": {
+        "party_a": "Enterprise Systems LLC",
+        "party_b": "VendorMax Solutions"
+      },
+      "dates": {
+        "start": "April 20, 2025",
+        "end": "February 08, 2027"
+      },
+      "compliance": [
+        "HIPAA",
+        "GDPR",
+        "PCI-DSS",
+        "FDA",
+        "SOX"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0108",
+      "filename": "CNT-2024-0108_EXPIRED_CRITICAL_Manufacturing_Agreement.txt",
+      "status": "EXPIRED",
+      "risk_level": "CRITICAL",
+      "contract_type": "Manufacturing Agreement",
+      "financial": {
+        "contract_value": "1,998,202"
+      },
+      "parties": {
+        "party_a": "TechCorp Solutions",
+        "party_b": "CloudScale Networks"
+      },
+      "dates": {
+        "start": "June 22, 2025",
+        "end": "May 30, 2027"
+      },
+      "compliance": [
+        "HIPAA",
+        "GDPR",
+        "PCI-DSS",
+        "FDA",
+        "SOX"
+      ]
     },
     {
       "contract_number": "CNT-2024-0108",
@@ -2330,6 +4699,31 @@
       "compliance": []
     },
     {
+      "contract_number": "CNT-2024-0109",
+      "filename": "CNT-2024-0109_WARNING_CRITICAL_Marketing_Services_Agreement.txt",
+      "status": "WARNING",
+      "risk_level": "CRITICAL",
+      "contract_type": "Marketing Services Agreement",
+      "financial": {
+        "contract_value": "854,419"
+      },
+      "parties": {
+        "party_a": "Enterprise Systems LLC",
+        "party_b": "BuildPro Construction"
+      },
+      "dates": {
+        "start": "April 21, 2025",
+        "end": "June 29, 2027"
+      },
+      "compliance": [
+        "HIPAA",
+        "GDPR",
+        "PCI-DSS",
+        "FDA",
+        "SOX"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0110",
       "filename": "CNT-2024-0110_PENDING_CRITICAL_Marketing_Services_Agreement.txt",
       "status": "PENDING",
@@ -2345,6 +4739,56 @@
       "dates": {
         "start": "March 23, 2025",
         "end": "July 08, 2026"
+      },
+      "compliance": [
+        "HIPAA",
+        "GDPR",
+        "PCI-DSS",
+        "FDA",
+        "SOX"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0110",
+      "filename": "CNT-2024-0110_RENEWED_CRITICAL_API_Integration_License.txt",
+      "status": "RENEWED",
+      "risk_level": "CRITICAL",
+      "contract_type": "API Integration License",
+      "financial": {
+        "contract_value": "1,876,861"
+      },
+      "parties": {
+        "party_a": "Digital Dynamics Corp",
+        "party_b": "SecureData Inc"
+      },
+      "dates": {
+        "start": "June 22, 2025",
+        "end": "April 03, 2028"
+      },
+      "compliance": [
+        "HIPAA",
+        "GDPR",
+        "PCI-DSS",
+        "FDA",
+        "SOX"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0111",
+      "filename": "CNT-2024-0111_RENEWED_CRITICAL_Maintenance_Contract.txt",
+      "status": "RENEWED",
+      "risk_level": "CRITICAL",
+      "contract_type": "Maintenance Contract",
+      "financial": {
+        "contract_value": "1,400,701"
+      },
+      "parties": {
+        "party_a": "Digital Dynamics Corp",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "November 06, 2025",
+        "end": "July 19, 2027"
       },
       "compliance": [
         "HIPAA",
@@ -2405,6 +4849,56 @@
       ]
     },
     {
+      "contract_number": "CNT-2024-0112",
+      "filename": "CNT-2024-0112_RENEWED_CRITICAL_Partnership_Agreement.txt",
+      "status": "RENEWED",
+      "risk_level": "CRITICAL",
+      "contract_type": "Partnership Agreement",
+      "financial": {
+        "contract_value": "827,350"
+      },
+      "parties": {
+        "party_a": "TechCorp Solutions",
+        "party_b": "SecureData Inc"
+      },
+      "dates": {
+        "start": "February 05, 2025",
+        "end": "June 16, 2026"
+      },
+      "compliance": [
+        "HIPAA",
+        "GDPR",
+        "PCI-DSS",
+        "FDA",
+        "SOX"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0113",
+      "filename": "CNT-2024-0113_ACTIVE_CRITICAL_Marketing_Services_Agreement.txt",
+      "status": "ACTIVE",
+      "risk_level": "CRITICAL",
+      "contract_type": "Marketing Services Agreement",
+      "financial": {
+        "contract_value": "1,311,401"
+      },
+      "parties": {
+        "party_a": "TechCorp Solutions",
+        "party_b": "BuildPro Construction"
+      },
+      "dates": {
+        "start": "October 21, 2025",
+        "end": "November 04, 2028"
+      },
+      "compliance": [
+        "HIPAA",
+        "GDPR",
+        "PCI-DSS",
+        "FDA",
+        "SOX"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0113",
       "filename": "CNT-2024-0113_PENDING_MEDIUM_Software_Licensing_Agreement.txt",
       "status": "PENDING",
@@ -2443,6 +4937,56 @@
       "compliance": []
     },
     {
+      "contract_number": "CNT-2024-0114",
+      "filename": "CNT-2024-0114_RENEWED_CRITICAL_Equipment_Rental_Agreement.txt",
+      "status": "RENEWED",
+      "risk_level": "CRITICAL",
+      "contract_type": "Equipment Rental Agreement",
+      "financial": {
+        "contract_value": "1,839,859"
+      },
+      "parties": {
+        "party_a": "InnovateTech Inc",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "July 24, 2025",
+        "end": "June 12, 2028"
+      },
+      "compliance": [
+        "HIPAA",
+        "GDPR",
+        "PCI-DSS",
+        "FDA",
+        "SOX"
+      ]
+    },
+    {
+      "contract_number": "CNT-2024-0115",
+      "filename": "CNT-2024-0115_PENDING_CRITICAL_Healthcare_Services_Agreement.txt",
+      "status": "PENDING",
+      "risk_level": "CRITICAL",
+      "contract_type": "Healthcare Services Agreement",
+      "financial": {
+        "contract_value": "674,687"
+      },
+      "parties": {
+        "party_a": "Enterprise Systems LLC",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "October 16, 2025",
+        "end": "August 31, 2028"
+      },
+      "compliance": [
+        "HIPAA",
+        "GDPR",
+        "PCI-DSS",
+        "FDA",
+        "SOX"
+      ]
+    },
+    {
       "contract_number": "CNT-2024-0115",
       "filename": "CNT-2024-0115_WARNING_MEDIUM_Manufacturing_Agreement.txt",
       "status": "WARNING",
@@ -2460,6 +5004,31 @@
         "end": "February 11, 2026"
       },
       "compliance": []
+    },
+    {
+      "contract_number": "CNT-2024-0116",
+      "filename": "CNT-2024-0116_WARNING_CRITICAL_Manufacturing_Agreement.txt",
+      "status": "WARNING",
+      "risk_level": "CRITICAL",
+      "contract_type": "Manufacturing Agreement",
+      "financial": {
+        "contract_value": "1,801,254"
+      },
+      "parties": {
+        "party_a": "InnovateTech Inc",
+        "party_b": "DataVault Systems"
+      },
+      "dates": {
+        "start": "September 25, 2025",
+        "end": "March 26, 2027"
+      },
+      "compliance": [
+        "HIPAA",
+        "GDPR",
+        "PCI-DSS",
+        "FDA",
+        "SOX"
+      ]
     }
   ]
 }

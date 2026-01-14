@@ -1,69 +1,69 @@
 
 CONTRACT AGREEMENT
-IT SUPPORT CONTRACT
+PROFESSIONAL SERVICES CONTRACT
 
-Contract Number: CNT-2024-0034
-Date of Agreement: February 03, 2025
+Contract Number: CNT-2024-0085
+Date of Agreement: February 17, 2025
 
 PARTIES TO THE AGREEMENT:
 
-Party A (The Company): GlobalCorp Industries
+Party A (The Company): InnovateTech Inc
 Address: 123 Business Street, Tech City, TC 12345
-Email: contracts@globalcorpindustries.com
+Email: contracts@innovatetechinc.com
 
 Party B (The Vendor/Client): CloudScale Networks
 Address: 789 Security Boulevard, CyberCity, CY 54321
 Email: legal@cloudscalenetworks.com
 
-WHEREAS, the parties wish to enter into this IT Support Contract under the following terms and conditions:
+WHEREAS, the parties wish to enter into this Professional Services Contract under the following terms and conditions:
 
 1. SCOPE OF SERVICES
-   CloudScale Networks shall provide it support contract services to GlobalCorp Industries as detailed in Appendix A.
+   CloudScale Networks shall provide professional services contract services to InnovateTech Inc as detailed in Appendix A.
    This includes but is not limited to professional consultation, implementation, maintenance, and support services.
 
 2. CONTRACT TERM
-   Start Date: February 03, 2025
-   End Date: May 23, 2027
-   Contract Duration: 839 days
+   Start Date: February 17, 2025
+   End Date: May 08, 2027
+   Contract Duration: 810 days
    
    Status: EXPIRED
-   Risk Classification: MEDIUM
+   Risk Classification: HIGH
 
 3. FINANCIAL TERMS
-   Total Contract Value: $91,012 USD
+   Total Contract Value: $281,435 USD
    Payment Terms: Quarterly, Net 30 days
    Currency: United States Dollars (USD)
    
    Payment Schedule:
-   - Initial Payment: 29% upon contract signing
-   - Milestone Payments: 46% upon completion of deliverables
-   - Final Payment: 25% upon project acceptance
+   - Initial Payment: 20% upon contract signing
+   - Milestone Payments: 43% upon completion of deliverables
+   - Final Payment: 37% upon project acceptance
 
 4. PAYMENT OBLIGATIONS
    All payments shall be made via wire transfer to the account specified by CloudScale Networks.
-   Late payments will incur a penalty of 4% per month.
-   Invoice disputes must be raised within 16 business days.
+   Late payments will incur a penalty of 3% per month.
+   Invoice disputes must be raised within 15 business days.
 
 5. SERVICE LEVEL AGREEMENT (SLA)
-   99.5% uptime, business hours support, 8-hour response time
+   99.9% uptime, business hours support, 4-hour response time
    
    Penalties for SLA Breaches:
-   - Each breach: $1,793 or 4.1% of monthly fees, whichever is greater
+   - Each breach: $7,161 or 6.2% of monthly fees, whichever is greater
    - Repeated breaches may result in contract termination
 
 6. KEY DATES AND MILESTONES
-   - Contract Effective Date: February 03, 2025
-   - First Milestone: March 05, 2025
+   - Contract Effective Date: February 17, 2025
+   - First Milestone: March 19, 2025
    - Mid-Point Review: March 29, 2026
-   - Final Deliverable: April 23, 2027
-   - Contract Expiration: May 23, 2027
+   - Final Deliverable: April 08, 2027
+   - Contract Expiration: May 08, 2027
 
 7. TERMINATION CLAUSES
    Either party may terminate this agreement under the following conditions:
    
    a) Termination for Convenience:
-      - 42 days written notice required
-      - Termination fee: 16% of remaining contract value
+      - 81 days written notice required
+      - Termination fee: 29% of remaining contract value
    
    b) Termination for Cause:
       - Immediate termination upon material breach
@@ -75,9 +75,9 @@ WHEREAS, the parties wish to enter into this IT Support Contract under the follo
       - Extension of deadlines without penalties
 
 8. LIABILITY AND INDEMNIFICATION
-   Total Liability Cap: $343,301 USD
+   Total Liability Cap: $1,237,716 USD
    
-   CloudScale Networks agrees to indemnify and hold harmless GlobalCorp Industries from:
+   CloudScale Networks agrees to indemnify and hold harmless InnovateTech Inc from:
    - Third-party claims arising from services provided
    - Intellectual property infringement claims
    - Data breaches or security incidents
@@ -86,10 +86,10 @@ WHEREAS, the parties wish to enter into this IT Support Contract under the follo
    Exclusions:
    - Indirect, consequential, or punitive damages
    - Loss of profits or business opportunities
-   - Claims arising from GlobalCorp Industries's actions or instructions
+   - Claims arising from InnovateTech Inc's actions or instructions
 
 9. INTELLECTUAL PROPERTY RIGHTS
-   - All work product becomes property of GlobalCorp Industries
+   - All work product becomes property of InnovateTech Inc
    - CloudScale Networks retains rights to pre-existing materials and tools
    - Limited license granted for use of proprietary methodologies
    - Confidentiality obligations survive contract termination
@@ -101,43 +101,51 @@ WHEREAS, the parties wish to enter into this IT Support Contract under the follo
     - Financial information and pricing
     - Customer data and business strategies
     
-    Confidentiality period: 3 years post-termination
+    Confidentiality period: 5 years post-termination
 
 11. INSURANCE REQUIREMENTS
     CloudScale Networks must maintain the following insurance:
-    - General Liability: $3M minimum
-    - Professional Liability: $2M minimum
-    - Cyber Liability: $168,029 minimum
+    - General Liability: $5M minimum
+    - Professional Liability: $3M minimum
+    - Cyber Liability: $571,784 minimum
     - Workers Compensation: As required by law
 
 
 12. COMPLIANCE AND REGULATORY
     Both parties shall comply with:
     - All applicable federal, state, and local laws
-    - GDPR (General Data Protection Regulation) - Personal data handling
-    - CCPA (California Consumer Privacy Act)
-    - SOC 2 Type II certification recommended
+    - GDPR (General Data Protection Regulation) - Full compliance required
+    - PCI-DSS Level 1 - Payment card data security standards
+    - SOC 2 Type II certification - Annual audit required
     - ISO 27001 Information Security Management
-    - State privacy laws compliance
+    - Privacy Shield Framework (if applicable)
+    - State privacy laws (CCPA, CPRA, etc.)
     - Anti-corruption and ethics policies (FCPA, UK Bribery Act)
     
-    Standard Compliance Requirements:
-    - Annual third-party security assessment recommended
-    - Data Processing Agreements (DPA) required
+    Enhanced Compliance Requirements:
+    - Quarterly third-party security audits
+    - Annual penetration testing
+    - Data Protection Impact Assessments (DPIA)
     - Breach notification within 72 hours
     - Right to audit upon 30 days notice
-    - Standard encryption requirements
+    - Data Processing Agreements (DPA) required
+    - Appointment of Data Protection Officer (DPO)
+    
+    RISK ESCALATORS (Increase from Medium to High):
+    + GDPR compliance with personal data processing
+    + PCI-DSS requirements for payment systems
+    + SOC 2 Type II audit obligations
     
 
 13. DISPUTE RESOLUTION
-    - Initial negotiation period: 26 days
+    - Initial negotiation period: 13 days
     - Mediation: If negotiation fails
     - Binding Arbitration: Final resolution method
-    - Venue: New York
+    - Venue: California
 
 14. AMENDMENT AND MODIFICATION
     This contract may only be modified by written agreement signed by both parties.
-    Change requests must be submitted in writing with 45 days notice.
+    Change requests must be submitted in writing with 22 days notice.
 
 15. GOVERNING LAW
     This agreement shall be governed by the laws of the State of Delaware,
@@ -149,17 +157,17 @@ WHEREAS, the parties wish to enter into this IT Support Contract under the follo
 
 SIGNATURES:
 
-For GlobalCorp Industries:
+For InnovateTech Inc:
 _________________________________
-Name: Michael Chen
+Name: David Martinez
 Title: Director of Procurement
-Date: February 03, 2025
+Date: February 17, 2025
 
 For CloudScale Networks:
 _________________________________
-Name: Maria Garcia
-Title: Chief Executive Officer
-Date: February 03, 2025
+Name: Jennifer Brown
+Title: VP of Sales
+Date: February 17, 2025
 
 --- END OF CONTRACT ---
 
@@ -173,5 +181,5 @@ APPENDIX C: SERVICE LEVEL AGREEMENT (SLA) METRICS
 [Specific performance metrics and measurement criteria would be listed here]
 
 Contract Status: EXPIRED
-Risk Level: MEDIUM
+Risk Level: HIGH
 Generated for demo purposes with realistic risk distribution (20% LOW, 30% MEDIUM, 40% HIGH, 10% CRITICAL).

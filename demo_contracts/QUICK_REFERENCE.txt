@@ -2,8 +2,8 @@
 DEMO CONTRACTS - QUICK REFERENCE GUIDE
 ================================================================================
 
-Total Contracts: 116
-Generated: January 14, 2026 at 01:59 AM
+Total Contracts: 232
+Generated: January 14, 2026 at 03:24 AM
 
 --------------------------------------------------------------------------------
 RECOMMENDED TEST SCENARIOS
@@ -36,30 +36,30 @@ CONTRACT STATUS EXAMPLES
 --------------------------------------------------------------------------------
 
 
-ACTIVE Contracts (38 total):
+ACTIVE Contracts (68 total):
   - CNT-2024-0001: Equipment Rental Agreement (LOW)
   - CNT-2024-0001: Vendor Agreement (LOW)
-  - CNT-2024-0002: Distribution Agreement (LOW)
+  - CNT-2024-0002: Construction Contract (LOW)
 
-EXPIRED Contracts (20 total):
+EXPIRED Contracts (37 total):
+  - CNT-2024-0006: Consulting Services Agreement (LOW)
+  - CNT-2024-0009: Subscription Agreement (LOW)
   - CNT-2024-0028: Software Licensing Agreement (LOW)
-  - CNT-2024-0029: Partnership Agreement (LOW)
-  - CNT-2024-0030: Distribution Agreement (LOW)
 
-RENEWED Contracts (18 total):
-  - CNT-2024-0038: Distribution Agreement (LOW)
-  - CNT-2024-0039: Development Agreement (LOW)
-  - CNT-2024-0040: Construction Contract (MEDIUM)
+RENEWED Contracts (39 total):
+  - CNT-2024-0010: Manufacturing Agreement (LOW)
+  - CNT-2024-0014: Vendor Agreement (LOW)
+  - CNT-2024-0016: Office Lease Agreement (LOW)
 
-PENDING Contracts (20 total):
-  - CNT-2024-0046: Software Licensing Agreement (LOW)
-  - CNT-2024-0047: Logistics Contract (LOW)
-  - CNT-2024-0048: Maintenance Contract (LOW)
+PENDING Contracts (37 total):
+  - CNT-2024-0001: Software Licensing Agreement (LOW)
+  - CNT-2024-0020: Vendor Agreement (LOW)
+  - CNT-2024-0023: Manufacturing Agreement (LOW)
 
-WARNING Contracts (20 total):
-  - CNT-2024-0056: Service Level Agreement (LOW)
-  - CNT-2024-0057: Development Agreement (LOW)
-  - CNT-2024-0058: Vendor Agreement (MEDIUM)
+WARNING Contracts (51 total):
+  - CNT-2024-0003: Cloud Services Agreement (LOW)
+  - CNT-2024-0004: Development Agreement (LOW)
+  - CNT-2024-0005: Subscription Agreement (LOW)
 
 --------------------------------------------------------------------------------
 COMPLIANCE FACTORS BY RISK LEVEL
