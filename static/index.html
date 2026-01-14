@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contract Management System</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>📄 Contract Management System</h1>
+            <p>AI-Powered Contract Analysis & Early Warning</p>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container main-content">
+        
+        <!-- Dashboard Stats -->
+        <section class="stats-section">
+            <h2>Dashboard Overview</h2>
+            <div class="stats-grid stats-grid-six">
+                <div class="stat-card stat-card-compact clickable-card" id="stat-card-total">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-value" id="total-count">0</div>
+                    <div class="stat-label">Total</div>
+                </div>
+                <div class="stat-card stat-card-compact clickable-card" id="stat-card-active">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-value" id="active-count">0</div>
+                    <div class="stat-label">Active</div>
+                </div>
+                <div class="stat-card stat-card-compact clickable-card" id="stat-card-expired">
+                    <div class="stat-icon">⏰</div>
+                    <div class="stat-value" id="expired-count">0</div>
+                    <div class="stat-label">Expired</div>
+                </div>
+                <div class="stat-card stat-card-compact clickable-card" id="stat-card-renewed">
+                    <div class="stat-icon">🔄</div>
+                    <div class="stat-value" id="renewed-count">0</div>
+                    <div class="stat-label">Renewed</div>
+                </div>
+                <div class="stat-card stat-card-compact clickable-card" id="stat-card-pending">
+                    <div class="stat-icon">⏳</div>
+                    <div class="stat-value" id="pending-count">0</div>
+                    <div class="stat-label">Pending</div>
+                </div>
+                <div class="stat-card stat-card-compact clickable-card" id="stat-card-warning" title="Click to view contracts that need attention (expiring soon or high-risk)">
+                    <div class="stat-icon">⚠️</div>
+                    <div class="stat-value" id="warning-count">0</div>
+                    <div class="stat-label">Warning</div>
+                    <div style="font-size: 0.65rem; margin-top: 4px; opacity: 0.7;">Click to view</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Risk Level Stats - Compact 2x2 Grid -->
+        <section class="stats-section risk-stats-section">
+            <h2>Risk Assessment</h2>
+            <div class="stats-grid stats-grid-risk">
+                <div class="stat-card stat-card-risk stat-card-risk-low clickable-card" id="stat-card-risk-low">
+                    <div class="stat-icon">🟢</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="risk-low-count">0</div>
+                        <div class="stat-label">Low</div>
+                    </div>
+                </div>
+                <div class="stat-card stat-card-risk stat-card-risk-medium clickable-card" id="stat-card-risk-medium">
+                    <div class="stat-icon">🟡</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="risk-medium-count">0</div>
+                        <div class="stat-label">Medium</div>
+                    </div>
+                </div>
+                <div class="stat-card stat-card-risk stat-card-risk-high clickable-card" id="stat-card-risk-high">
+                    <div class="stat-icon">🟠</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="risk-high-count">0</div>
+                        <div class="stat-label">High</div>
+                    </div>
+                </div>
+                <div class="stat-card stat-card-risk stat-card-risk-critical clickable-card" id="stat-card-risk-critical">
+                    <div class="stat-icon">🔴</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="risk-critical-count">0</div>
+                        <div class="stat-label">Critical</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation Tabs -->
+        <section class="tabs-section">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="about">ℹ️ About</button>
+                <button class="tab-btn" data-tab="contracts">📋 All Contracts</button>
+                <button class="tab-btn" data-tab="upload">⬆️ Upload Contract</button>
+                <button class="tab-btn" data-tab="ask">🤖 Ask AI</button>
+            </div>
+
+            <!-- Tab Content: All Contracts -->
+            <div class="tab-content" id="contracts-tab">
+                <div class="section-header">
+                    <h2>Contract List</h2>
+                    <div class="filters">
+                        <select id="status-filter" class="filter-select">
+                            <option value="">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="expired">Expired</option>
+                            <option value="renewed">Renewed</option>
+                            <option value="pending">Pending</option>
+                        </select>
+                        <button onclick="loadContracts()" class="btn-secondary">🔄 Refresh</button>
+                        <button onclick="bulkReanalyzeContracts()" class="btn-primary" style="background: linear-gradient(135deg, #818cf8 0%, #a5b4fc 100%); margin-left: 10px;">
+                            🤖 AI Analyze All
+                        </button>
+                    </div>
+                </div>
+                <div id="contracts-container" class="contracts-grid">
+                    <p class="loading">Loading contracts...</p>
+                </div>
+            </div>
+
+            <!-- Tab Content: Upload Contract -->
+            <div class="tab-content" id="upload-tab">
+                <h2>Upload New Contract(s)</h2>
+                <p class="help-text">
+                    Upload one or multiple contract files (PDF or TXT). Our AI will automatically extract all details!
+                </p>
+                
+                <form id="upload-form" class="upload-form">
+                    <div class="upload-area" id="upload-area">
+                        <div class="upload-icon">📄</div>
+                        <h3>Drag & Drop or Click to Upload</h3>
+                        <p>PDF or TXT files accepted (Single or Multiple)</p>
+                        <input type="file" id="contract-file" accept=".pdf,.txt" multiple required style="display: none;">
+                        <div id="file-name" style="margin-top: 15px; font-weight: bold; color: #818cf8;"></div>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary" style="margin-top: 20px; width: 100%;">
+                        🤖 Upload & Auto-Analyze with AI
+                    </button>
+                </form>
+                
+                <div id="upload-result" class="result-box" style="display: none;"></div>
+                
+                <div class="info-box" style="margin-top: 30px;">
+                    <h3>What happens when you upload?</h3>
+                    <ul style="line-height: 2;">
+                        <li>✅ AI reads your contract document</li>
+                        <li>✅ Automatically extracts: Contract name, number, parties, dates, value</li>
+                        <li>✅ Generates intelligent summary</li>
+                        <li>✅ Extracts key clauses (payment, termination, liability)</li>
+                        <li>✅ Assesses risk level (Low, Medium, High, Critical)</li>
+                        <li>✅ Adds to searchable database with RAG</li>
+                        <li>✅ Creates early warning alerts if needed</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tab Content: Ask AI -->
+            <div class="tab-content" id="ask-tab">
+                <h2>🤖 Chat with AI About Your Contracts</h2>
+                <p class="help-text">Use RAG (Retrieval Augmented Generation) to have a conversation about your contracts.</p>
+                
+                <!-- Contract Selector -->
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="contract-select">🎯 Focus on Specific Contract (Optional)</label>
+                    <select id="contract-select" class="contract-select">
+                        <option value="">All Contracts</option>
+                    </select>
+                </div>
+                
+                <!-- Chat Container -->
+                <div id="chat-container" class="chat-container">
+                    <div id="chat-messages" class="chat-messages">
+                        <div class="welcome-message">
+                            <div class="ai-avatar">🤖</div>
+                            <div class="message-content">
+                                <strong>AI Assistant</strong>
+                                <p>Hello! I'm your Contract Management AI Assistant. Ask me anything about your contracts!</p>
+                                <p class="help-examples">
+                                    <strong>Try asking:</strong><br>
+                                    • "What are the payment terms?"<br>
+                                    • "Which contracts expire soon?"<br>
+                                    • "What are the termination clauses?"<br>
+                                    • "Who are the key stakeholders?"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Prompt Suggestions -->
+                <div class="quick-prompts-container">
+                    <div class="quick-prompts-label">💡 Quick Prompts:</div>
+                    <div class="quick-prompts-grid">
+                        <button class="prompt-chip prompt-chip-purple" onclick="usePrompt('Please summarize this contract')">
+                            📄 Summarize Contract
+                        </button>
+                        <button class="prompt-chip prompt-chip-green" onclick="usePrompt('What are the payment terms?')">
+                            💰 Payment Terms
+                        </button>
+                        <button class="prompt-chip prompt-chip-blue" onclick="usePrompt('What are the key dates and deadlines?')">
+                            📅 Key Dates
+                        </button>
+                        <button class="prompt-chip prompt-chip-orange" onclick="usePrompt('What are the termination clauses?')">
+                            🚪 Termination Clauses
+                        </button>
+                        <button class="prompt-chip prompt-chip-red" onclick="usePrompt('What are the liability and risk provisions?')">
+                            ⚠️ Liability & Risk
+                        </button>
+                        <button class="prompt-chip prompt-chip-pink" onclick="usePrompt('Who are the parties involved and what are their obligations?')">
+                            👥 Parties & Obligations
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Modern Chat Input Area -->
+                <div class="chat-input-container">
+                    <form id="ask-form" class="modern-chat-form">
+                        <div class="input-wrapper">
+                            <div class="input-icon">💬</div>
+                            <textarea 
+                                id="question" 
+                                rows="1" 
+                                required 
+                                placeholder="Ask me anything about your contracts..."
+                                class="modern-chat-input"
+                            ></textarea>
+                            <button type="submit" class="modern-send-btn" title="Send Message">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 8L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="input-hint">
+                            <span>💡 Press <kbd>Enter</kbd> to send • <kbd>Shift+Enter</kbd> for new line</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Tab Content: About -->
+            <div class="tab-content active" id="about-tab">
+                <h2 style="background: linear-gradient(135deg, #818cf8 0%, #a5b4fc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 2rem; margin-bottom: 20px;">ℹ️ About This Application</h2>
+                <p class="help-text-vibrant">
+                    Welcome to the <strong>Contract Management System</strong> - an AI-powered platform designed to revolutionize 
+                    how your organization manages, monitors, and analyzes contracts. This system combines advanced AI technology 
+                    with practical business intelligence to ensure you never miss critical contract deadlines or overlook important obligations.
+                </p>
+
+                <!-- Accordion Container -->
+                <div class="accordion-container">
+                    
+                    <!-- Business Criticality -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-icon">+</span>
+                            <h3 class="accordion-title">🎯 Business Criticality</h3>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="info-box-vibrant info-box-purple">
+                                <p style="line-height: 1.8;">
+                                    In today's business environment, contract management is not just administrative work—it's a strategic function 
+                                    that directly impacts your bottom line. Poor contract oversight can lead to:
+                                </p>
+                                <ul style="line-height: 2; margin-left: 20px;">
+                                    <li><strong>Financial Loss:</strong> Missed renewal dates can result in unfavorable auto-renewals or service interruptions</li>
+                                    <li><strong>Compliance Risks:</strong> Failing to meet contractual obligations can lead to penalties and legal disputes</li>
+                                    <li><strong>Operational Disruptions:</strong> Expired vendor contracts can halt critical business operations</li>
+                                    <li><strong>Lost Opportunities:</strong> Without visibility into contract terms, you may miss optimization opportunities</li>
+                                </ul>
+                                <p style="line-height: 1.8; margin-top: 15px;">
+                                    <strong>This system solves these challenges</strong> by providing centralized contract intelligence, proactive alerts, 
+                                    and AI-powered insights that enable better decision-making and risk management.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Overview -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-icon">+</span>
+                            <h3 class="accordion-title">📊 Dashboard Overview</h3>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="info-box-vibrant info-box-blue">
+                                <p style="line-height: 1.8; margin-bottom: 20px;">
+                                    The dashboard provides real-time visibility into your entire contract portfolio through key metrics:
+                                </p>
+                                
+                                <div class="feature-grid">
+                                    <div class="feature-card feature-card-purple">
+                                        <strong>📊 Total Contracts</strong>
+                                        <p>The complete count of all contracts in your system. Gives you immediate visibility into the scale of your portfolio.</p>
+                                    </div>
+                                    
+                                    <div class="feature-card feature-card-green">
+                                        <strong>✅ Active Contracts</strong>
+                                        <p>Contracts currently in force. These are your operational agreements requiring ongoing monitoring.</p>
+                                    </div>
+                                    
+                                    <div class="feature-card feature-card-red">
+                                        <strong>⏰ Expired Contracts</strong>
+                                        <p>Contracts that have passed their end date. Review these for renewal, renegotiation, or closure.</p>
+                                    </div>
+                                    
+                                    <div class="feature-card feature-card-blue">
+                                        <strong>🔄 Renewed Contracts</strong>
+                                        <p>Successfully renewed or extended contracts indicating strong vendor/partner relationships.</p>
+                                    </div>
+                                    
+                                    <div class="feature-card feature-card-orange">
+                                        <strong>⏳ Pending Contracts</strong>
+                                        <p>Contracts signed but not yet started. Monitor these to ensure proper preparation.</p>
+                                    </div>
+                                    
+                                    <div class="feature-card feature-card-warning">
+                                        <strong>⚠️ Warning Status</strong>
+                                        <p><strong>CRITICAL!</strong> Contracts requiring immediate attention—your early warning system.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Risk Assessment -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-icon">+</span>
+                            <h3 class="accordion-title">🎯 Risk Assessment</h3>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="info-box-vibrant info-box-green">
+                                <p style="line-height: 1.8; margin-bottom: 20px;">
+                                    Our AI evaluates each contract and assigns a risk level based on value, complexity, SLA requirements, and business impact:
+                                </p>
+                                
+                                <div class="risk-cards">
+                                    <div class="risk-card risk-card-low">
+                                        <strong>🟢 Low Risk (~30%)</strong>
+                                        <p>Standard, low-value contracts with minimal business impact. Examples: office supplies, basic services. Minimal monitoring required.</p>
+                                    </div>
+                                    
+                                    <div class="risk-card risk-card-medium">
+                                        <strong>🟡 Medium Risk (~35%)</strong>
+                                        <p>Moderate-value contracts with meaningful impact. Examples: IT support, marketing. Review quarterly.</p>
+                                    </div>
+                                    
+                                    <div class="risk-card risk-card-high">
+                                        <strong>🟠 High Risk (~25%)</strong>
+                                        <p>High-value or complex contracts. Examples: cloud infrastructure, enterprise licenses. Review monthly.</p>
+                                    </div>
+                                    
+                                    <div class="risk-card risk-card-critical">
+                                        <strong>🔴 Critical Risk (~10%)</strong>
+                                        <p>Mission-critical contracts with significant exposure. Requires executive visibility and weekly review.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Features Explained -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-icon">+</span>
+                            <h3 class="accordion-title">🛠️ Features Explained</h3>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="features-container">
+                                <div class="feature-box feature-box-purple">
+                                    <h4>📋 All Contracts</h4>
+                                    <p><strong>Purpose:</strong> Central repository for viewing and managing all contracts.</p>
+                                    <ul>
+                                        <li>Browse with key details at a glance</li>
+                                        <li>Filter by status (Active, Expired, Renewed, Pending)</li>
+                                        <li>Quick actions on any contract card</li>
+                                        <li>Click dashboard cards to filter instantly</li>
+                                    </ul>
+                                </div>
+
+                                <div class="feature-box feature-box-green">
+                                    <h4>⬆️ Upload Contract</h4>
+                                    <p><strong>Purpose:</strong> Automated contract ingestion and AI-powered analysis.</p>
+                                    <ul>
+                                        <li>Upload PDF or TXT files (single or multiple)</li>
+                                        <li>AI extracts all metadata automatically</li>
+                                        <li>Generates intelligent summaries</li>
+                                        <li>Performs risk assessment</li>
+                                        <li>Creates early warning alerts</li>
+                                    </ul>
+                                </div>
+
+                                <div class="feature-box feature-box-blue">
+                                    <h4>🤖 Ask AI</h4>
+                                    <p><strong>Purpose:</strong> Conversational interface using RAG technology.</p>
+                                    <ul>
+                                        <li>Ask questions in natural language</li>
+                                        <li>Query all contracts or focus on one</li>
+                                        <li>Get instant, accurate answers</li>
+                                        <li>Powered by semantic search</li>
+                                    </ul>
+                                </div>
+
+                                <div class="feature-box feature-box-orange">
+                                    <h4>🤖 AI Analyze All</h4>
+                                    <p><strong>Purpose:</strong> Bulk reanalysis of entire portfolio.</p>
+                                    <ul>
+                                        <li>Refresh all risk assessments</li>
+                                        <li>Update summaries and key clauses</li>
+                                        <li>Ensure consistent analysis</li>
+                                    </ul>
+                                </div>
+
+                                <div class="feature-box feature-box-red">
+                                    <h4>🔄 Refresh</h4>
+                                    <p><strong>Purpose:</strong> Reload data and statistics.</p>
+                                    <ul>
+                                        <li>Update dashboard after changes</li>
+                                        <li>See latest contract additions</li>
+                                        <li>Keep data current</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Getting Started -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-icon">+</span>
+                            <h3 class="accordion-title">🚀 Getting Started</h3>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="info-box-vibrant info-box-rainbow">
+                                <ol class="getting-started-list">
+                                    <li><strong>Upload Your Contracts:</strong> Go to "Upload Contract" and drag & drop your files</li>
+                                    <li><strong>Review Dashboard:</strong> Check the overview to understand your portfolio</li>
+                                    <li><strong>Address Warnings:</strong> Click Warning card to see contracts needing attention</li>
+                                    <li><strong>Explore Contracts:</strong> Browse individual contracts to review AI insights</li>
+                                    <li><strong>Ask Questions:</strong> Use "Ask AI" to query specific terms or obligations</li>
+                                    <li><strong>Set Up Monitoring:</strong> Review high/critical risk contracts regularly</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Best Practices -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-icon">+</span>
+                            <h3 class="accordion-title">💼 Best Practices</h3>
+                        </div>
+                        <div class="accordion-body">
+                            <div class="best-practices-grid">
+                                <div class="practice-card practice-card-purple">
+                                    <h4>Weekly Review</h4>
+                                    <p>Check Warning status every Monday morning</p>
+                                </div>
+                                <div class="practice-card practice-card-green">
+                                    <h4>Risk Monitoring</h4>
+                                    <p>Critical (weekly), High (monthly), Medium (quarterly), Low (annually)</p>
+                                </div>
+                                <div class="practice-card practice-card-blue">
+                                    <h4>Renewal Planning</h4>
+                                    <p>Start renewal discussions 90-180 days before expiration</p>
+                                </div>
+                                <div class="practice-card practice-card-orange">
+                                    <h4>Team Training</h4>
+                                    <p>Ensure stakeholders know how to use "Ask AI"</p>
+                                </div>
+                                <div class="practice-card practice-card-red">
+                                    <h4>Portfolio Balance</h4>
+                                    <p>Monitor risk distribution—avoid too many critical contracts</p>
+                                </div>
+                                <div class="practice-card practice-card-pink">
+                                    <h4>Regular Cleanup</h4>
+                                    <p>Archive expired contracts that are no longer relevant</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="cta-box">
+                    <h3>🎯 Transform Contract Management from Reactive to Proactive</h3>
+                    <p>
+                        This system doesn't just store contracts—it empowers your organization with intelligence, 
+                        foresight, and control. Never miss a deadline, never overlook a risk, and always have answers at your fingertips.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>Contract Management System | Powered by Google Gemini AI & RAG</p>
+            <p class="copyright">© 2026 Naveen Raj Dorairaj. All rights reserved.</p>
+            <p class="footer-links">
+                <a href="#" id="tech-docs-link" class="footer-link">📚 Technical Documentation</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Technical Documentation Modal -->
+    <div id="tech-docs-modal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2>📚 Technical Documentation</h2>
+                <span class="modal-close" id="close-tech-modal">&times;</span>
+            </div>
+            <div class="modal-body tech-docs-body">
+                
+                <div class="tech-section">
+                    <h3>🏗️ Architecture Overview</h3>
+                    <div class="tech-box">
+                        <p>This Contract Management System is built as a modern, full-stack AI-powered application with a comprehensive RAG (Retrieval Augmented Generation) pipeline for intelligent document analysis and querying.</p>
+                        
+                        <div class="architecture-diagram">
+                            <div class="arch-layer">
+                                <strong>Frontend Layer</strong>
+                                <p>HTML5 + CSS3 + Vanilla JavaScript</p>
+                            </div>
+                            <div class="arch-arrow">↓</div>
+                            <div class="arch-layer">
+                                <strong>API Layer</strong>
+                                <p>FastAPI (Async Python Web Framework)</p>
+                            </div>
+                            <div class="arch-arrow">↓</div>
+                            <div class="arch-layer">
+                                <strong>Business Logic</strong>
+                                <p>RAG System + Early Warning + Contract Analysis</p>
+                            </div>
+                            <div class="arch-arrow">↓</div>
+                            <div class="arch-layer">
+                                <strong>AI Layer</strong>
+                                <p>Google Gemini 1.5 Flash</p>
+                            </div>
+                            <div class="arch-arrow">↓</div>
+                            <div class="arch-layer">
+                                <strong>Data Layer</strong>
+                                <p>SQLite + SQLAlchemy ORM + Async Support</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-section">
+                    <h3>🎨 Frontend Stack</h3>
+                    <div class="tech-box">
+                        <ul class="tech-list">
+                            <li><strong>HTML5:</strong> Semantic markup with modern accessibility features</li>
+                            <li><strong>CSS3:</strong> Custom styling with CSS Grid, Flexbox, and CSS Variables for theming</li>
+                            <li><strong>Vanilla JavaScript (ES6+):</strong> No frameworks - pure JavaScript for maximum performance
+                                <ul>
+                                    <li>Async/await for API calls</li>
+                                    <li>Fetch API for HTTP requests</li>
+                                    <li>DOM manipulation for dynamic UI updates</li>
+                                    <li>Event delegation for efficient event handling</li>
+                                </ul>
+                            </li>
+                            <li><strong>Responsive Design:</strong> Mobile-first approach with media queries</li>
+                            <li><strong>Progressive Enhancement:</strong> Works without JavaScript, enhanced with it</li>
+                        </ul>
+                        
+                        <div class="code-example">
+                            <strong>Key Frontend Features:</strong>
+                            <ul>
+                                <li>Real-time dashboard statistics with auto-refresh</li>
+                                <li>Interactive contract cards with filtering and sorting</li>
+                                <li>Drag & drop file upload with multiple file support</li>
+                                <li>Chat-style AI interface with streaming responses</li>
+                                <li>Click-to-filter dashboard metrics</li>
+                                <li>Modal dialogs for detailed contract views</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-section">
+                    <h3>⚙️ Backend Stack</h3>
+                    <div class="tech-box">
+                        <ul class="tech-list">
+                            <li><strong>FastAPI:</strong> High-performance async web framework
+                                <ul>
+                                    <li>Automatic API documentation (OpenAPI/Swagger)</li>
+                                    <li>Pydantic models for data validation</li>
+                                    <li>Async/await support for concurrent operations</li>
+                                    <li>Built-in dependency injection</li>
+                                </ul>
+                            </li>
+                            <li><strong>Python 3.14:</strong> Latest Python runtime</li>
+                            <li><strong>SQLAlchemy 2.0:</strong> ORM with async support
+                                <ul>
+                                    <li>Declarative models for database schema</li>
+                                    <li>Query builder for complex database operations</li>
+                                    <li>Connection pooling for performance</li>
+                                </ul>
+                            </li>
+                            <li><strong>Pydantic:</strong> Data validation and serialization
+                                <ul>
+                                    <li>Type hints for API contracts</li>
+                                    <li>Automatic validation of request/response data</li>
+                                    <li>JSON schema generation</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <div class="code-example">
+                            <strong>API Architecture:</strong>
+                            <pre>
+/api/contracts          → Contract CRUD operations
+/api/contracts/upload   → File upload & AI analysis
+/api/contracts/analyze  → Bulk contract reanalysis
+/api/rag/ask           → RAG-powered Q&A
+/api/dashboard/stats   → Real-time statistics
+/api/warnings          → Early warning alerts</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-section">
+                    <h3>🤖 RAG (Retrieval Augmented Generation) Architecture</h3>
+                    <div class="tech-box">
+                        <p><strong>What is RAG?</strong> RAG combines information retrieval with generative AI to provide accurate, context-aware answers based on your actual contract documents.</p>
+                        
+                        <h4 style="margin-top: 20px; color: #818cf8;">RAG Pipeline Flow:</h4>
+                        
+                        <div class="rag-pipeline">
+                            <div class="pipeline-step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <strong>Document Ingestion</strong>
+                                    <p>Contract files (PDF/TXT) are uploaded and text is extracted</p>
+                                </div>
+                            </div>
+                            
+                            <div class="pipeline-step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <strong>Text Chunking</strong>
+                                    <p>Documents are split into semantic chunks (512-1024 tokens each)</p>
+                                    <p class="tech-note">Strategy: Paragraph-based chunking with overlap to maintain context</p>
+                                </div>
+                            </div>
+                            
+                            <div class="pipeline-step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <strong>Embedding Generation</strong>
+                                    <p>Google Gemini converts chunks into 768-dimensional vectors</p>
+                                    <p class="tech-note">Model: text-embedding-004 for semantic understanding</p>
+                                </div>
+                            </div>
+                            
+                            <div class="pipeline-step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <strong>Vector Storage</strong>
+                                    <p>Embeddings stored in-memory for fast retrieval</p>
+                                    <p class="tech-note">Future: Can migrate to ChromaDB/Pinecone for scale</p>
+                                </div>
+                            </div>
+                            
+                            <div class="pipeline-step">
+                                <div class="step-number">5</div>
+                                <div class="step-content">
+                                    <strong>Query Processing</strong>
+                                    <p>User question is embedded using the same model</p>
+                                </div>
+                            </div>
+                            
+                            <div class="pipeline-step">
+                                <div class="step-number">6</div>
+                                <div class="step-content">
+                                    <strong>Semantic Search</strong>
+                                    <p>Cosine similarity finds most relevant chunks</p>
+                                    <p class="tech-note">Returns top-k (typically 5-10) most relevant passages</p>
+                                </div>
+                            </div>
+                            
+                            <div class="pipeline-step">
+                                <div class="step-number">7</div>
+                                <div class="step-content">
+                                    <strong>Context Assembly</strong>
+                                    <p>Retrieved chunks combined with user question</p>
+                                </div>
+                            </div>
+                            
+                            <div class="pipeline-step">
+                                <div class="step-number">8</div>
+                                <div class="step-content">
+                                    <strong>LLM Generation</strong>
+                                    <p>Gemini generates answer based on retrieved context</p>
+                                    <p class="tech-note">Grounded responses reduce hallucination</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-section">
+                    <h3>📊 Database Architecture</h3>
+                    <div class="tech-box">
+                        <ul class="tech-list">
+                            <li><strong>SQLite:</strong> Embedded relational database
+                                <ul>
+                                    <li>Serverless, zero-configuration</li>
+                                    <li>ACID compliant for data integrity</li>
+                                    <li>Perfect for single-instance deployments</li>
+                                    <li>Can migrate to PostgreSQL for multi-user scenarios</li>
+                                </ul>
+                            </li>
+                            <li><strong>Schema Design:</strong>
+                                <ul>
+                                    <li><code>contracts</code> table: Core contract metadata</li>
+                                    <li>Indexed columns: contract_number, status, risk_level</li>
+                                    <li>Full-text search ready with TEXT columns</li>
+                                    <li>Timestamps for created_at and updated_at tracking</li>
+                                </ul>
+                            </li>
+                            <li><strong>Connection Management:</strong>
+                                <ul>
+                                    <li>Async connection pooling via SQLAlchemy</li>
+                                    <li>Automatic connection lifecycle management</li>
+                                    <li>Graceful handling of concurrent requests</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <div class="code-example">
+                            <strong>Database Schema (contracts table):</strong>
+                            <pre>
+id                  INTEGER PRIMARY KEY
+contract_name       VARCHAR(255)
+contract_number     VARCHAR(100) UNIQUE
+party_a            VARCHAR(255)
+party_b            VARCHAR(255)
+start_date         DATETIME
+end_date           DATETIME
+status             VARCHAR(50)      # active, expired, renewed, pending, warning
+risk_level         VARCHAR(20)      # low, medium, high, critical
+risk_reason        TEXT
+contract_value     FLOAT
+currency           VARCHAR(10)
+file_path          VARCHAR(500)
+file_type          VARCHAR(50)
+summary            TEXT             # AI-generated
+key_clauses        TEXT             # AI-extracted (JSON)
+created_at         DATETIME
+updated_at         DATETIME</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-section">
+                    <h3>🔍 Semantic Search Implementation</h3>
+                    <div class="tech-box">
+                        <p><strong>Semantic search</strong> goes beyond keyword matching to understand the meaning and context of queries.</p>
+                        
+                        <h4 style="margin-top: 20px; color: #818cf8;">How It Works:</h4>
+                        <ol class="tech-list" style="margin-left: 20px;">
+                            <li><strong>Vector Embeddings:</strong> Text is converted to high-dimensional vectors (768 dimensions)</li>
+                            <li><strong>Cosine Similarity:</strong> Measures "distance" between query and document vectors
+                                <ul>
+                                    <li>Score of 1.0 = identical meaning</li>
+                                    <li>Score of 0.0 = completely unrelated</li>
+                                </ul>
+                            </li>
+                            <li><strong>Top-K Retrieval:</strong> Returns most semantically similar chunks</li>
+                            <li><strong>Re-ranking:</strong> Results can be re-ranked by metadata (date, risk level, etc.)</li>
+                        </ol>
+
+                        <div class="code-example">
+                            <strong>Example:</strong>
+                            <p>Query: <em>"What are my payment obligations?"</em></p>
+                            <p>Retrieves chunks about:</p>
+                            <ul>
+                                <li>Payment terms</li>
+                                <li>Invoice schedules</li>
+                                <li>Late payment penalties</li>
+                                <li>Currency and amount specifications</li>
+                            </ul>
+                            <p style="margin-top: 10px;"><strong>Even if exact words differ!</strong> Semantic search understands "payment obligations" = "financial commitments" = "monetary responsibilities"</p>
+                        </div>
+
+                        <h4 style="margin-top: 20px; color: #818cf8;">Chunking Strategy:</h4>
+                        <ul class="tech-list">
+                            <li><strong>Chunk Size:</strong> 512-1024 tokens (approximately 1-3 paragraphs)</li>
+                            <li><strong>Overlap:</strong> 10-20% overlap between chunks to preserve context</li>
+                            <li><strong>Boundary Detection:</strong> Split at natural boundaries (paragraphs, sections)</li>
+                            <li><strong>Metadata Preservation:</strong> Each chunk tagged with contract_id, source, page number</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tech-section">
+                    <h3>🧠 Large Language Model (LLM)</h3>
+                    <div class="tech-box">
+                        <h4 style="color: #818cf8;">Google Gemini 1.5 Flash</h4>
+                        
+                        <p><strong>Why Gemini?</strong></p>
+                        <ul class="tech-list">
+                            <li><strong>High Performance:</strong> Fast inference for real-time responses</li>
+                            <li><strong>Large Context Window:</strong> 1M+ token context (entire contracts fit in memory)</li>
+                            <li><strong>Multimodal:</strong> Can process text, PDFs, and images</li>
+                            <li><strong>Cost-Effective:</strong> Optimized for production use at scale</li>
+                            <li><strong>Function Calling:</strong> Native support for structured data extraction</li>
+                        </ul>
+
+                        <h4 style="margin-top: 20px; color: #818cf8;">Use Cases in This System:</h4>
+                        <ol class="tech-list" style="margin-left: 20px;">
+                            <li><strong>Contract Analysis:</strong>
+                                <ul>
+                                    <li>Extract metadata (parties, dates, values)</li>
+                                    <li>Generate summaries</li>
+                                    <li>Identify key clauses</li>
+                                    <li>Assess risk levels</li>
+                                </ul>
+                            </li>
+                            <li><strong>RAG-Powered Q&A:</strong>
+                                <ul>
+                                    <li>Answer questions about contract terms</li>
+                                    <li>Compare multiple contracts</li>
+                                    <li>Identify obligations and deadlines</li>
+                                </ul>
+                            </li>
+                            <li><strong>Early Warning System:</strong>
+                                <ul>
+                                    <li>Detect expiring contracts</li>
+                                    <li>Flag high-risk terms</li>
+                                    <li>Identify compliance issues</li>
+                                </ul>
+                            </li>
+                        </ol>
+
+                        <div class="code-example">
+                            <strong>API Configuration:</strong>
+                            <pre>
+Model: gemini-1.5-flash-latest
+Temperature: 0.1 (for consistent analysis)
+Max Output Tokens: 8192
+Safety Settings: Balanced
+API: Google AI Studio / Vertex AI</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-section">
+                    <h3>🔐 Security & Best Practices</h3>
+                    <div class="tech-box">
+                        <ul class="tech-list">
+                            <li><strong>API Key Management:</strong> Environment variables, never committed to code</li>
+                            <li><strong>Input Validation:</strong> Pydantic schemas validate all API inputs</li>
+                            <li><strong>SQL Injection Protection:</strong> SQLAlchemy ORM parameterized queries</li>
+                            <li><strong>File Upload Security:</strong> File type validation, size limits</li>
+                            <li><strong>CORS Configuration:</strong> Controlled cross-origin resource sharing</li>
+                            <li><strong>Error Handling:</strong> Graceful degradation with user-friendly messages</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tech-section">
+                    <h3>🚀 Deployment Architecture</h3>
+                    <div class="tech-box">
+                        <ul class="tech-list">
+                            <li><strong>Development:</strong> Local server via <code>python main.py</code></li>
+                            <li><strong>Production Options:</strong>
+                                <ul>
+                                    <li>Uvicorn ASGI server (async-capable)</li>
+                                    <li>Gunicorn with Uvicorn workers</li>
+                                    <li>Docker containerization ready</li>
+                                    <li>Cloud deployment (Render, Railway, Google Cloud Run)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Static Files:</strong> Served via FastAPI's StaticFiles</li>
+                            <li><strong>Database:</strong> SQLite for single instance, PostgreSQL for scale</li>
+                        </ul>
+
+                        <div class="code-example">
+                            <strong>Production Command:</strong>
+                            <pre>uvicorn src.main:app --host 0.0.0.0 --port 8000 --workers 4</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-section">
+                    <h3>📦 Key Dependencies</h3>
+                    <div class="tech-box">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                            <div class="dependency-card">
+                                <strong>fastapi</strong>
+                                <p>Web framework</p>
+                            </div>
+                            <div class="dependency-card">
+                                <strong>uvicorn</strong>
+                                <p>ASGI server</p>
+                            </div>
+                            <div class="dependency-card">
+                                <strong>sqlalchemy</strong>
+                                <p>ORM & database toolkit</p>
+                            </div>
+                            <div class="dependency-card">
+                                <strong>aiosqlite</strong>
+                                <p>Async SQLite driver</p>
+                            </div>
+                            <div class="dependency-card">
+                                <strong>pydantic</strong>
+                                <p>Data validation</p>
+                            </div>
+                            <div class="dependency-card">
+                                <strong>google-generativeai</strong>
+                                <p>Gemini AI SDK</p>
+                            </div>
+                            <div class="dependency-card">
+                                <strong>python-multipart</strong>
+                                <p>File upload handling</p>
+                            </div>
+                            <div class="dependency-card">
+                                <strong>PyPDF2</strong>
+                                <p>PDF text extraction</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-section">
+                    <h3>🛠️ Development Workflow</h3>
+                    <div class="tech-box">
+                        <ol class="tech-list" style="margin-left: 20px;">
+                            <li><strong>Setup:</strong> <code>python -m venv venv && pip install -r requirements.txt</code></li>
+                            <li><strong>Configuration:</strong> Set <code>GEMINI_API_KEY</code> in environment</li>
+                            <li><strong>Run Server:</strong> <code>python main.py</code> or <code>uvicorn src.main:app --reload</code></li>
+                            <li><strong>Access:</strong> <code>http://localhost:8000</code></li>
+                            <li><strong>API Docs:</strong> <code>http://localhost:8000/docs</code> (Swagger UI)</li>
+                            <li><strong>Testing:</strong> Use built-in sample contracts or upload your own</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div style="padding: 20px; background: linear-gradient(135deg, #818cf8 0%, #a5b4fc 100%); color: white; border-radius: 12px; margin-top: 30px; text-align: center;">
+                    <h3 style="margin-bottom: 15px;">🎓 Built with Modern Best Practices</h3>
+                    <p style="line-height: 1.8;">
+                        This system demonstrates enterprise-grade architecture: async Python, RESTful APIs, 
+                        AI/ML integration, semantic search, and production-ready code structure. Perfect for 
+                        learning or adapting to your organization's needs.
+                    </p>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="close-tech-modal-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/static/app.js"></script>
+</body>
+</html>

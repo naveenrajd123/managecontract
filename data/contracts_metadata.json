@@ -1,0 +1,102 @@
+[
+  {
+    "filename": "data/contracts/CNT-2024-001.txt",
+    "contract_number": "CNT-2024-001",
+    "type": "Master Service Agreement",
+    "status": "active",
+    "risk": "medium",
+    "value": 25000,
+    "start": "2024-06-08",
+    "end": "2027-09-08"
+  },
+  {
+    "filename": "data/contracts/CNT-2024-002.txt",
+    "contract_number": "CNT-2024-002",
+    "type": "Cloud Services Agreement",
+    "status": "active",
+    "risk": "medium",
+    "value": 200000,
+    "start": "2025-04-07",
+    "end": "2026-08-05"
+  },
+  {
+    "filename": "data/contracts/CNT-2024-003.txt",
+    "contract_number": "CNT-2024-003",
+    "type": "Master Service Agreement",
+    "status": "terminated",
+    "risk": "critical",
+    "value": 75000,
+    "start": "2025-04-21",
+    "end": "2025-12-24"
+  },
+  {
+    "filename": "data/contracts/CNT-2024-004.txt",
+    "contract_number": "CNT-2024-004",
+    "type": "Equipment Lease Agreement",
+    "status": "expired",
+    "risk": "high",
+    "value": 50000,
+    "start": "2024-02-26",
+    "end": "2025-10-21"
+  },
+  {
+    "filename": "data/contracts/CNT-2024-005.txt",
+    "contract_number": "CNT-2024-005",
+    "type": "Software License Agreement",
+    "status": "active",
+    "risk": "medium",
+    "value": 200000,
+    "start": "2024-11-22",
+    "end": "2026-12-13"
+  },
+  {
+    "filename": "data/contracts/CNT-2024-006.txt",
+    "contract_number": "CNT-2024-006",
+    "type": "Professional Services Agreement",
+    "status": "active",
+    "risk": "high",
+    "value": 75000,
+    "start": "2024-10-06",
+    "end": "2026-08-03"
+  },
+  {
+    "filename": "data/contracts/CNT-2024-007.txt",
+    "contract_number": "CNT-2024-007",
+    "type": "Master Service Agreement",
+    "status": "active",
+    "risk": "high",
+    "value": 75000,
+    "start": "2024-09-30",
+    "end": "2026-03-04"
+  },
+  {
+    "filename": "data/contracts/CNT-2024-008.txt",
+    "contract_number": "CNT-2024-008",
+    "type": "Cloud Services Agreement",
+    "status": "terminated",
+    "risk": "critical",
+    "value": 125000,
+    "start": "2025-02-19",
+    "end": "2025-12-31"
+  },
+  {
+    "filename": "data/contracts/CNT-2024-009.txt",
+    "contract_number": "CNT-2024-009",
+    "type": "IT Support Agreement",
+    "status": "terminated",
+    "risk": "critical",
+    "value": 25000,
+    "start": "2025-04-30",
+    "end": "2025-12-25"
+  },
+  {
+    "filename": "data/contracts/CNT-2024-010.txt",
+    "contract_number": "CNT-2024-010",
+    "type": "Partnership Agreement",
+    "status": "terminated",
+    "risk": "critical",
+    "value": 10000,
+    "start": "2025-03-06",
+    "end": "2026-01-02"
+  }
+]

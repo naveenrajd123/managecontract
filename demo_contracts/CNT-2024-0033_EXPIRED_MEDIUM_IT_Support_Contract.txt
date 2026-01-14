@@ -1,0 +1,165 @@
+
+CONTRACT AGREEMENT
+IT SUPPORT CONTRACT
+
+Contract Number: CNT-2024-0033
+Date of Agreement: February 05, 2023
+
+PARTIES TO THE AGREEMENT:
+
+Party A (The Company): Acme Corporation
+Address: 123 Business Street, Tech City, TC 12345
+Email: contracts@acmecorporation.com
+
+Party B (The Vendor/Client): FinanceFirst Bank
+Address: 456 Commerce Avenue, Business District, BD 67890
+Email: legal@financefirstbank.com
+
+WHEREAS, the parties wish to enter into this IT Support Contract under the following terms and conditions:
+
+1. SCOPE OF SERVICES
+   FinanceFirst Bank shall provide it support contract services to Acme Corporation as detailed in Appendix A.
+   This includes but is not limited to professional consultation, implementation, maintenance, and support services.
+
+2. CONTRACT TERM
+   Start Date: February 05, 2023
+   End Date: October 21, 2025
+   Contract Duration: 989 days
+   
+   Status: EXPIRED
+   Risk Classification: MEDIUM
+
+3. FINANCIAL TERMS
+   Total Contract Value: $203,349 USD
+   Payment Terms: Monthly, Net 30 days
+   Currency: United States Dollars (USD)
+   
+   Payment Schedule:
+   - Initial Payment: 34% upon contract signing
+   - Milestone Payments: 44% upon completion of deliverables
+   - Final Payment: 13% upon project acceptance
+
+4. PAYMENT OBLIGATIONS
+   All payments shall be made via wire transfer to the account specified by FinanceFirst Bank.
+   Late payments will incur a penalty of 2% per month.
+   Invoice disputes must be raised within 15 business days.
+
+5. SERVICE LEVEL AGREEMENT (SLA)
+   99.5% uptime, business hours support, next business day response
+   
+   Penalties for SLA Breaches:
+   - Each breach: $21,435 or 5% of monthly fees, whichever is greater
+   - Repeated breaches may result in contract termination
+
+6. KEY DATES AND MILESTONES
+   - Contract Effective Date: February 05, 2023
+   - First Milestone: March 07, 2023
+   - Mid-Point Review: June 13, 2024
+   - Final Deliverable: September 21, 2025
+   - Contract Expiration: October 21, 2025
+
+7. TERMINATION CLAUSES
+   Either party may terminate this agreement under the following conditions:
+   
+   a) Termination for Convenience:
+      - 77 days written notice required
+      - Termination fee: 20% of remaining contract value
+   
+   b) Termination for Cause:
+      - Immediate termination upon material breach
+      - 30 days to cure breach after written notice
+      - No termination fee if other party is at fault
+   
+   c) Force Majeure:
+      - Contract may be suspended during uncontrollable events
+      - Extension of deadlines without penalties
+
+8. LIABILITY AND INDEMNIFICATION
+   Total Liability Cap: $406,698 USD
+   
+   FinanceFirst Bank agrees to indemnify and hold harmless Acme Corporation from:
+   - Third-party claims arising from services provided
+   - Intellectual property infringement claims
+   - Data breaches or security incidents
+   - Negligence or willful misconduct
+   
+   Exclusions:
+   - Indirect, consequential, or punitive damages
+   - Loss of profits or business opportunities
+   - Claims arising from Acme Corporation's actions or instructions
+
+9. INTELLECTUAL PROPERTY RIGHTS
+   - All work product becomes property of Acme Corporation
+   - FinanceFirst Bank retains rights to pre-existing materials and tools
+   - Limited license granted for use of proprietary methodologies
+   - Confidentiality obligations survive contract termination
+
+10. CONFIDENTIALITY
+    Both parties agree to maintain confidentiality of:
+    - Proprietary business information
+    - Technical specifications and trade secrets
+    - Financial information and pricing
+    - Customer data and business strategies
+    
+    Confidentiality period: 3 years post-termination
+
+11. INSURANCE REQUIREMENTS
+    FinanceFirst Bank must maintain the following insurance:
+    - General Liability: $4M minimum
+    - Professional Liability: $3M minimum
+    - Cyber Liability: $984991 minimum
+    - Workers Compensation: As required by law
+
+12. COMPLIANCE AND REGULATORY
+    Both parties shall comply with:
+    - All applicable federal, state, and local laws
+    - Industry-specific regulations (GDPR, HIPAA, SOC 2, etc.)
+    - Data protection and privacy requirements
+    - Export control and sanctions regulations
+
+13. DISPUTE RESOLUTION
+    - Initial negotiation period: 15 days
+    - Mediation: If negotiation fails
+    - Binding Arbitration: Final resolution method
+    - Venue: California
+
+14. AMENDMENT AND MODIFICATION
+    This contract may only be modified by written agreement signed by both parties.
+    Change requests must be submitted in writing with 20 days notice.
+
+15. GOVERNING LAW
+    This agreement shall be governed by the laws of the State of New York,
+    without regard to its conflict of law provisions.
+
+16. ENTIRE AGREEMENT
+    This contract represents the entire agreement between the parties and supersedes
+    all prior negotiations, representations, or agreements, whether written or oral.
+
+SIGNATURES:
+
+For Acme Corporation:
+_________________________________
+Name: Michael Chen
+Title: CEO
+Date: February 05, 2023
+
+For FinanceFirst Bank:
+_________________________________
+Name: Lisa Martinez
+Title: Legal Director
+Date: February 05, 2023
+
+--- END OF CONTRACT ---
+
+APPENDIX A: DETAILED SCOPE OF WORK
+[Detailed technical specifications and deliverables would be listed here]
+
+APPENDIX B: PRICING SCHEDULE
+[Detailed breakdown of costs and payment milestones would be listed here]
+
+APPENDIX C: SERVICE LEVEL AGREEMENT (SLA) METRICS
+[Specific performance metrics and measurement criteria would be listed here]
+
+Contract Status: EXPIRED
+Risk Level: MEDIUM
+Generated for demo purposes.
