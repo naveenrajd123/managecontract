@@ -398,25 +398,46 @@ class ContractRAGSystem:
             response = self.model.generate_content(prompt)
             result_text = response.text.strip()
             
-            print(f"[DEBUG] AI Response: {result_text[:200]}...")  # Debug output
+            print(f"[DEBUG] AI Response (first 300 chars): {result_text[:300]}")
             
             # Extract JSON from response (handle various formats)
             import json
             import re
             
-            # Remove markdown code blocks if present
+            # Strategy 1: Remove markdown code blocks if present
             if "```json" in result_text:
                 result_text = result_text.split("```json")[1].split("```")[0].strip()
+                print("[DEBUG] Extracted from ```json block")
             elif "```" in result_text:
-                result_text = result_text.split("```")[1].split("```")[0].strip()
+                parts = result_text.split("```")
+                if len(parts) >= 3:
+                    result_text = parts[1].strip()
+                    print("[DEBUG] Extracted from ``` block")
             
-            # Try to find JSON object using regex
-            json_match = re.search(r'\{[^{}]*(?:\{[^{}]*\}[^{}]*)*\}', result_text, re.DOTALL)
-            if json_match:
-                result_text = json_match.group(0)
+            # Strategy 2: Find JSON by looking for outermost braces
+            # This handles nested objects properly
+            brace_start = result_text.find('{')
+            if brace_start != -1:
+                # Find matching closing brace
+                brace_count = 0
+                brace_end = -1
+                for i in range(brace_start, len(result_text)):
+                    if result_text[i] == '{':
+                        brace_count += 1
+                    elif result_text[i] == '}':
+                        brace_count -= 1
+                        if brace_count == 0:
+                            brace_end = i + 1
+                            break
+                
+                if brace_end != -1:
+                    result_text = result_text[brace_start:brace_end]
+                    print(f"[DEBUG] Extracted JSON by brace matching: {len(result_text)} chars")
             
             # Clean up the text
             result_text = result_text.strip()
+            
+            print(f"[DEBUG] Final JSON to parse (first 200 chars): {result_text[:200]}")
             
             # Parse JSON
             metadata = json.loads(result_text)
