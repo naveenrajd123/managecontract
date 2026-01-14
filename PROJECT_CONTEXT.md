@@ -23,11 +23,12 @@
 
 ### **Google Gemini API Key (Already Configured)**
 ```
-GEMINI_API_KEY=AIzaSyDho9Yrd0Xd7sAQ06zvnHZSJ8F8zIvwz3U
+GEMINI_API_KEY=your_api_key_here
 ```
-- Located in: `.env` file
-- Status: Active and working
+- Located in: `.env` file (gitignored - not in repository)
+- Status: Configured in environment variables
 - Free tier: 60 requests/minute
+- **⚠️ NEVER commit API keys to GitHub!**
 
 ### **Project Location**
 ```
