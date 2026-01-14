@@ -1793,6 +1793,175 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ============================================================================
+// DELETE CONTRACTS MODAL
+// ============================================================================
+async function openDeleteModal() {
+    const modal = document.getElementById('deleteContractsModal');
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // Fetch all contracts
+    try {
+        const response = await fetch(`${API_BASE}/api/contracts?limit=1000`);
+        const contracts = await response.json();
+        
+        // Sort contracts by number
+        contracts.sort((a, b) => {
+            const numA = a.contract_number || '';
+            const numB = b.contract_number || '';
+            return numA.localeCompare(numB);
+        });
+        
+        // Populate list
+        const listContainer = document.getElementById('contractDeleteList');
+        
+        if (contracts.length === 0) {
+            listContainer.innerHTML = '<div class="no-contracts-message">No contracts available to delete.</div>';
+            return;
+        }
+        
+        listContainer.innerHTML = contracts.map(contract => {
+            const riskClass = (contract.risk_level || 'low').toLowerCase();
+            const statusBadge = getStatusBadge(contract.status || 'active');
+            
+            return `
+                <div class="contract-delete-item">
+                    <label>
+                        <input type="checkbox" 
+                               class="contract-checkbox" 
+                               value="${contract.id}"
+                               onchange="updateSelectedCount()">
+                        <span class="contract-info">
+                            <strong>${contract.contract_number || 'N/A'}</strong> - 
+                            ${contract.contract_name || 'Untitled'} 
+                            <span class="risk-badge risk-${riskClass}">${contract.risk_level || 'LOW'}</span>
+                            ${statusBadge}
+                        </span>
+                    </label>
+                </div>
+            `;
+        }).join('');
+        
+        updateSelectedCount();
+    } catch (error) {
+        console.error('Error loading contracts for deletion:', error);
+        document.getElementById('contractDeleteList').innerHTML = 
+            '<div class="error-message">Failed to load contracts. Please try again.</div>';
+    }
+}
+
+function closeDeleteModal() {
+    const modal = document.getElementById('deleteContractsModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+    
+    // Clear selections
+    document.getElementById('selectAllContracts').checked = false;
+    document.querySelectorAll('.contract-checkbox').forEach(cb => cb.checked = false);
+    updateSelectedCount();
+}
+
+function toggleSelectAll() {
+    const selectAll = document.getElementById('selectAllContracts');
+    const checkboxes = document.querySelectorAll('.contract-checkbox');
+    
+    checkboxes.forEach(checkbox => {
+        checkbox.checked = selectAll.checked;
+    });
+    
+    updateSelectedCount();
+}
+
+function updateSelectedCount() {
+    const checked = document.querySelectorAll('.contract-checkbox:checked');
+    const count = checked.length;
+    
+    document.getElementById('selectedCount').textContent = count;
+    document.getElementById('deleteCount').textContent = count;
+    document.getElementById('deleteBtn').disabled = count === 0;
+}
+
+async function deleteSelectedContracts() {
+    const checked = document.querySelectorAll('.contract-checkbox:checked');
+    const contractIds = Array.from(checked).map(cb => parseInt(cb.value));
+    
+    if (contractIds.length === 0) {
+        return;
+    }
+    
+    // Confirmation with contract count
+    const contractWord = contractIds.length === 1 ? 'contract' : 'contracts';
+    const confirmed = confirm(
+        `⚠️ Are you sure you want to delete ${contractIds.length} ${contractWord}?\n\nThis action cannot be undone.`
+    );
+    
+    if (!confirmed) return;
+    
+    // Show progress
+    const deleteBtn = document.getElementById('deleteBtn');
+    const originalText = deleteBtn.innerHTML;
+    deleteBtn.disabled = true;
+    deleteBtn.innerHTML = '🔄 Deleting...';
+    
+    // Delete contracts one by one
+    let deletedCount = 0;
+    let failedCount = 0;
+    
+    for (const id of contractIds) {
+        try {
+            const response = await fetch(`${API_BASE}/api/contracts/${id}`, {
+                method: 'DELETE'
+            });
+            
+            if (response.ok) {
+                deletedCount++;
+                // Update progress
+                deleteBtn.innerHTML = `🔄 Deleting... (${deletedCount}/${contractIds.length})`;
+            } else {
+                failedCount++;
+                console.error(`Failed to delete contract ${id}: ${response.statusText}`);
+            }
+        } catch (error) {
+            failedCount++;
+            console.error(`Error deleting contract ${id}:`, error);
+        }
+    }
+    
+    // Show result
+    if (failedCount === 0) {
+        alert(`✅ Successfully deleted ${deletedCount} ${contractIds.length === 1 ? 'contract' : 'contracts'}!`);
+    } else {
+        alert(
+            `Deletion completed:\n` +
+            `✅ Deleted: ${deletedCount}\n` +
+            `❌ Failed: ${failedCount}\n\n` +
+            `Check console for details.`
+        );
+    }
+    
+    // Restore button
+    deleteBtn.innerHTML = originalText;
+    
+    // Close modal and refresh
+    closeDeleteModal();
+    loadContracts();
+    loadDashboardStats();
+}
+
+// Helper function to get status badge HTML
+function getStatusBadge(status) {
+    const statusClass = status.toLowerCase();
+    return `<span class="status-badge status-${statusClass}">${status}</span>`;
+}
+
+// Close delete modal when clicking outside
+document.getElementById('deleteContractsModal')?.addEventListener('click', (e) => {
+    if (e.target.id === 'deleteContractsModal') {
+        closeDeleteModal();
+    }
+});
+
+// ============================================================================
 // INITIALIZATION
 // ============================================================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -1800,6 +1969,12 @@ document.addEventListener('DOMContentLoaded', () => {
     loadContracts();
     loadContractsForSelect();  // Load contracts for the Ask AI dropdown on page load
     setupStatCardClickHandlers();
+    
+    // Setup delete contracts button
+    const deleteBtn = document.getElementById('deleteContractsBtn');
+    if (deleteBtn) {
+        deleteBtn.addEventListener('click', openDeleteModal);
+    }
     
     // Refresh critical count every 60 seconds
     setInterval(() => {

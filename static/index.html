@@ -98,6 +98,7 @@
                 <button class="tab-btn" data-tab="contracts">📋 All Contracts</button>
                 <button class="tab-btn" data-tab="upload">⬆️ Upload Contract</button>
                 <button class="tab-btn" data-tab="ask">🤖 Ask AI</button>
+                <button class="tab-btn tab-btn-delete" id="deleteContractsBtn">🗑️ Delete Contracts</button>
             </div>
 
             <!-- Tab Content: All Contracts -->
@@ -958,6 +959,43 @@ API: Google AI Studio / Vertex AI</pre>
             </div>
             <div class="modal-footer">
                 <button class="btn-secondary" id="close-tech-modal-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Contracts Modal -->
+    <div id="deleteContractsModal" class="modal">
+        <div class="modal-content" style="max-width: 700px;">
+            <div class="modal-header">
+                <h2>🗑️ Delete Contracts</h2>
+                <span class="modal-close" onclick="closeDeleteModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="delete-modal-info">
+                    <p>⚠️ Select contracts to delete. <strong>This action cannot be undone.</strong></p>
+                </div>
+                
+                <div class="select-all-container">
+                    <label>
+                        <input type="checkbox" id="selectAllContracts" onchange="toggleSelectAll()">
+                        <strong>Select All</strong>
+                    </label>
+                </div>
+                
+                <div id="contractDeleteList" class="contract-delete-list">
+                    <!-- Populated dynamically -->
+                    <div class="loading-message">Loading contracts...</div>
+                </div>
+                
+                <div class="selected-count">
+                    Selected: <span id="selectedCount">0</span> contract(s)
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeDeleteModal()">Cancel</button>
+                <button class="btn-danger" onclick="deleteSelectedContracts()" id="deleteBtn" disabled>
+                    Delete Selected (<span id="deleteCount">0</span>)
+                </button>
             </div>
         </div>
     </div>
