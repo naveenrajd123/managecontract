@@ -728,6 +728,14 @@ class ContractRAGSystem:
         
         response = self.model.generate_content(prompt)
         return response.text
+    
+    def clear_all(self):
+        """
+        Clear all contracts from the RAG storage.
+        Used when resetting the database.
+        """
+        self.contracts_storage.clear()
+        print(f"[INFO] Cleared all contracts from RAG storage")
 
 
 # Create a global instance

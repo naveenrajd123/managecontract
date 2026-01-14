@@ -137,6 +137,7 @@ async def get_contracts(
     skip: int = 0,
     limit: int = 100,
     status: Optional[str] = None,
+    risk_level: Optional[str] = None,
     db: AsyncSession = Depends(get_db)
 ):
     """
@@ -146,11 +147,16 @@ async def get_contracts(
     - skip: Number of records to skip (pagination)
     - limit: Maximum number of records to return
     - status: Filter by status (active, expired, etc.)
+    - risk_level: Filter by risk level (low, medium, high, critical)
     """
     query = select(Contract)
     
     if status:
         query = query.where(Contract.status == status)
+    
+    if risk_level:
+        # Case-insensitive risk level filtering
+        query = query.where(func.lower(Contract.risk_level) == risk_level.lower())
     
     query = query.offset(skip).limit(limit).order_by(Contract.created_at.desc())
     
@@ -228,6 +234,42 @@ async def delete_contract(
     await db.commit()
     
     return {"message": "Contract deleted successfully"}
+
+
+@app.delete("/api/contracts/admin/clear-all")
+async def clear_all_contracts(
+    confirm: str = None,
+    db: AsyncSession = Depends(get_db)
+):
+    """
+    ADMIN ENDPOINT: Clear all contracts from the database.
+    Requires confirmation parameter: ?confirm=yes-delete-all
+    """
+    if confirm != "yes-delete-all":
+        raise HTTPException(
+            status_code=400, 
+            detail="Confirmation required. Add query parameter: ?confirm=yes-delete-all"
+        )
+    
+    from sqlalchemy import delete
+    
+    try:
+        result = await db.execute(delete(Contract))
+        await db.commit()
+        
+        deleted_count = result.rowcount
+        
+        # Clear RAG system
+        rag_system.clear_all()
+        
+        return {
+            "message": "All contracts cleared successfully",
+            "deleted_count": deleted_count,
+            "timestamp": datetime.utcnow().isoformat()
+        }
+    except Exception as e:
+        await db.rollback()
+        raise HTTPException(status_code=500, detail=f"Failed to clear database: {str(e)}")
 
 
 @app.post("/api/contracts/{contract_id}/reanalyze")
@@ -724,9 +766,11 @@ async def get_dashboard_stats(db: AsyncSession = Depends(get_db)):
     )
     active_contracts = active_result.scalar()
     
-    # Expired contracts
+    # Expired contracts (by date comparison, not status field)
+    from datetime import datetime
+    current_date = datetime.utcnow()
     expired_result = await db.execute(
-        select(func.count(Contract.id)).where(Contract.status == "expired")
+        select(func.count(Contract.id)).where(Contract.end_date < current_date)
     )
     expired_contracts = expired_result.scalar()
     
