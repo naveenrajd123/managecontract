@@ -1,0 +1,88 @@
+================================================================================
+DEMO CONTRACTS - QUICK REFERENCE GUIDE
+================================================================================
+
+Total Contracts: 116
+Generated: January 14, 2026 at 01:59 AM
+
+--------------------------------------------------------------------------------
+RECOMMENDED TEST SCENARIOS
+--------------------------------------------------------------------------------
+
+1. LOW RISK CONTRACT (No major compliance)
+   File: CNT-2024-0001_ACTIVE_LOW_Equipment_Rental_Agreement.txt
+   Value: $10,510
+   Expected AI Assessment: LOW
+
+2. MEDIUM RISK CONTRACT (Standard compliance)
+   File: CNT-2024-0009_ACTIVE_MEDIUM_Construction_Contract.txt
+   Value: $56,459
+   Expected AI Assessment: MEDIUM
+
+3. HIGH RISK CONTRACT (GDPR + PCI-DSS)
+   File: CNT-2024-0019_ACTIVE_HIGH_Subscription_Agreement.txt
+   Value: $140,710
+   Compliance: GDPR, PCI-DSS, SOC 2
+   Expected AI Assessment: HIGH
+
+4. CRITICAL RISK CONTRACT (HIPAA + FDA + SOX)
+   File: CNT-2024-0025_ACTIVE_CRITICAL_Equipment_Rental_Agreement.txt
+   Value: $644,182
+   Compliance: HIPAA, GDPR, PCI-DSS, FDA, SOX
+   Expected AI Assessment: CRITICAL
+
+--------------------------------------------------------------------------------
+CONTRACT STATUS EXAMPLES
+--------------------------------------------------------------------------------
+
+
+ACTIVE Contracts (38 total):
+  - CNT-2024-0001: Equipment Rental Agreement (LOW)
+  - CNT-2024-0001: Vendor Agreement (LOW)
+  - CNT-2024-0002: Distribution Agreement (LOW)
+
+EXPIRED Contracts (20 total):
+  - CNT-2024-0028: Software Licensing Agreement (LOW)
+  - CNT-2024-0029: Partnership Agreement (LOW)
+  - CNT-2024-0030: Distribution Agreement (LOW)
+
+RENEWED Contracts (18 total):
+  - CNT-2024-0038: Distribution Agreement (LOW)
+  - CNT-2024-0039: Development Agreement (LOW)
+  - CNT-2024-0040: Construction Contract (MEDIUM)
+
+PENDING Contracts (20 total):
+  - CNT-2024-0046: Software Licensing Agreement (LOW)
+  - CNT-2024-0047: Logistics Contract (LOW)
+  - CNT-2024-0048: Maintenance Contract (LOW)
+
+WARNING Contracts (20 total):
+  - CNT-2024-0056: Service Level Agreement (LOW)
+  - CNT-2024-0057: Development Agreement (LOW)
+  - CNT-2024-0058: Vendor Agreement (MEDIUM)
+
+--------------------------------------------------------------------------------
+COMPLIANCE FACTORS BY RISK LEVEL
+--------------------------------------------------------------------------------
+
+LOW RISK:
+  - Standard business regulations
+  - No major compliance requirements
+
+MEDIUM RISK:
+  - Standard data protection practices
+  - Industry best practices
+
+HIGH RISK:
+  - GDPR compliance required
+  - PCI-DSS Level 1
+  - SOC 2 Type II certification
+
+CRITICAL RISK:
+  - HIPAA/PHI handling
+  - FDA regulations
+  - SOX financial reporting
+  - Export controls (ITAR/EAR)
+  - Critical infrastructure protection
+
+================================================================================

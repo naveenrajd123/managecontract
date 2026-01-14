@@ -491,19 +491,73 @@ class ContractRAGSystem:
         
         prompt = f"""
         You are a risk assessment specialist for legal contracts.
-        Analyze this contract and identify potential risks.
+        Analyze this contract using a BALANCED approach: financial factors + compliance risks.
         
-        Assess:
-        1. Financial risks (penalties, payment terms, contract value)
-        2. Compliance risks (regulatory obligations)
-        3. Operational risks (delivery timelines, SLA failures)
-        4. Legal risks (ambiguous terms, termination conditions)
+        STEP 1 - DETERMINE BASE RISK (Financial Thresholds):
+        
+        LOW RISK (Base):
+        - Contract Value: Under $25,000
+        - SLA Penalties: Under $500 per breach
+        - Termination Fee: Under 10%
+        - Liability Cap: 2-3x contract value
+        
+        MEDIUM RISK (Base):
+        - Contract Value: $25,000 - $100,000
+        - SLA Penalties: $500 - $2,000 per breach
+        - Termination Fee: 10-20%
+        - Liability Cap: 3-4x contract value
+        
+        HIGH RISK (Base):
+        - Contract Value: $100,000 - $500,000
+        - SLA Penalties: $2,000 - $10,000 per breach
+        - Termination Fee: 20-30%
+        - Liability Cap: 4-5x contract value
+        
+        CRITICAL RISK (Base):
+        - Contract Value: Over $500,000
+        - SLA Penalties: Over $10,000 per breach
+        - Termination Fee: Over 30%
+        - Liability Cap: Over 5x contract value
+        
+        STEP 2 - CHECK FOR RISK ESCALATORS (Each adds +1 risk level):
+        
+        Regulatory & Compliance:
+        - GDPR, CCPA, or personal data handling
+        - HIPAA or protected health information
+        - PCI-DSS or payment card data
+        - SOX, GLBA, or financial regulations
+        - FDA, medical device regulations
+        - Export controls, ITAR
+        
+        Data & Security:
+        - Handles sensitive personal data (SSN, financial, medical)
+        - Critical infrastructure or national security
+        - Significant data breach liability
+        - Intellectual property disputes with major consequences
+        
+        Operational:
+        - Mission-critical systems with high downtime costs
+        - Life safety or public health implications
+        - Environmental compliance with severe penalties
+        - Reputation risks with existential business impact
+        
+        STEP 3 - CALCULATE FINAL RISK:
+        1. Determine base risk from financial factors
+        2. Count number of risk escalators present (0-3+)
+        3. Add +1 risk level for each significant escalator
+        4. Cap at CRITICAL
+        
+        Example:
+        - Base: $20K contract = LOW
+        - Escalator: +GDPR compliance = +1 level
+        - Escalator: +Handles medical data = +1 level
+        - Final: HIGH risk
         
         Provide your response in this EXACT format:
         
         RISK LEVEL: [LOW/MEDIUM/HIGH/CRITICAL]
         
-        PRIMARY REASON: [One sentence explaining the main reason for this risk level - focus on the most significant risk factor]
+        PRIMARY REASON: [One sentence: mention base financial risk + any escalators that increased it]
         
         KEY RISKS:
         - [Risk 1]

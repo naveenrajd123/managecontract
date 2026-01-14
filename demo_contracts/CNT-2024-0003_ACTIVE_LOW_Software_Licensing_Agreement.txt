@@ -3,71 +3,71 @@ CONTRACT AGREEMENT
 SOFTWARE LICENSING AGREEMENT
 
 Contract Number: CNT-2024-0003
-Date of Agreement: February 12, 2024
+Date of Agreement: March 14, 2025
 
 PARTIES TO THE AGREEMENT:
 
-Party A (The Company): TechCorp Solutions
-Address: 123 Business Street, Tech City, TC 12345
-Email: contracts@techcorpsolutions.com
+Party A (The Company): NexGen Technologies
+Address: 654 Future Avenue, Tech Hub, TH 77777
+Email: contracts@nexgentechnologies.com
 
-Party B (The Vendor/Client): AutoParts Warehouse
+Party B (The Vendor/Client): BuildPro Construction
 Address: 456 Commerce Avenue, Business District, BD 67890
-Email: legal@autopartswarehouse.com
+Email: legal@buildproconstruction.com
 
 WHEREAS, the parties wish to enter into this Software Licensing Agreement under the following terms and conditions:
 
 1. SCOPE OF SERVICES
-   AutoParts Warehouse shall provide software licensing agreement services to TechCorp Solutions as detailed in Appendix A.
+   BuildPro Construction shall provide software licensing agreement services to NexGen Technologies as detailed in Appendix A.
    This includes but is not limited to professional consultation, implementation, maintenance, and support services.
 
 2. CONTRACT TERM
-   Start Date: February 12, 2024
-   End Date: February 22, 2027
-   Contract Duration: 1106 days
+   Start Date: March 14, 2025
+   End Date: February 24, 2028
+   Contract Duration: 1077 days
    
    Status: ACTIVE
    Risk Classification: LOW
 
 3. FINANCIAL TERMS
-   Total Contract Value: $18,092 USD
+   Total Contract Value: $19,126 USD
    Payment Terms: Upon receipt
    Currency: United States Dollars (USD)
    
    Payment Schedule:
-   - Initial Payment: 32% upon contract signing
-   - Milestone Payments: 45% upon completion of deliverables
-   - Final Payment: 11% upon project acceptance
+   - Initial Payment: 31% upon contract signing
+   - Milestone Payments: 49% upon completion of deliverables
+   - Final Payment: 34% upon project acceptance
 
 4. PAYMENT OBLIGATIONS
-   All payments shall be made via wire transfer to the account specified by AutoParts Warehouse.
-   Late payments will incur a penalty of 3% per month.
-   Invoice disputes must be raised within 8 business days.
+   All payments shall be made via wire transfer to the account specified by BuildPro Construction.
+   Late payments will incur a penalty of 2% per month.
+   Invoice disputes must be raised within 21 business days.
 
 5. SERVICE LEVEL AGREEMENT (SLA)
    Best effort, email support only
    
    Penalties for SLA Breaches:
-   - Each breach: $3,171 or 11% of monthly fees, whichever is greater
+   - Each breach: $284 or 1.5% of monthly fees, whichever is greater
    - Repeated breaches may result in contract termination
 
 6. KEY DATES AND MILESTONES
-   - Contract Effective Date: February 12, 2024
-   - First Milestone: March 13, 2024
-   - Mid-Point Review: August 18, 2025
-   - Final Deliverable: January 23, 2027
-   - Contract Expiration: February 22, 2027
+   - Contract Effective Date: March 14, 2025
+   - First Milestone: April 13, 2025
+   - Mid-Point Review: September 03, 2026
+   - Final Deliverable: January 25, 2028
+   - Contract Expiration: February 24, 2028
 
 7. TERMINATION CLAUSES
    Either party may terminate this agreement under the following conditions:
    
    a) Termination for Convenience:
-      - 57 days written notice required
-      - Termination fee: 26% of remaining contract value
+      - 31 days written notice required
+      - Termination fee: 6% of remaining contract value
    
    b) Termination for Cause:
       - Immediate termination upon material breach
-      - 24 days to cure breach after written notice
+      - 11 days to cure breach after written notice
       - No termination fee if other party is at fault
    
    c) Force Majeure:
@@ -75,9 +75,9 @@ WHEREAS, the parties wish to enter into this Software Licensing Agreement under 
       - Extension of deadlines without penalties
 
 8. LIABILITY AND INDEMNIFICATION
-   Total Liability Cap: $90,460 USD
+   Total Liability Cap: $41,183 USD
    
-   AutoParts Warehouse agrees to indemnify and hold harmless TechCorp Solutions from:
+   BuildPro Construction agrees to indemnify and hold harmless NexGen Technologies from:
    - Third-party claims arising from services provided
    - Intellectual property infringement claims
    - Data breaches or security incidents
@@ -86,11 +86,11 @@ WHEREAS, the parties wish to enter into this Software Licensing Agreement under 
    Exclusions:
    - Indirect, consequential, or punitive damages
    - Loss of profits or business opportunities
-   - Claims arising from TechCorp Solutions's actions or instructions
+   - Claims arising from NexGen Technologies's actions or instructions
 
 9. INTELLECTUAL PROPERTY RIGHTS
-   - All work product becomes property of TechCorp Solutions
-   - AutoParts Warehouse retains rights to pre-existing materials and tools
+   - All work product becomes property of NexGen Technologies
+   - BuildPro Construction retains rights to pre-existing materials and tools
    - Limited license granted for use of proprietary methodologies
    - Confidentiality obligations survive contract termination
 
@@ -101,31 +101,33 @@ WHEREAS, the parties wish to enter into this Software Licensing Agreement under 
     - Financial information and pricing
     - Customer data and business strategies
     
-    Confidentiality period: 4 years post-termination
+    Confidentiality period: 1 years post-termination
 
 11. INSURANCE REQUIREMENTS
-    AutoParts Warehouse must maintain the following insurance:
-    - General Liability: $5M minimum
-    - Professional Liability: $3M minimum
-    - Cyber Liability: $1707784 minimum
+    BuildPro Construction must maintain the following insurance:
+    - General Liability: $1M minimum
+    - Professional Liability: $500K minimum
+    - Cyber Liability: $221,425 minimum
     - Workers Compensation: As required by law
+
 
 12. COMPLIANCE AND REGULATORY
     Both parties shall comply with:
     - All applicable federal, state, and local laws
-    - Industry-specific regulations (GDPR, HIPAA, SOC 2, etc.)
-    - Data protection and privacy requirements
-    - Export control and sanctions regulations
+    - General business regulations
+    - Standard data protection practices
+    - Anti-corruption and ethics policies
+    
 
 13. DISPUTE RESOLUTION
-    - Initial negotiation period: 20 days
+    - Initial negotiation period: 12 days
     - Mediation: If negotiation fails
     - Binding Arbitration: Final resolution method
-    - Venue: Delaware
+    - Venue: California
 
 14. AMENDMENT AND MODIFICATION
     This contract may only be modified by written agreement signed by both parties.
-    Change requests must be submitted in writing with 26 days notice.
+    Change requests must be submitted in writing with 14 days notice.
 
 15. GOVERNING LAW
     This agreement shall be governed by the laws of the State of Delaware,
@@ -137,17 +139,17 @@ WHEREAS, the parties wish to enter into this Software Licensing Agreement under 
 
 SIGNATURES:
 
-For TechCorp Solutions:
+For NexGen Technologies:
 _________________________________
-Name: John Smith
-Title: General Counsel
-Date: February 12, 2024
+Name: Michael Chen
+Title: Director of Procurement
+Date: March 14, 2025
 
-For AutoParts Warehouse:
+For BuildPro Construction:
 _________________________________
-Name: Lisa Martinez
-Title: Managing Director
-Date: February 12, 2024
+Name: Maria Garcia
+Title: Chief Executive Officer
+Date: March 14, 2025
 
 --- END OF CONTRACT ---
 
@@ -162,4 +164,4 @@ APPENDIX C: SERVICE LEVEL AGREEMENT (SLA) METRICS
 
 Contract Status: ACTIVE
 Risk Level: LOW
-Generated for demo purposes.
+Generated for demo purposes with balanced risk assessment.

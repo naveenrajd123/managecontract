@@ -3,71 +3,71 @@ CONTRACT AGREEMENT
 OFFICE LEASE AGREEMENT
 
 Contract Number: CNT-2024-0036
-Date of Agreement: December 31, 2023
+Date of Agreement: June 29, 2025
 
 PARTIES TO THE AGREEMENT:
 
-Party A (The Company): Global Dynamics Inc
+Party A (The Company): TechCorp Solutions
 Address: 123 Business Street, Tech City, TC 12345
-Email: contracts@globaldynamicsinc.com
+Email: contracts@techcorpsolutions.com
 
-Party B (The Vendor/Client): CyberShield Security
-Address: 456 Commerce Avenue, Business District, BD 67890
-Email: legal@cybershieldsecurity.com
+Party B (The Vendor/Client): SecureData Corp
+Address: 987 Privacy Lane, Encryption City, EC 22222
+Email: legal@securedatacorp.com
 
 WHEREAS, the parties wish to enter into this Office Lease Agreement under the following terms and conditions:
 
 1. SCOPE OF SERVICES
-   CyberShield Security shall provide office lease agreement services to Global Dynamics Inc as detailed in Appendix A.
+   SecureData Corp shall provide office lease agreement services to TechCorp Solutions as detailed in Appendix A.
    This includes but is not limited to professional consultation, implementation, maintenance, and support services.
 
 2. CONTRACT TERM
-   Start Date: December 31, 2023
-   End Date: January 01, 2026
-   Contract Duration: 732 days
+   Start Date: June 29, 2025
+   End Date: September 14, 2025
+   Contract Duration: 77 days
    
    Status: EXPIRED
    Risk Classification: HIGH
 
 3. FINANCIAL TERMS
-   Total Contract Value: $421,587 USD
+   Total Contract Value: $185,479 USD
    Payment Terms: Quarterly, Net 30 days
    Currency: United States Dollars (USD)
    
    Payment Schedule:
-   - Initial Payment: 23% upon contract signing
-   - Milestone Payments: 40% upon completion of deliverables
-   - Final Payment: 30% upon project acceptance
+   - Initial Payment: 27% upon contract signing
+   - Milestone Payments: 53% upon completion of deliverables
+   - Final Payment: 24% upon project acceptance
 
 4. PAYMENT OBLIGATIONS
-   All payments shall be made via wire transfer to the account specified by CyberShield Security.
-   Late payments will incur a penalty of 1% per month.
-   Invoice disputes must be raised within 5 business days.
+   All payments shall be made via wire transfer to the account specified by SecureData Corp.
+   Late payments will incur a penalty of 4% per month.
+   Invoice disputes must be raised within 12 business days.
 
 5. SERVICE LEVEL AGREEMENT (SLA)
    99.9% uptime, business hours support, 4-hour response time
    
    Penalties for SLA Breaches:
-   - Each breach: $80,206 or 11% of monthly fees, whichever is greater
+   - Each breach: $4,371 or 2.4% of monthly fees, whichever is greater
    - Repeated breaches may result in contract termination
 
 6. KEY DATES AND MILESTONES
-   - Contract Effective Date: December 31, 2023
-   - First Milestone: January 30, 2024
-   - Mid-Point Review: December 31, 2024
-   - Final Deliverable: December 02, 2025
-   - Contract Expiration: January 01, 2026
+   - Contract Effective Date: June 29, 2025
+   - First Milestone: July 29, 2025
+   - Mid-Point Review: August 06, 2025
+   - Final Deliverable: August 15, 2025
+   - Contract Expiration: September 14, 2025
 
 7. TERMINATION CLAUSES
    Either party may terminate this agreement under the following conditions:
    
    a) Termination for Convenience:
-      - 59 days written notice required
-      - Termination fee: 20% of remaining contract value
+      - 64 days written notice required
+      - Termination fee: 27% of remaining contract value
    
    b) Termination for Cause:
       - Immediate termination upon material breach
-      - 19 days to cure breach after written notice
+      - 25 days to cure breach after written notice
       - No termination fee if other party is at fault
    
    c) Force Majeure:
@@ -75,9 +75,9 @@ WHEREAS, the parties wish to enter into this Office Lease Agreement under the fo
       - Extension of deadlines without penalties
 
 8. LIABILITY AND INDEMNIFICATION
-   Total Liability Cap: $843,174 USD
+   Total Liability Cap: $919,055 USD
    
-   CyberShield Security agrees to indemnify and hold harmless Global Dynamics Inc from:
+   SecureData Corp agrees to indemnify and hold harmless TechCorp Solutions from:
    - Third-party claims arising from services provided
    - Intellectual property infringement claims
    - Data breaches or security incidents
@@ -86,11 +86,11 @@ WHEREAS, the parties wish to enter into this Office Lease Agreement under the fo
    Exclusions:
    - Indirect, consequential, or punitive damages
    - Loss of profits or business opportunities
-   - Claims arising from Global Dynamics Inc's actions or instructions
+   - Claims arising from TechCorp Solutions's actions or instructions
 
 9. INTELLECTUAL PROPERTY RIGHTS
-   - All work product becomes property of Global Dynamics Inc
-   - CyberShield Security retains rights to pre-existing materials and tools
+   - All work product becomes property of TechCorp Solutions
+   - SecureData Corp retains rights to pre-existing materials and tools
    - Limited license granted for use of proprietary methodologies
    - Confidentiality obligations survive contract termination
 
@@ -101,34 +101,54 @@ WHEREAS, the parties wish to enter into this Office Lease Agreement under the fo
     - Financial information and pricing
     - Customer data and business strategies
     
-    Confidentiality period: 2 years post-termination
+    Confidentiality period: 4 years post-termination
 
 11. INSURANCE REQUIREMENTS
-    CyberShield Security must maintain the following insurance:
-    - General Liability: $3M minimum
-    - Professional Liability: $2M minimum
-    - Cyber Liability: $1456030 minimum
+    SecureData Corp must maintain the following insurance:
+    - General Liability: $5M minimum
+    - Professional Liability: $3M minimum
+    - Cyber Liability: $699,861 minimum
     - Workers Compensation: As required by law
+
 
 12. COMPLIANCE AND REGULATORY
     Both parties shall comply with:
     - All applicable federal, state, and local laws
-    - Industry-specific regulations (GDPR, HIPAA, SOC 2, etc.)
-    - Data protection and privacy requirements
-    - Export control and sanctions regulations
+    - GDPR (General Data Protection Regulation) - Full compliance required
+    - PCI-DSS Level 1 - Payment card data security standards
+    - SOC 2 Type II certification - Annual audit required
+    - ISO 27001 Information Security Management
+    - Privacy Shield Framework (if applicable)
+    - State privacy laws (CCPA, CPRA, etc.)
+    - Anti-corruption and ethics policies (FCPA, UK Bribery Act)
+    
+    Enhanced Compliance Requirements:
+    - Quarterly third-party security audits
+    - Annual penetration testing
+    - Data Protection Impact Assessments (DPIA)
+    - Breach notification within 72 hours
+    - Right to audit upon 30 days notice
+    - Data Processing Agreements (DPA) required
+    - Appointment of Data Protection Officer (DPO)
+    
+    RISK ESCALATORS (Increase from Medium to High):
+    + GDPR compliance with personal data processing
+    + PCI-DSS requirements for payment systems
+    + SOC 2 Type II audit obligations
+    
 
 13. DISPUTE RESOLUTION
-    - Initial negotiation period: 22 days
+    - Initial negotiation period: 27 days
     - Mediation: If negotiation fails
     - Binding Arbitration: Final resolution method
     - Venue: Delaware
 
 14. AMENDMENT AND MODIFICATION
     This contract may only be modified by written agreement signed by both parties.
-    Change requests must be submitted in writing with 30 days notice.
+    Change requests must be submitted in writing with 37 days notice.
 
 15. GOVERNING LAW
-    This agreement shall be governed by the laws of the State of California,
+    This agreement shall be governed by the laws of the State of Delaware,
     without regard to its conflict of law provisions.
 
 16. ENTIRE AGREEMENT
@@ -137,17 +157,17 @@ WHEREAS, the parties wish to enter into this Office Lease Agreement under the fo
 
 SIGNATURES:
 
-For Global Dynamics Inc:
+For TechCorp Solutions:
 _________________________________
-Name: Michael Chen
-Title: CFO
-Date: December 31, 2023
+Name: Jennifer Smith
+Title: Director of Procurement
+Date: June 29, 2025
 
-For CyberShield Security:
+For SecureData Corp:
 _________________________________
-Name: Robert Taylor
-Title: President
-Date: December 31, 2023
+Name: Robert Wilson
+Title: VP of Sales
+Date: June 29, 2025
 
 --- END OF CONTRACT ---
 
@@ -162,4 +182,4 @@ APPENDIX C: SERVICE LEVEL AGREEMENT (SLA) METRICS
 
 Contract Status: EXPIRED
 Risk Level: HIGH
-Generated for demo purposes.
+Generated for demo purposes with balanced risk assessment.

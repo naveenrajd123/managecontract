@@ -3,71 +3,71 @@ CONTRACT AGREEMENT
 MANUFACTURING AGREEMENT
 
 Contract Number: CNT-2024-0064
-Date of Agreement: February 02, 2024
+Date of Agreement: April 23, 2025
 
 PARTIES TO THE AGREEMENT:
 
-Party A (The Company): TechCorp Solutions
-Address: 123 Business Street, Tech City, TC 12345
-Email: contracts@techcorpsolutions.com
+Party A (The Company): InnovateTech Inc
+Address: 456 Innovation Drive, Silicon Valley, SV 94000
+Email: contracts@innovatetechinc.com
 
-Party B (The Vendor/Client): CyberShield Security
+Party B (The Vendor/Client): BuildPro Construction
 Address: 456 Commerce Avenue, Business District, BD 67890
-Email: legal@cybershieldsecurity.com
+Email: legal@buildproconstruction.com
 
 WHEREAS, the parties wish to enter into this Manufacturing Agreement under the following terms and conditions:
 
 1. SCOPE OF SERVICES
-   CyberShield Security shall provide manufacturing agreement services to TechCorp Solutions as detailed in Appendix A.
+   BuildPro Construction shall provide manufacturing agreement services to InnovateTech Inc as detailed in Appendix A.
    This includes but is not limited to professional consultation, implementation, maintenance, and support services.
 
 2. CONTRACT TERM
-   Start Date: February 02, 2024
-   End Date: January 26, 2026
-   Contract Duration: 724 days
+   Start Date: April 23, 2025
+   End Date: February 12, 2026
+   Contract Duration: 295 days
    
    Status: WARNING
    Risk Classification: CRITICAL
 
 3. FINANCIAL TERMS
-   Total Contract Value: $4,179,438 USD
-   Payment Terms: Monthly, Net 15 days with automatic penalties
+   Total Contract Value: $1,563,553 USD
+   Payment Terms: Quarterly, Net 30 days
    Currency: United States Dollars (USD)
    
    Payment Schedule:
-   - Initial Payment: 26% upon contract signing
-   - Milestone Payments: 45% upon completion of deliverables
-   - Final Payment: 16% upon project acceptance
+   - Initial Payment: 40% upon contract signing
+   - Milestone Payments: 47% upon completion of deliverables
+   - Final Payment: 34% upon project acceptance
 
 4. PAYMENT OBLIGATIONS
-   All payments shall be made via wire transfer to the account specified by CyberShield Security.
-   Late payments will incur a penalty of 1% per month.
-   Invoice disputes must be raised within 15 business days.
+   All payments shall be made via wire transfer to the account specified by BuildPro Construction.
+   Late payments will incur a penalty of 5% per month.
+   Invoice disputes must be raised within 10 business days.
 
 5. SERVICE LEVEL AGREEMENT (SLA)
-   99.99% uptime, 24/7 support, 1-hour response time
+   99.99% uptime, 24/7 support, 1-hour response time, dedicated account manager
    
    Penalties for SLA Breaches:
-   - Each breach: $199,155 or 11% of monthly fees, whichever is greater
+   - Each breach: $46,266 or 3.0% of monthly fees, whichever is greater
    - Repeated breaches may result in contract termination
 
 6. KEY DATES AND MILESTONES
-   - Contract Effective Date: February 02, 2024
-   - First Milestone: March 03, 2024
-   - Mid-Point Review: January 29, 2025
-   - Final Deliverable: December 27, 2025
-   - Contract Expiration: January 26, 2026
+   - Contract Effective Date: April 23, 2025
+   - First Milestone: May 23, 2025
+   - Mid-Point Review: September 17, 2025
+   - Final Deliverable: January 13, 2026
+   - Contract Expiration: February 12, 2026
 
 7. TERMINATION CLAUSES
    Either party may terminate this agreement under the following conditions:
    
    a) Termination for Convenience:
-      - 82 days written notice required
-      - Termination fee: 19% of remaining contract value
+      - 94 days written notice required
+      - Termination fee: 48% of remaining contract value
    
    b) Termination for Cause:
       - Immediate termination upon material breach
-      - 27 days to cure breach after written notice
+      - 40 days to cure breach after written notice
       - No termination fee if other party is at fault
    
    c) Force Majeure:
@@ -75,9 +75,9 @@ WHEREAS, the parties wish to enter into this Manufacturing Agreement under the f
       - Extension of deadlines without penalties
 
 8. LIABILITY AND INDEMNIFICATION
-   Total Liability Cap: $8,358,876 USD
+   Total Liability Cap: $8,305,467 USD
    
-   CyberShield Security agrees to indemnify and hold harmless TechCorp Solutions from:
+   BuildPro Construction agrees to indemnify and hold harmless InnovateTech Inc from:
    - Third-party claims arising from services provided
    - Intellectual property infringement claims
    - Data breaches or security incidents
@@ -86,11 +86,11 @@ WHEREAS, the parties wish to enter into this Manufacturing Agreement under the f
    Exclusions:
    - Indirect, consequential, or punitive damages
    - Loss of profits or business opportunities
-   - Claims arising from TechCorp Solutions's actions or instructions
+   - Claims arising from InnovateTech Inc's actions or instructions
 
 9. INTELLECTUAL PROPERTY RIGHTS
-   - All work product becomes property of TechCorp Solutions
-   - CyberShield Security retains rights to pre-existing materials and tools
+   - All work product becomes property of InnovateTech Inc
+   - BuildPro Construction retains rights to pre-existing materials and tools
    - Limited license granted for use of proprietary methodologies
    - Confidentiality obligations survive contract termination
 
@@ -101,31 +101,73 @@ WHEREAS, the parties wish to enter into this Manufacturing Agreement under the f
     - Financial information and pricing
     - Customer data and business strategies
     
-    Confidentiality period: 2 years post-termination
+    Confidentiality period: 6 years post-termination
 
 11. INSURANCE REQUIREMENTS
-    CyberShield Security must maintain the following insurance:
-    - General Liability: $1M minimum
-    - Professional Liability: $1M minimum
-    - Cyber Liability: $1459341 minimum
+    BuildPro Construction must maintain the following insurance:
+    - General Liability: $10M minimum
+    - Professional Liability: $5M minimum
+    - Cyber Liability: $2,282,784 minimum
     - Workers Compensation: As required by law
+
 
 12. COMPLIANCE AND REGULATORY
     Both parties shall comply with:
     - All applicable federal, state, and local laws
-    - Industry-specific regulations (GDPR, HIPAA, SOC 2, etc.)
-    - Data protection and privacy requirements
-    - Export control and sanctions regulations
+    - HIPAA (Health Insurance Portability and Accountability Act)
+    - Protected Health Information (PHI) handling requirements
+    - HITECH Act - Security and breach notification
+    - GDPR with extensive personal data processing
+    - FDA regulations for medical devices/software
+    - SOX (Sarbanes-Oxley) financial reporting requirements
+    - PCI-DSS Level 1 - Payment card industry standards
+    - Export control regulations (ITAR, EAR)
+    - Critical infrastructure protection (NERC CIP, FISMA)
+    - State privacy laws (CCPA, CPRA, HIPAA state laws)
+    - FedRAMP compliance (if government contract)
+    - ISO 27001, ISO 13485 (medical devices)
+    - Anti-corruption (FCPA, UK Bribery Act, local laws)
+    
+    Critical Compliance Requirements:
+    - Continuous third-party security monitoring
+    - Monthly penetration testing and vulnerability assessments
+    - Business Associate Agreement (BAA) for HIPAA
+    - Data Processing Agreements (DPA) with strict terms
+    - Mandatory Data Protection Officer (DPO) and compliance officer
+    - Breach notification within 24 hours to all parties
+    - Right to audit at any time with 24-hour notice
+    - Annual regulatory audits (FDA, HHS, etc.)
+    - Incident response plan with 1-hour response time
+    - Disaster recovery and business continuity testing quarterly
+    - Encryption at rest and in transit (FIPS 140-2 compliant)
+    - Multi-factor authentication (MFA) mandatory
+    - Role-based access controls (RBAC) with least privilege
+    
+    RISK ESCALATORS (Increase from High to Critical):
+    + HIPAA/PHI handling - Protected health information
+    + FDA medical device regulations
+    + SOX financial reporting obligations
+    + Export controls (ITAR/EAR) - National security
+    + Critical infrastructure protection requirements
+    + Handles sensitive personal data at scale (>100K records)
+    
+    Regulatory Penalties:
+    - HIPAA violations: Up to $1.5M per year per violation type
+    - GDPR violations: Up to 4% of global annual revenue or €20M
+    - FDA violations: Product recalls, criminal penalties
+    - SOX violations: Criminal penalties, executive liability
+    - Export control violations: Up to $1M per violation, criminal charges
+    
 
 13. DISPUTE RESOLUTION
-    - Initial negotiation period: 21 days
+    - Initial negotiation period: 44 days
     - Mediation: If negotiation fails
     - Binding Arbitration: Final resolution method
-    - Venue: New York
+    - Venue: Delaware
 
 14. AMENDMENT AND MODIFICATION
     This contract may only be modified by written agreement signed by both parties.
-    Change requests must be submitted in writing with 10 days notice.
+    Change requests must be submitted in writing with 59 days notice.
 
 15. GOVERNING LAW
     This agreement shall be governed by the laws of the State of Delaware,
@@ -137,17 +179,17 @@ WHEREAS, the parties wish to enter into this Manufacturing Agreement under the f
 
 SIGNATURES:
 
-For TechCorp Solutions:
+For InnovateTech Inc:
 _________________________________
 Name: Michael Chen
-Title: VP of Operations
-Date: February 02, 2024
+Title: Chief Operating Officer
+Date: April 23, 2025
 
-For CyberShield Security:
+For BuildPro Construction:
 _________________________________
-Name: Robert Taylor
-Title: VP of Sales
-Date: February 02, 2024
+Name: Maria Garcia
+Title: Chief Executive Officer
+Date: April 23, 2025
 
 --- END OF CONTRACT ---
 
@@ -162,4 +204,4 @@ APPENDIX C: SERVICE LEVEL AGREEMENT (SLA) METRICS
 
 Contract Status: WARNING
 Risk Level: CRITICAL
-Generated for demo purposes.
+Generated for demo purposes with balanced risk assessment.
