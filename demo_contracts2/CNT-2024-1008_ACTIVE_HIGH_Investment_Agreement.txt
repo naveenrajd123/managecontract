@@ -1,0 +1,84 @@
+CONTRACT AGREEMENT
+
+CONTRACT NUMBER: CNT-2024-1008
+CONTRACT TYPE: Investment Agreement
+
+PARTIES:
+Party A (Client):
+Enterprise Systems LLC
+123 Business Street
+Tech City, TC 12345
+United States
+
+Party B (Service Provider):
+BuildPro Construction
+456 Innovation Avenue
+Commerce Center, CC 67890
+United States
+
+EFFECTIVE DATE: April 04, 2025
+EXPIRATION DATE: November 09, 2026
+
+TERMS AND CONDITIONS:
+
+1. SCOPE OF SERVICES
+   Party B agrees to provide services as outlined in this agreement to Party A.
+   The scope includes professional services, deliverables, and ongoing support.
+
+2. PAYMENT TERMS
+   Total Contract Value: $339,531.00 USD
+   Payment Schedule: Quarterly installments
+   Payment Method: Wire transfer or ACH
+
+3. DELIVERABLES
+   - Milestone 1: Initial assessment and planning
+   - Milestone 2: Implementation and deployment
+   - Milestone 3: Training and knowledge transfer
+   - Milestone 4: Post-implementation support
+
+4. CONFIDENTIALITY
+   Both parties agree to maintain confidentiality of proprietary information.
+   Non-disclosure obligations survive contract termination.
+
+5. INTELLECTUAL PROPERTY
+   All work products and deliverables remain property of Party A.
+   Party B retains rights to pre-existing intellectual property.
+
+6. TERMINATION
+   Either party may terminate with 30 days written notice.
+   Early termination fees may apply as per schedule in Appendix A.
+
+7. LIABILITY AND INDEMNIFICATION
+   Party B maintains liability insurance of minimum $2,000,000.
+   Indemnification provisions protect both parties from third-party claims.
+
+8. COMPLIANCE
+   Services comply with all applicable federal, state, and local laws.
+   Both parties maintain necessary licenses and certifications.
+
+9. DISPUTE RESOLUTION
+   Disputes resolved through mediation before litigation.
+   Governing law: State of Delaware, United States.
+
+10. AMENDMENTS
+    Contract modifications require written agreement from both parties.
+    All amendments must be signed by authorized representatives.
+
+SIGNATURES:
+
+For Party A (Enterprise Systems LLC):
+_______________________________
+Name: [Authorized Signatory]
+Title: Chief Executive Officer
+Date: April 04, 2025
+
+For Party B (BuildPro Construction):
+_______________________________
+Name: [Authorized Signatory]
+Title: Managing Director
+Date: April 04, 2025
+
+--- END OF CONTRACT ---
+
+RISK ASSESSMENT: HIGH
+CONTRACT STATUS: ACTIVE
