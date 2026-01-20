@@ -209,6 +209,31 @@ Each chunk:
   - Traceable back to source document
 ```
 
+**📄 See the Code:**
+- **File:** `src/rag_system.py`
+- **Function:** `chunk_text()` (lines 40-67)
+- **Usage:** `add_contract_to_vectordb()` (line 85)
+
+```python
+# src/rag_system.py - lines 40-67
+def chunk_text(self, text: str, chunk_size: int = 1000, overlap: int = 200) -> List[str]:
+    """Split text into overlapping chunks."""
+    chunks = []
+    start = 0
+    text_length = len(text)
+    
+    while start < text_length:
+        end = start + chunk_size
+        chunk = text[start:end]
+        chunks.append(chunk)
+        start += (chunk_size - overlap)  # Overlap maintains context
+    
+    return chunks
+
+# Usage at line 85:
+chunks = self.chunk_text(contract_text, chunk_size=3000, overlap=500)
+```
+
 **Data Science Perspective:**
 > "Chunking is like data preprocessing—we're breaking unstructured text into structured units that can be indexed, searched, and analyzed. It's similar to tokenization in NLP, but at the paragraph/section level for retrieval purposes."
 
@@ -235,6 +260,31 @@ vector_db.insert({
     "embedding": embedding,
     "metadata": {"contract_id": 123, "risk": "high", "party": "Acme Corp"}
 })
+```
+
+**📄 See the Code:**
+- **File:** `src/rag_system.py`
+- **Function:** `add_contract_to_vectordb()` (lines 69-94)
+- **Note:** Currently using simplified in-memory storage; in production, embeddings would be generated via Azure OpenAI or similar
+
+```python
+# src/rag_system.py - lines 69-94
+async def add_contract_to_vectordb(
+    self,
+    contract_id: int,
+    contract_text: str,
+    contract_metadata: Dict[str, Any]
+):
+    """Add a contract to storage for search. Chunks the contract for better retrieval."""
+    # Step 1: Chunk the contract
+    chunks = self.chunk_text(contract_text, chunk_size=3000, overlap=500)
+    
+    # Step 2: Store contract with chunks (embeddings would be generated here in production)
+    self.contracts_storage[contract_id] = {
+        "text": contract_text,
+        "chunks": chunks,  # Each chunk would have an embedding
+        "metadata": contract_metadata
+    }
 ```
 
 **Key Technical Details:**
@@ -273,6 +323,37 @@ Semantic Search (Vector similarity):
 4. Return ranked results with metadata
 ```
 
+**📄 See the Code:**
+- **File:** `src/rag_system.py`
+- **Function:** `search_contracts()` (lines 148-236)
+
+```python
+# src/rag_system.py - lines 148-236
+def search_contracts(self, query: str, n_results: int = 5, contract_id: int = None):
+    """Search across contracts using enhanced keyword matching on chunks."""
+    
+    # Semantic keyword expansion for better matching
+    semantic_expansions = {
+        'date': ['date', 'effective', 'execution', 'commence', 'start', 'end', ...],
+        'payment': ['payment', 'fee', 'cost', 'price', 'invoice', ...],
+        'termination': ['termination', 'terminate', 'cancel', ...],
+        # ... more semantic mappings
+    }
+    
+    # Expand keywords based on semantic mappings
+    expanded_keywords = set(keywords)
+    for keyword in keywords:
+        for key, values in semantic_expansions.items():
+            if keyword in values or keyword == key:
+                expanded_keywords.update(values)
+    
+    # Score chunks based on keyword + semantic matches
+    for chunk in chunks:
+        original_score = sum(chunk.count(keyword) * 3 for keyword in keywords)
+        expanded_score = sum(chunk.count(keyword) for keyword in expanded_keywords)
+        total_score = original_score + expanded_score
+```
+
 **Data Science Perspective:**
 > "Semantic search solves the vocabulary mismatch problem—users ask questions in their own words, but documents use different terminology. Vector similarity handles synonyms, paraphrasing, and conceptual matches that keyword search misses. It's a game-changer for search over large document corpora."
 
@@ -305,6 +386,50 @@ Step 3: GENERATION
 ├── LLM generates answer based on retrieved context
 ├── Answer includes citations (contract IDs, clause numbers)
 └── No hallucinations (constrained to retrieved text)
+```
+
+**📄 See the Code:**
+- **File:** `src/rag_system.py`
+- **Function:** `answer_question()` (lines 632-730)
+- **Usage:** Called from `src/main.py` (line 741)
+
+```python
+# src/rag_system.py - lines 632-730
+async def answer_question(self, question: str, contract_id: int = None) -> str:
+    """Answer questions about contracts using RAG."""
+    
+    # Step 1: RETRIEVAL - Search for relevant chunks
+    search_results = self.search_contracts(
+        query=question,
+        n_results=5,
+        contract_id=contract_id
+    )
+    relevant_chunks = search_results.get('documents', [[]])[0]
+    
+    if not relevant_chunks:
+        return "I couldn't find relevant information in the contracts."
+    
+    # Combine chunks for context
+    context = "\n\n---\n\n".join(relevant_chunks)
+    
+    # Step 2 & 3: AUGMENTATION + GENERATION
+    prompt = f"""
+    You are a helpful contract management assistant.
+    
+    Based on the following contract excerpts, answer the user's question.
+    
+    IMPORTANT: Answer only from the provided context.
+    
+    Contract Excerpts:
+    {context}
+    
+    User Question: {question}
+    
+    Answer:
+    """
+    
+    response = self.model.generate_content(prompt)  # LLM call
+    return response.text
 ```
 
 **Why RAG is critical for enterprise:**
@@ -363,6 +488,46 @@ SELECT AVG(contract_value), COUNT(*)
 FROM contracts
 WHERE risk_level = 'high' AND party_a = 'Acme Corp'
 GROUP BY party_a;
+```
+
+**📄 See the Code:**
+- **Metadata Extraction:** `src/rag_system.py`, function `extract_contract_metadata()` (lines 366-480)
+- **Risk Assessment:** `src/rag_system.py`, function `assess_risk_level()` (lines 482-630)
+- **Summarization:** `src/rag_system.py`, function `generate_contract_summary()` (lines 238-325)
+- **Usage:** `src/main.py`, upload endpoint (lines 560, 569, 587)
+
+```python
+# src/rag_system.py - lines 366-480 (extract_contract_metadata)
+async def extract_contract_metadata(self, contract_text: str) -> Dict[str, Any]:
+    """Extract structured metadata from contract using AI."""
+    
+    prompt = f"""
+    You are a contract metadata extractor. Extract key information.
+    
+    Return ONLY a valid JSON object with these exact fields:
+    {{
+        "contract_name": "type of agreement",
+        "contract_number": "contract number or ID",
+        "party_a": "first party name",
+        "party_b": "second party name", 
+        "start_date": "YYYY-MM-DD format",
+        "end_date": "YYYY-MM-DD format",
+        "contract_value": numeric value or null,
+        "currency": "USD or other currency code"
+    }}
+    
+    Contract Text:
+    {contract_text}
+    """
+    
+    response = self.model.generate_content(prompt)
+    metadata = json.loads(response.text)  # Parse JSON output
+    return metadata
+
+# src/main.py - lines 560, 569, 587 (usage in upload)
+metadata = await rag_system.extract_contract_metadata(contract_text)
+summary = await rag_system.generate_contract_summary(contract_text)
+risk_assessment = await rag_system.assess_risk_level(contract_text)
 ```
 
 **Data Quality Considerations:**
