@@ -27,6 +27,7 @@ from src.config import settings
 from src.schemas import ContractCreate, ContractResponse, ContractUpdate, QuestionRequest
 
 # Create FastAPI app
+# Testing persistence of 5 uploaded contracts across redeployments
 app = FastAPI(
     title=settings.APP_NAME,
     description="AI-powered Contract Management with Early Warning System",
