@@ -827,6 +827,113 @@ async def health_check():
     }
 
 
+@app.get("/api/debug/rag-status")
+async def check_rag_status(db: AsyncSession = Depends(get_db)):
+    """
+    DEBUG ENDPOINT: Check RAG system status.
+    Shows how many contracts are loaded in memory vs database.
+    """
+    # Count contracts in database
+    db_result = await db.execute(select(func.count(Contract.id)))
+    db_count = db_result.scalar()
+    
+    # Count contracts in RAG storage
+    rag_count = len(rag_system.contracts_storage)
+    
+    # Get list of contract IDs in RAG
+    rag_contract_ids = list(rag_system.contracts_storage.keys())
+    
+    # Get list of contract IDs in database
+    db_result = await db.execute(select(Contract.id, Contract.contract_number))
+    db_contracts = db_result.all()
+    
+    return {
+        "database_contracts": db_count,
+        "rag_contracts": rag_count,
+        "contracts_loaded": rag_count > 0,
+        "rag_contract_ids": rag_contract_ids,
+        "db_contracts": [{"id": c[0], "number": c[1]} for c in db_contracts],
+        "status": "OK" if rag_count == db_count else "MISMATCH - Contracts not loaded into RAG!",
+        "message": "RAG system is properly loaded" if rag_count == db_count else f"Database has {db_count} contracts but RAG only has {rag_count}. Use /api/debug/reload-rag to fix."
+    }
+
+
+@app.post("/api/debug/reload-rag")
+async def reload_rag_system(db: AsyncSession = Depends(get_db)):
+    """
+    DEBUG ENDPOINT: Manually reload all contracts into RAG system.
+    Use this if contracts aren't showing up in AI queries.
+    """
+    try:
+        print("[DEBUG] Starting manual RAG reload...")
+        
+        # Clear existing RAG storage
+        rag_system.clear_all()
+        
+        # Query all contracts from database
+        result = await db.execute(select(Contract))
+        contracts = result.scalars().all()
+        
+        print(f"[DEBUG] Found {len(contracts)} contracts in database")
+        
+        loaded_count = 0
+        failed_count = 0
+        failed_contracts = []
+        
+        # Load each contract into RAG system
+        for contract in contracts:
+            try:
+                if contract.file_path and os.path.exists(contract.file_path):
+                    await rag_system.load_contract_from_file(
+                        contract_id=contract.id,
+                        file_path=contract.file_path,
+                        contract_metadata={
+                            "name": contract.contract_name,
+                            "number": contract.contract_number,
+                            "party_a": contract.party_a,
+                            "party_b": contract.party_b
+                        }
+                    )
+                    loaded_count += 1
+                    print(f"[DEBUG] Loaded contract {contract.id}: {contract.contract_number}")
+                else:
+                    print(f"[DEBUG] File not found for contract {contract.id}: {contract.file_path}")
+                    failed_count += 1
+                    failed_contracts.append({
+                        "id": contract.id,
+                        "number": contract.contract_number,
+                        "reason": "File not found",
+                        "path": contract.file_path
+                    })
+            except Exception as e:
+                print(f"[DEBUG] Failed to load contract {contract.id}: {e}")
+                failed_count += 1
+                failed_contracts.append({
+                    "id": contract.id,
+                    "number": contract.contract_number,
+                    "reason": str(e),
+                    "path": contract.file_path
+                })
+        
+        print(f"[DEBUG] RAG reload complete: {loaded_count} loaded, {failed_count} failed")
+        
+        return {
+            "status": "success",
+            "message": f"RAG system reloaded successfully",
+            "total_contracts": len(contracts),
+            "loaded": loaded_count,
+            "failed": failed_count,
+            "rag_storage_size": len(rag_system.contracts_storage),
+            "failed_contracts": failed_contracts
+        }
+        
+    except Exception as e:
+        print(f"[ERROR] Failed to reload RAG system: {e}")
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=f"Failed to reload RAG: {str(e)}")
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)

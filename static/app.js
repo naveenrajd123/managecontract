@@ -929,6 +929,11 @@ async function loadContractsForSelect() {
         // Clear and reset dropdown
         select.innerHTML = '<option value="">All Contracts</option>';
         
+        // Auto-check RAG status when loading contracts (only if we have contracts)
+        if (contracts.length > 0) {
+            checkRAGStatusSilently();
+        }
+        
         console.log(`Loading ${contracts.length} contracts into dropdown`);
         
         // Add each contract to the dropdown
@@ -1147,6 +1152,11 @@ document.getElementById('ask-form').addEventListener('submit', async (e) => {
         removeThinkingIndicator();
         
         if (response.ok) {
+            // Check if we got the "couldn't find relevant information" response
+            if (result.answer.includes("couldn't find relevant information")) {
+                // Show RAG status banner
+                document.getElementById('rag-status-banner').style.display = 'block';
+            }
             // Add AI response to chat
             addAIMessage(result.answer);
             // Save chat history after successful response
@@ -1160,6 +1170,117 @@ document.getElementById('ask-form').addEventListener('submit', async (e) => {
         addAIMessage(`❌ Sorry, I encountered an error: ${error.message}`);
         // Save chat history even after error
         saveChatHistory();
+    }
+});
+
+// ============================================================================
+// RAG SYSTEM DIAGNOSTIC TOOLS
+// ============================================================================
+
+// Silent RAG status check (runs automatically in background)
+async function checkRAGStatusSilently() {
+    try {
+        const response = await fetch(`${API_BASE}/api/debug/rag-status`);
+        const result = await response.json();
+        
+        console.log('[RAG AUTO-CHECK]', result);
+        
+        // If RAG is empty but database has contracts, show warning
+        if (result.rag_contracts === 0 && result.database_contracts > 0) {
+            document.getElementById('rag-status-banner').style.display = 'block';
+            console.warn('[RAG WARNING] RAG system is empty! Database has contracts but RAG has none.');
+        } else if (result.rag_contracts < result.database_contracts) {
+            // Partial load - also show warning
+            document.getElementById('rag-status-banner').style.display = 'block';
+            console.warn('[RAG WARNING] Partial RAG load detected.');
+        } else {
+            // All good - hide banner
+            document.getElementById('rag-status-banner').style.display = 'none';
+        }
+    } catch (error) {
+        console.error('[RAG AUTO-CHECK ERROR]', error);
+        // Don't show banner for connection errors, only for actual RAG issues
+    }
+}
+
+// Check RAG Status Button
+document.getElementById('check-rag-status-btn').addEventListener('click', async () => {
+    const btn = document.getElementById('check-rag-status-btn');
+    btn.disabled = true;
+    btn.textContent = '🔍 Checking...';
+    
+    try {
+        const response = await fetch(`${API_BASE}/api/debug/rag-status`);
+        const result = await response.json();
+        
+        console.log('[RAG STATUS]', result);
+        
+        if (result.rag_contracts === 0 && result.database_contracts > 0) {
+            // Problem detected - show banner
+            document.getElementById('rag-status-banner').style.display = 'block';
+            alert(`⚠️ RAG System Issue Detected!\n\nDatabase has ${result.database_contracts} contracts but RAG has ${result.rag_contracts}.\n\nThis means the AI can't access your contracts. Click the "Reload Contracts" button below to fix this.`);
+        } else if (result.rag_contracts === result.database_contracts) {
+            alert(`✅ RAG System OK!\n\nDatabase: ${result.database_contracts} contracts\nRAG Memory: ${result.rag_contracts} contracts\n\nThe AI can access all your contracts.`);
+            document.getElementById('rag-status-banner').style.display = 'none';
+        } else {
+            alert(`⚠️ Partial RAG Load\n\nDatabase: ${result.database_contracts} contracts\nRAG Memory: ${result.rag_contracts} contracts\n\nSome contracts may not be accessible to the AI.`);
+            document.getElementById('rag-status-banner').style.display = 'block';
+        }
+    } catch (error) {
+        console.error('[RAG STATUS ERROR]', error);
+        alert(`❌ Failed to check RAG status: ${error.message}`);
+    } finally {
+        btn.disabled = false;
+        btn.textContent = '🔍 Check AI System Status';
+    }
+});
+
+// Reload RAG System Button
+document.getElementById('reload-rag-btn').addEventListener('click', async () => {
+    const btn = document.getElementById('reload-rag-btn');
+    const resultDiv = document.getElementById('reload-rag-result');
+    
+    btn.disabled = true;
+    btn.textContent = '🔄 Reloading...';
+    resultDiv.innerHTML = '<p style="color: #667eea;">⏳ Reloading contracts into AI memory... This may take a moment.</p>';
+    
+    try {
+        const response = await fetch(`${API_BASE}/api/debug/reload-rag`, {
+            method: 'POST'
+        });
+        const result = await response.json();
+        
+        console.log('[RAG RELOAD]', result);
+        
+        if (result.status === 'success') {
+            resultDiv.innerHTML = `
+                <div style="background: #d4edda; color: #155724; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                    <strong>✅ Success!</strong><br>
+                    Loaded ${result.loaded} contracts into AI memory.<br>
+                    ${result.failed > 0 ? `⚠️ ${result.failed} contracts failed to load.` : ''}
+                </div>
+            `;
+            
+            // Hide banner after successful reload
+            setTimeout(() => {
+                document.getElementById('rag-status-banner').style.display = 'none';
+            }, 3000);
+            
+            alert(`✅ RAG System Reloaded!\n\nLoaded: ${result.loaded} contracts\nFailed: ${result.failed} contracts\n\nYou can now ask questions about your contracts!`);
+        } else {
+            throw new Error(result.message || 'Reload failed');
+        }
+    } catch (error) {
+        console.error('[RAG RELOAD ERROR]', error);
+        resultDiv.innerHTML = `
+            <div style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                <strong>❌ Failed to reload</strong><br>
+                ${error.message}
+            </div>
+        `;
+    } finally {
+        btn.disabled = false;
+        btn.textContent = '🔄 Reload Contracts into AI Memory';
     }
 });
 
