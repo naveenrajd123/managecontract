@@ -20,7 +20,7 @@ import json
 import traceback
 
 # Import our custom modules
-from src.database import init_db, get_db, Contract
+from src.database import init_db, get_db, Contract, engine
 from src.rag_system import rag_system
 from src.early_warning import early_warning_system
 from src.config import settings
@@ -38,6 +38,23 @@ app = FastAPI(
 async def startup_event():
     """Initialize the application on startup."""
     await init_db()
+    
+    # Run migration to add contract_text column if needed
+    from sqlalchemy import text
+    async with engine.begin() as conn:
+        try:
+            # Check if column exists
+            await conn.execute(text("SELECT contract_text FROM contracts LIMIT 1"))
+            print("[INFO] Database schema is up to date")
+        except Exception:
+            # Column doesn't exist, add it
+            try:
+                await conn.execute(text("ALTER TABLE contracts ADD COLUMN contract_text TEXT"))
+                print("[INFO] Added contract_text column to database")
+            except Exception as e:
+                if "already exists" not in str(e).lower():
+                    print(f"[WARNING] Could not add column: {e}")
+    
     os.makedirs(settings.UPLOAD_DIRECTORY, exist_ok=True)
     
     # Load all existing contracts into RAG system
