@@ -669,6 +669,148 @@ Output:
 
 ---
 
+## 🤖 LLM Usage & Implementation (Interview-Ready)
+
+This section explains **how LLMs are used** in the system and **how they’re implemented** in a production-friendly way.
+
+### Where the LLM is used in this system
+
+In the Contract Management System, an LLM is used as a **Document Intelligence engine** (unstructured → structured) and as a **Reasoning assistant** (Q&A / summaries):
+
+- **Metadata extraction** (structured JSON): contract number, parties, dates, value, currency
+- **Summarization**: executive summary for business users
+- **Clause extraction**: key clauses (termination, SLA, liability, confidentiality)
+- **Risk classification**: low/medium/high/critical + “why” explanation
+- **RAG Q&A**: answer user questions by grounding responses on retrieved contract text
+
+### How the LLM is implemented (the “pipeline”)
+
+Think of it like an **AI-powered ETL** pipeline:
+
+1. **Extract**: PDF/DOCX/TXT → plain text
+2. **Transform**:
+   - LLM extraction (structured output)
+   - LLM summarization / classification (unstructured + structured outputs)
+   - Embedding generation (text → vectors)
+3. **Load**:
+   - Store structured fields in SQL (Postgres/SQLite)
+   - Store text (for free-tier deployment reliability) and/or file path
+   - Store embeddings/chunks in vector storage for semantic search + RAG
+
+### Prompting pattern (how to get reliable structured outputs)
+
+In interviews, it’s strong to describe LLM usage as **“structured output extraction + validation”** (not just chat completions).
+
+```python
+# Pseudocode: structured extraction prompt (JSON-first)
+system = """
+You are a contract analysis assistant.
+Return ONLY valid JSON matching the schema.
+If a field is missing, set it to null.
+"""
+
+schema = {
+  "contract_number": "string|null",
+  "party_a": "string|null",
+  "party_b": "string|null",
+  "start_date": "YYYY-MM-DD|null",
+  "end_date": "YYYY-MM-DD|null",
+  "contract_value": "number|null",
+  "currency": "string|null",
+  "risk_level": "low|medium|high|critical|null",
+  "risk_reason": "string|null"
+}
+
+prompt = f"""
+Extract contract metadata from this text.
+Schema: {schema}
+Text: {contract_text}
+"""
+
+result = llm.generate_json(system=system, prompt=prompt, temperature=0.1)
+validated = validate_against_schema(result)
+```
+
+**Why this matters (production):**
+- You can run **data validation** checks after extraction (dates parseable, numeric ranges, required fields)
+- You can measure **precision/recall** like a standard data pipeline
+- You can keep humans in the loop for low-confidence fields
+
+### RAG implementation (how the Q&A feature works)
+
+When a user asks “What are termination terms?”, we don’t want the model to guess. We use **RAG** so the model answers from real contract text.
+
+**Flow:**
+
+1. Chunk contract text (e.g., ~800–1200 chars with overlap)
+2. Compute embeddings for each chunk
+3. Store vectors + metadata (contract_id, chunk_id, section)
+4. On user query:
+   - Embed query
+   - Retrieve top-\(k\) most similar chunks
+   - Give chunks to the LLM as “context”
+   - Generate answer grounded in retrieved text (optionally with citations)
+
+```python
+# Pseudocode: RAG Q&A
+query_vec = embed(user_query)
+chunks = vector_db.search(query_vec, top_k=5, filter={"contract_id": contract_id})
+
+context = "\n\n".join([c.text for c in chunks])
+answer = llm.generate(
+  system="Answer ONLY using the provided context. If missing, say you don't know.",
+  prompt=f"Question: {user_query}\n\nContext:\n{context}",
+  temperature=0.2
+)
+```
+
+### “LLM provider” implementation (API today, open-source tomorrow)
+
+It helps in interviews to explain that you treat the LLM as a **pluggable provider**:
+
+- **Provider A (API)**: Google Gemini (current)
+- **Provider B (self-hosted open-source)**: Ollama / vLLM / Hugging Face Inference
+
+Typical interface:
+
+```python
+class LLMProvider:
+    async def generate(self, system: str, prompt: str, **kwargs) -> str: ...
+    async def generate_json(self, system: str, prompt: str, schema: dict, **kwargs) -> dict: ...
+    async def embed(self, text: str) -> list[float]: ...
+```
+
+Then the rest of the app calls `provider.generate_json(...)` without caring if it’s Gemini, Ollama, or Transformers.
+
+### Open-source LLM implementation options (how you’d do it)
+
+**Option 1: Ollama (fastest local/dev path)**
+- Run model locally (Llama 3 / Mistral / Phi)
+- App calls Ollama HTTP API
+- Best for demos and “open-source LLM experience”
+
+**Option 2: Hugging Face Transformers (most control)**
+- Load model in Python and run inference directly
+- Can quantize (4-bit) for smaller GPUs/CPU
+- Best to demonstrate deep implementation knowledge
+
+**Option 3: Inference servers (production scaling)**
+- vLLM / TGI (Text Generation Inference)
+- Better throughput, batching, streaming, observability
+
+### Production concerns you should mention in an interview
+
+- **Latency & cost**: cache repeated prompts; batch where possible; keep temperature low for extraction
+- **Reliability**: timeouts + retries + circuit breakers; fallback to smaller model for extraction
+- **Hallucination control**: RAG + “answer only from context”; structured outputs + validation
+- **Prompt injection** (contracts can contain malicious text): prompt hardening + content isolation
+- **Data privacy**: redaction of PII; prefer local/open-source for sensitive contracts
+- **Monitoring**: p95 latency, error rate, token usage, extraction accuracy, human override rate
+
+### 30-second interview explanation (you can memorize)
+
+> “I use an LLM as an AI-powered ETL component. First I extract text from documents, then I prompt the model to produce **structured JSON** for metadata and risk classification. I validate outputs like a data pipeline. For Q&A I use **RAG**: embed chunks, retrieve relevant passages, and force the LLM to answer only from retrieved context to reduce hallucinations. The LLM layer is abstracted so I can switch from Gemini to open-source models like Llama 3 via Ollama or Transformers depending on compliance and cost.”
+
 #### 6. **"What metrics do you track to measure AI performance?"**
 
 **Your Answer:**
