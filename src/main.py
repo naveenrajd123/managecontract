@@ -926,7 +926,22 @@ async def reload_rag_system(db: AsyncSession = Depends(get_db)):
         # Load each contract into RAG system
         for contract in contracts:
             try:
-                if contract.file_path and os.path.exists(contract.file_path):
+                # Try to load from contract_text field first (free tier)
+                if contract.contract_text and len(contract.contract_text) > 100:
+                    await rag_system.add_contract_to_vectordb(
+                        contract_id=contract.id,
+                        contract_text=contract.contract_text,
+                        contract_metadata={
+                            "name": contract.contract_name,
+                            "number": contract.contract_number,
+                            "party_a": contract.party_a,
+                            "party_b": contract.party_b
+                        }
+                    )
+                    loaded_count += 1
+                    print(f"[DEBUG] Loaded contract {contract.id} from database text: {contract.contract_number}")
+                # Fall back to file if contract_text not available
+                elif contract.file_path and os.path.exists(contract.file_path):
                     await rag_system.load_contract_from_file(
                         contract_id=contract.id,
                         file_path=contract.file_path,
@@ -938,14 +953,14 @@ async def reload_rag_system(db: AsyncSession = Depends(get_db)):
                         }
                     )
                     loaded_count += 1
-                    print(f"[DEBUG] Loaded contract {contract.id}: {contract.contract_number}")
+                    print(f"[DEBUG] Loaded contract {contract.id} from file: {contract.contract_number}")
                 else:
-                    print(f"[DEBUG] File not found for contract {contract.id}: {contract.file_path}")
+                    print(f"[DEBUG] No text or file found for contract {contract.id}: {contract.contract_number}")
                     failed_count += 1
                     failed_contracts.append({
                         "id": contract.id,
                         "number": contract.contract_number,
-                        "reason": "File not found",
+                        "reason": "No contract_text and file not found",
                         "path": contract.file_path
                     })
             except Exception as e:
