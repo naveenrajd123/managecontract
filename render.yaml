@@ -10,13 +10,10 @@ services:
       - key: GEMINI_API_KEY
         sync: false
       - key: DATABASE_URL
-        value: sqlite+aiosqlite:///./data/contracts.db
+        value: sqlite+aiosqlite:///./contracts.db
       - key: UPLOAD_DIRECTORY
-        value: ./data/uploads
+        value: ./uploads
       - key: DEBUG
         value: false
-    # Add persistent disk for file storage
-    disk:
-      name: contract-data
-      mountPath: /opt/render/project/src/data
-      sizeGB: 1
+      - key: STORE_FILES
+        value: "false"

@@ -30,6 +30,7 @@ class Settings(BaseSettings):
     UPLOAD_DIRECTORY: str = "./uploads"
     MAX_UPLOAD_SIZE: int = 10 * 1024 * 1024  # 10 MB
     ALLOWED_EXTENSIONS: set = {".pdf", ".txt", ".docx"}
+    STORE_FILES: bool = True  # Set to False for free tier (stores text in DB instead)
     
     # Early Warning Settings (days before expiration)
     WARNING_DAYS_CRITICAL: int = 30  # Red alert

@@ -63,6 +63,9 @@ class Contract(Base):
     # Key clauses extracted by AI
     key_clauses = Column(Text, nullable=True)  # Stored as JSON string
     
+    # Full contract text (for RAG on free tier - no file storage)
+    contract_text = Column(Text, nullable=True)  # Store extracted text directly
+    
     # Compliance and legal
     compliance_notes = Column(Text, nullable=True)
     

@@ -52,7 +52,21 @@ async def startup_event():
             
             # Load each contract into RAG system
             for contract in contracts:
-                if contract.file_path and os.path.exists(contract.file_path):
+                # Try to load from contract_text field first (free tier)
+                if contract.contract_text and len(contract.contract_text) > 100:
+                    await rag_system.add_contract_to_vectordb(
+                        contract_id=contract.id,
+                        contract_text=contract.contract_text,
+                        contract_metadata={
+                            "name": contract.contract_name,
+                            "number": contract.contract_number,
+                            "party_a": contract.party_a,
+                            "party_b": contract.party_b
+                        }
+                    )
+                    print(f"[INFO] Loaded contract {contract.contract_number} from database text")
+                # Fallback to file if available (paid tier with persistent storage)
+                elif contract.file_path and os.path.exists(contract.file_path):
                     await rag_system.load_contract_from_file(
                         contract_id=contract.id,
                         file_path=contract.file_path,
@@ -63,8 +77,9 @@ async def startup_event():
                             "party_b": contract.party_b
                         }
                     )
+                    print(f"[INFO] Loaded contract {contract.contract_number} from file")
                 else:
-                    print(f"[WARNING] Contract {contract.id} file not found: {contract.file_path}")
+                    print(f"[WARNING] Contract {contract.id} has no text or file")
             
             print(f"[SUCCESS] RAG system initialized with {len(rag_system.contracts_storage)} contracts")
             break  # Only need one db session
@@ -579,15 +594,25 @@ async def upload_contract(
         else:
             status = "active"
         
-        # Rename file with contract number
+        # Generate contract number
         contract_number = metadata.get('contract_number', f"CNT-{timestamp}")
-        final_filename = f"{contract_number}_{file.filename}"
-        final_path = os.path.join(settings.UPLOAD_DIRECTORY, final_filename)
         
-        # Rename file
-        if os.path.exists(final_path):
-            os.remove(final_path)
-        os.rename(file_path, final_path)
+        # For free tier: store text in database, no file storage needed
+        store_files = os.getenv('STORE_FILES', 'false').lower() == 'true'
+        final_path = None
+        
+        if store_files:
+            # Keep files (local development or paid tier with persistent disk)
+            final_filename = f"{contract_number}_{file.filename}"
+            final_path = os.path.join(settings.UPLOAD_DIRECTORY, final_filename)
+            if os.path.exists(final_path):
+                os.remove(final_path)
+            os.rename(file_path, final_path)
+            print(f"[UPLOAD] File saved at: {final_path}")
+        else:
+            # Delete file after extraction (free tier - text stored in DB)
+            os.remove(file_path)
+            print(f"[UPLOAD] File deleted (text stored in database for free tier)")
         
         # Create database record
         db_contract = Contract(
@@ -601,6 +626,7 @@ async def upload_contract(
             currency=metadata.get('currency', 'USD'),
             file_path=final_path,
             file_type=file_extension,
+            contract_text=contract_text,  # Store full text in database
             summary=summary,
             key_clauses=json.dumps(key_clauses),
             risk_level=risk_assessment["risk_level"],
